@@ -1,0 +1,529 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchandising Services | Golden Marketing Uganda</title>
+    <meta name="description" content="Strategic shelf presence, POSM placement, and planogram compliance. We make sure your product is visible at every point of sale in East Africa.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style>
+
+        .hero-section {
+            padding: 180px 0 100px;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        .hero-bg-gradient {
+            position: absolute; top: -20%; left: -10%; width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(245, 184, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%; z-index: 0; pointer-events: none;
+            filter: blur(80px);
+        }
+
+        .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5; z-index: 0; pointer-events: none;
+        }
+
+        .services-bento {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        @media (max-width: 992px) { .services-bento { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .services-bento { grid-template-columns: 1fr; } }
+        
+        /* Process Bento */
+        .process-bento {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        @media (max-width: 992px) { .process-bento { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .process-bento { grid-template-columns: 1fr; } }
+        
+        .step-number {
+            width: 48px; height: 48px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.2rem; margin-bottom: 24px;
+        }
+
+        /* Metrics */
+        .metrics-strip { background-color: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 80px 0; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        @media (max-width: 768px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .metric-box h3 { font-size: 3rem; color: var(--text-main); margin-bottom: 8px; line-height: 1; }
+        .metric-box p { font-weight: 600; text-transform: uppercase; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
+
+        .form-section { padding: var(--section-padding); background-color: var(--bg-color); }
+
+        /* ── Case Studies ── */
+        .cases-section { padding: var(--section-padding); background-color: var(--bg-color); border-top: 1px solid var(--border-color); }
+        .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+        @media(max-width:992px){ .cases-grid { grid-template-columns:1fr 1fr; } }
+        @media(max-width:640px){ .cases-grid { grid-template-columns:1fr; } }
+        .case-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.4s; }
+        .case-card:hover { transform: translateY(-6px); border-color: rgba(245,184,0,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .case-card-thumb { width:100%; height:240px; background-size:cover; background-position:center; position:relative; flex-shrink:0; }
+        .case-card-thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%); }
+        .case-card-badge { position:absolute; top:16px; left:16px; z-index:2; background:rgba(245,184,0,0.15); color:var(--primary-gold); border:1px solid rgba(245,184,0,0.3); border-radius:100px; padding:4px 12px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+        .case-card-body { padding:28px; flex:1; display:flex; flex-direction:column; }
+        .case-card-body h3 { font-size:1.3rem; margin-bottom:12px; }
+        .case-card-body p { color:var(--text-muted); font-size:0.92rem; line-height:1.65; flex:1; }
+        .case-mini-metrics { display:flex; gap:20px; margin:20px 0; padding:16px 0; border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); }
+        .case-mini-metric span { display:block; font-size:1.4rem; font-weight:800; color:var(--text-main); }
+        .case-mini-metric label { color:var(--text-muted); font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+        .btn-read-more { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:100px; background:transparent; border:1px solid var(--border-color); color:var(--text-main); font-weight:600; font-size:0.88rem; font-family:var(--font-main); transition:all 0.3s ease; margin-top:auto; }
+        .btn-read-more:hover { background:var(--primary-gold); border-color:var(--primary-gold); color:#000; }
+        .btn-read-more svg { transition:transform 0.3s; }
+        .btn-read-more:hover svg { transform:translateX(4px); }
+
+        /* ── Modal ── */
+        .project-modal { position:fixed; inset:0; z-index:9000; background:rgba(0,0,0,0.92); backdrop-filter:blur(16px); display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition:opacity 0.4s ease,visibility 0.4s ease; padding:24px; }
+        .project-modal.open { opacity:1; visibility:visible; }
+        .modal-inner { background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--border-radius-lg); max-width:960px; width:100%; max-height:90vh; overflow-y:auto; position:relative; transform:translateY(24px); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+        .project-modal.open .modal-inner { transform:translateY(0); }
+        .modal-close { position:sticky; top:0; left:100%; z-index:10; width:44px; height:44px; background:var(--bg-color); border:1px solid var(--border-color); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.2rem; color:var(--text-main); margin:16px 16px 0 auto; float:right; font-family:var(--font-main); }
+        .modal-hero-img { width:100%; height:320px; object-fit:cover; border-radius:var(--border-radius-lg) var(--border-radius-lg) 0 0; display:block; }
+        .modal-body { padding:40px; }
+        .modal-body h2 { font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:8px; }
+        .modal-client { color:var(--primary-gold); font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:24px; display:block; }
+        .modal-metrics { display:flex; gap:24px; flex-wrap:wrap; margin:24px 0; padding:24px; background:var(--bg-color); border-radius:var(--border-radius-md); border:1px solid var(--border-color); }
+        .modal-metric span { display:block; font-size:2rem; font-weight:800; color:var(--text-main); }
+        .modal-metric label { color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+        .modal-story { color:var(--text-muted); font-size:1rem; line-height:1.75; margin-bottom:32px; }
+        .modal-story strong { color:var(--text-main); }
+        .modal-gallery-title { font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px; color:var(--text-muted); }
+        .modal-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+        @media(max-width:600px){ .modal-gallery { grid-template-columns:1fr 1fr; } }
+        .modal-gallery img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--border-radius-md); border:1px solid var(--border-color); transition:transform 0.3s ease,opacity 0.3s; }
+        .modal-gallery img:hover { transform:scale(1.03); opacity:0.9; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <div class="dropdown active">
+                    <a href="#" class="active">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="merchandising.html" class="active">Merchandising</a>
+                        <a href="field-activations.html">Field Activations</a>
+                        <a href="field-automation-surveys.html">Field Force Automation</a>
+                        <a href="retail-audit.html">Retail Audit</a>
+                        <a href="distribution-sales.html">Distribution & Sales</a>
+                    </div>
+                </div>
+                <a href="../our-work.html">Our Work</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-gradient"></div>
+        
+        <div class="container">
+            <div class="hero-split-layout">
+                <div class="hero-text-content">
+                    <h1 class="huge-text reveal delay-100">Shelf Dominance.</h1>
+                    <p class="subtitle reveal delay-200" style="margin: 24px 0 40px;">We make sure your product is visible, compliant, and compelling — at every point of sale.</p>
+                    <div class="hero-buttons reveal delay-300">
+                        <a href="#contact-form" class="btn btn-primary">Talk to Our Trade Team</a>
+                    </div>
+                </div>
+                
+                <div class="hero-grid-container reveal delay-200">
+                    <div class="hero-animated-grid" data-category="merchandising"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section style="padding: var(--section-padding); background-color: var(--card-bg);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">What we execute.</h2>
+            </div>
+            
+            <div class="services-bento">
+                <div class="bento-card reveal">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">🛒</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Shelf Placement</h4>
+                    <p style="color: var(--text-muted);">Ensuring product is stocked, faced and properly positioned per planogram.</p>
+                </div>
+                <div class="bento-card reveal delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">🖼️</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">POSM Management</h4>
+                    <p style="color: var(--text-muted);">Installation, maintenance and reporting of all point-of-sale materials.</p>
+                </div>
+                <div class="bento-card reveal delay-200">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">📋</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Planogram Compliance</h4>
+                    <p style="color: var(--text-muted);">Auditing and correcting shelf layout against brand standards.</p>
+                </div>
+                <div class="bento-card reveal">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">📦</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Stock Rotation</h4>
+                    <p style="color: var(--text-muted);">First-In-First-Out management to reduce expiry losses.</p>
+                </div>
+                <div class="bento-card reveal delay-100">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">🏷️</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Price Tagging</h4>
+                    <p style="color: var(--text-muted);">Accurate shelf-edge labelling and pricing compliance.</p>
+                </div>
+                <div class="bento-card reveal delay-200">
+                    <div style="font-size: 2rem; margin-bottom: 20px;">📈</div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Share of Shelf</h4>
+                    <p style="color: var(--text-muted);">Competitive benchmarking and space analytics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--section-padding); background-color: var(--bg-color);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">The Process.</h2>
+            </div>
+            
+            <div class="process-bento">
+                <div class="bento-card reveal">
+                    <div class="step-number">1</div>
+                    <h4>Brief & Planning</h4>
+                    <p style="color: var(--text-muted); margin-top: 12px;">We receive your brand standards, planogram guides and target outlet list.</p>
+                </div>
+                <div class="bento-card reveal delay-100">
+                    <div class="step-number">2</div>
+                    <h4>Team Deployment</h4>
+                    <p style="color: var(--text-muted); margin-top: 12px;">Trained merchandisers assigned to specific territories and outlet types.</p>
+                </div>
+                <div class="bento-card reveal delay-200">
+                    <div class="step-number">3</div>
+                    <h4>Daily Execution</h4>
+                    <p style="color: var(--text-muted); margin-top: 12px;">In-store visits, stocking, facing, POSM placement with photo proof.</p>
+                </div>
+                <div class="bento-card reveal delay-300">
+                    <div class="step-number">4</div>
+                    <h4>Live Reporting</h4>
+                    <p style="color: var(--text-muted); margin-top: 12px;">Field data captured via mobile app, synced to your client dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-strip">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-box reveal">
+                    <h3>2,500+</h3>
+                    <p>Outlets Monthly</p>
+                </div>
+                <div class="metric-box reveal delay-100">
+                    <h3>98%</h3>
+                    <p>POSM Compliance</p>
+                </div>
+                <div class="metric-box reveal delay-200">
+                    <h3>72hr</h3>
+                    <p>Avg Install Time</p>
+                </div>
+                <div class="metric-box reveal delay-300">
+                    <h3>500+</h3>
+                    <p>Field Agents</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">Case Studies</h2>
+                <p class="subtitle reveal delay-100" style="margin: 0 auto;">Real shelf wins. Real numbers. Here's what consistent merchandising excellence delivers for our clients.</p>
+            </div>
+            <div class="cases-grid">
+
+                <!-- Unilever -->
+                <div class="case-card reveal">
+                    <div class="case-card-thumb" style="background-image:url('../Images/Merchandising/IMG_8133.jpg');">
+                        <span class="case-card-badge">Planogram Compliance</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Unilever: Modern Trade Shelf Domination</h3>
+                        <p>End-to-end planogram rollout and compliance programme across Uganda's major supermarket chains — guaranteeing Unilever brands the right space in the right place.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>340+</span><label>Outlets</label></div>
+                            <div class="case-mini-metric"><span>96%</span><label>Compliance</label></div>
+                            <div class="case-mini-metric"><span>+22%</span><label>Sales Lift</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('unilever')">Read Full Story <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    </div>
+                </div>
+
+                <!-- MTN -->
+                <div class="case-card reveal delay-100">
+                    <div class="case-card-thumb" style="background-image:url('../Images/Merchandising/GM-1.jpg');">
+                        <span class="case-card-badge">POSM Management</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>MTN Uganda: Nationwide POSM Rollout</h3>
+                        <p>Rapid installation and ongoing maintenance of MTN's full suite of in-store point-of-sale materials across thousands of airtime and data bundle retail points.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>2,800+</span><label>Outlets</label></div>
+                            <div class="case-mini-metric"><span>72hr</span><label>Install Time</label></div>
+                            <div class="case-mini-metric"><span>98%</span><label>POSM Uptime</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('mtn')">Read Full Story <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    </div>
+                </div>
+
+                <!-- Stanbic -->
+                <div class="case-card reveal delay-200">
+                    <div class="case-card-thumb" style="background-image:url('../Images/Merchandising/GM-5.jpg');">
+                        <span class="case-card-badge">Share of Shelf</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Stanbic Bank: Branch Merchandising Programme</h3>
+                        <p>A structured in-branch merchandising programme ensuring consistent brand presentation of financial products, banners, brochure stands and queue management materials.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>85</span><label>Branches</label></div>
+                            <div class="case-mini-metric"><span>100%</span><label>Brand Std</label></div>
+                            <div class="case-mini-metric"><span>6mo</span><label>Programme</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('stanbic')">Read Full Story <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS -->
+
+    <!-- Unilever Modal -->
+    <div class="project-modal" id="modal-unilever" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('unilever')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="../Images/Merchandising/IMG_8133.jpg" alt="Unilever shelf merchandising" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">Unilever Uganda · Planogram Compliance · Ongoing</span>
+                <h2>Modern Trade Shelf Domination</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>340+</span><label>Outlets Covered</label></div>
+                    <div class="modal-metric"><span>96%</span><label>Planogram Compliance</label></div>
+                    <div class="modal-metric"><span>+22%</span><label>Sales Lift</label></div>
+                    <div class="modal-metric"><span>150+</span><label>Merchandisers</label></div>
+                    <div class="modal-metric"><span>Daily</span><label>Visit Frequency</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> Unilever Uganda needed to guarantee consistent shelf presence, correct facings, and planogram adherence across Uganda's modern trade — from major supermarket chains to large format wholesalers — while simultaneously managing seasonal POSM rotations.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We built a dedicated team of 150+ trained Unilever merchandisers, each assigned to specific territory clusters. Every visit is logged via mobile app with GPS verification and shelf photography. A supervisory layer conducts weekly compliance audits, and results feed into a live client dashboard updated in real time.</p>
+                    <br>
+                    <p><strong>The Result:</strong> Planogram compliance rose from 71% to 96% within the first quarter. Verified sales data from Unilever's trade team showed a 22% average uplift in offtake from audited outlets compared to non-audited control stores.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="../Images/Merchandising/IMG_8133.jpg" alt="Shelf placement" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_8184.jpg" alt="POSM installation" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_8239.jpg" alt="Planogram check" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9003.jpg" alt="Merchandiser at work" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9012.jpg" alt="Shelf facing" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9066.jpg" alt="Stock rotation" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MTN Modal -->
+    <div class="project-modal" id="modal-mtn" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('mtn')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="../Images/Merchandising/GM-1.jpg" alt="MTN POSM rollout" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">MTN Uganda · POSM Management · 2024</span>
+                <h2>Nationwide POSM Installation & Maintenance</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>2,800+</span><label>Retail Outlets</label></div>
+                    <div class="modal-metric"><span>72hr</span><label>Avg Install Time</label></div>
+                    <div class="modal-metric"><span>98%</span><label>POSM Uptime</label></div>
+                    <div class="modal-metric"><span>6</span><label>Districts</label></div>
+                    <div class="modal-metric"><span>200+</span><label>Field Agents</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> MTN Uganda needed to rapidly deploy a new seasonal campaign's POSM suite — banners, shelf wobblers, counter mats, and branded stands — across over 2,800 airtime retail points in 6 districts, with zero tolerance for outdated materials in-store.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We mobilised 200+ field agents across all districts simultaneously, using a wave deployment model that prioritised high-traffic urban outlets first before moving to secondary and rural points. Each installation was photo-verified and logged to a shared tracking dashboard accessible to MTN's trade marketing team in real time.</p>
+                    <br>
+                    <p><strong>The Result:</strong> Full rollout completed in 72 hours across 2,800+ outlets. MTN's trade marketing team reported 98% material uptime over the 3-month campaign window — the highest compliance rate in the programme's history.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="../Images/Merchandising/GM-1.jpg" alt="MTN POSM" loading="lazy">
+                    <img src="../Images/Merchandising/GM-5.jpg" alt="In-store branding" loading="lazy">
+                    <img src="../Images/Merchandising/GM-7.jpg" alt="Shelf installation" loading="lazy">
+                    <img src="../Images/Merchandising/GM-23.jpg" alt="Field agent" loading="lazy">
+                    <img src="../Images/Merchandising/GM-25.jpg" alt="Counter display" loading="lazy">
+                    <img src="../Images/Merchandising/4.png" alt="POSM materials" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stanbic Modal -->
+    <div class="project-modal" id="modal-stanbic" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('stanbic')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="../Images/Merchandising/GM-5.jpg" alt="Stanbic branch merchandising" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">Stanbic Bank Uganda · Branch Merchandising · 2023–2024</span>
+                <h2>Branch Merchandising Programme</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>85</span><label>Branches</label></div>
+                    <div class="modal-metric"><span>100%</span><label>Brand Standard</label></div>
+                    <div class="modal-metric"><span>6mo</span><label>Programme Length</label></div>
+                    <div class="modal-metric"><span>Weekly</span><label>Visit Cadence</label></div>
+                    <div class="modal-metric"><span>40+</span><label>Merchandisers</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> Stanbic Bank Uganda needed a reliable partner to manage in-branch presentation standards across all 85 branches — ensuring product brochures, digital screen content, queue management materials, and branch branding were always current, correctly placed, and on-brand.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We assigned dedicated merchandisers to branch clusters, each conducting weekly visits with a standardised 45-point compliance checklist. Outdated materials are replaced on the same visit. Monthly compliance reports with photographic evidence are submitted to Stanbic's marketing team, with an escalation protocol for urgent updates.</p>
+                    <br>
+                    <p><strong>The Result:</strong> Stanbic achieved 100% brand standard compliance across all 85 branches within the first month of the programme — a first in the bank's marketing history. Customer experience scores in branches improved by 18% in the same period.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="../Images/Merchandising/GM-5.jpg" alt="Branch display" loading="lazy">
+                    <img src="../Images/Merchandising/GM-7.jpg" alt="Merchandiser" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9100.jpg" alt="In-branch POSM" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9128.jpg" alt="Branding check" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_9066.jpg" alt="Queue materials" loading="lazy">
+                    <img src="../Images/Merchandising/IMG_8239.jpg" alt="Counter display" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact-form" class="form-section">
+        <div class="container">
+            <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title text-center" style="margin-bottom: 32px;">Get Your Products Seen</h2>
+                
+                <form class="lead-form">
+                    <input type="hidden" name="service" value="Merchandising">
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="company" class="form-control" placeholder="Company / Brand *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+                    </div>
+                    <div style="margin-bottom: 32px;">
+                        <textarea name="message" class="form-control" placeholder="Tell us about your merchandising needs..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Request Proposal</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">We Get You Out There.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../our-work.html">Our Work</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="merchandising.html">Merchandising</a></li>
+                        <li><a href="field-activations.html">Field Activations</a></li>
+                        <li><a href="retail-audit.html">Retail Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul style="color: var(--text-muted);">
+                        <li><span>📍</span> Bugolobi, Kampala</li>
+                        <li><span>📞</span> +256 39 3112860</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/hero-grid.js"></script>
+    <script>
+        document.querySelectorAll('.project-modal').forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) closeModal(modal.id.replace('modal-', ''));
+            });
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.project-modal.open').forEach(m => {
+                    closeModal(m.id.replace('modal-', ''));
+                });
+            }
+        });
+        function openModal(id) {
+            const modal = document.getElementById('modal-' + id);
+            if (!modal) return;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            modal.querySelector('.modal-inner').scrollTop = 0;
+        }
+        function closeModal(id) {
+            const modal = document.getElementById('modal-' + id);
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>

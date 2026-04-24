@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribution & Sales Drives | Golden Marketing Uganda</title>
+    <meta name="description" content="End-to-end route-to-market execution, van sales, distributor management and sales acceleration across East Africa.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style>
+        .full-hero {
+            height: 80vh;
+            background-image: url('https://goldenmarketing.co.ug/wp-content/uploads/2024/04/IMG_2118-scaled.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .full-hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+        }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 24px; }
+        
+        /* Accordion Bento */
+        .acc-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        
+        .acc-panel { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+        
+        .acc-header {
+            padding: 24px 32px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            background: var(--card-bg); transition: background 0.3s;
+        }
+        
+        .acc-header:hover { background: var(--bg-color); }
+        .acc-header h3 { font-size: 1.2rem; margin: 0; font-weight: 700; }
+        
+        .acc-icon { font-size: 1.2rem; transition: transform 0.4s ease; color: var(--text-muted); font-weight: bold; }
+        .acc-panel.active .acc-icon { transform: rotate(180deg); color: var(--primary-color); }
+        
+        .acc-content { padding: 0 32px; max-height: 0; overflow: hidden; transition: all 0.4s ease; }
+        .acc-panel.active .acc-content { padding: 0 32px 32px; max-height: 500px; }
+        
+        .acc-content ul { display: flex; flex-direction: column; gap: 12px; }
+        .acc-content li { color: var(--text-muted); font-size: 1rem; padding-left: 24px; position: relative; }
+        .acc-content li::before { content: '→'; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; }
+
+        /* Exec Model Bento */
+        .exec-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 768px) { .exec-bento { grid-template-columns: 1fr; } }
+        
+        .exec-step { text-align: center; padding: 48px 32px; background: var(--card-bg); border-radius: var(--border-radius-lg); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+        .exec-step h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 16px; font-weight: 700; }
+        .exec-step p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .metrics-strip { background-color: var(--card-bg); padding: 80px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        @media (max-width: 768px) { .metrics-grid { grid-template-columns: repeat(2, 1fr); } }
+        .metric-box h3 { font-size: 3rem; color: var(--text-main); margin-bottom: 8px; line-height: 1; }
+        .metric-box p { font-weight: 600; text-transform: uppercase; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
+
+        .form-section { padding: var(--section-padding); background-color: var(--bg-color); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <div class="dropdown active">
+                    <a href="#" class="active">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="merchandising.html">Merchandising</a>
+                        <a href="field-activations.html">Field Activations</a>
+                        <a href="field-automation-surveys.html">Field Force Automation</a>
+                        <a href="retail-audit.html">Retail Audit</a>
+                        <a href="distribution-sales.html" class="active">Distribution & Sales</a>
+                    </div>
+                </div>
+                <a href="../our-work.html">Our Work</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="full-hero">
+        <div class="hero-content">
+            <h1 class="huge-text reveal">The Last Mile.</h1>
+            <p class="subtitle reveal delay-200" style="margin: 24px auto 40px; color: var(--text-main);">End-to-end route-to-market execution, van sales, distributor activation and sales acceleration drives across East Africa.</p>
+            <a href="#contact-form" class="btn btn-primary reveal delay-300">Boost Your Distribution</a>
+        </div>
+    </header>
+
+    <section style="padding: var(--section-padding); background-color: var(--bg-color);">
+        <div class="container">
+            <h2 class="section-title text-center reveal" style="margin-bottom: 48px;">Capabilities</h2>
+            
+            <div class="acc-container reveal delay-100">
+                <div class="acc-panel active">
+                    <div class="acc-header">
+                        <h3>1. Van Sales & Direct Distribution</h3>
+                        <div class="acc-icon">▼</div>
+                    </div>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Branded vehicle fleets for direct-to-trade sales</li>
+                            <li>Driver-salesperson teams deployed with daily targets</li>
+                            <li>GPS route tracking and daily sales reconciliation</li>
+                            <li>Perfect for new product launches or distribution gap closure</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="acc-panel">
+                    <div class="acc-header">
+                        <h3>2. Distributor Activation & Management</h3>
+                        <div class="acc-icon">▼</div>
+                    </div>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Activating dormant distributors across regions</li>
+                            <li>Distributor sales contests and incentive programmes</li>
+                            <li>Secondary sales tracking from distributor to retailer</li>
+                            <li>Training distributors on brand standards and push techniques</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="acc-panel">
+                    <div class="acc-header">
+                        <h3>3. Sales Drive Campaigns</h3>
+                        <div class="acc-icon">▼</div>
+                    </div>
+                    <div class="acc-content">
+                        <ul>
+                            <li>Short-term high-intensity sales blitzes (1-4 weeks)</li>
+                            <li>Territory-specific teams targeting defined outlet clusters</li>
+                            <li>Daily reporting against aggressive sell-out targets</li>
+                            <li>Ideal for product launches, peak seasons and promotional periods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--section-padding); background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Execution Model</h2>
+            
+            <div class="exec-bento reveal delay-100">
+                <div class="exec-step">
+                    <div style="font-size: 2.5rem; margin-bottom: 24px;">🗺️</div>
+                    <h3>Plan</h3>
+                    <p>Territory mapping, target setting, stock allocation, and team briefing.</p>
+                </div>
+                <div class="exec-step">
+                    <div style="font-size: 2.5rem; margin-bottom: 24px;">🏃‍♂️</div>
+                    <h3>Execute</h3>
+                    <p>Daily field deployment with defined call cards, routes, and sales targets.</p>
+                </div>
+                <div class="exec-step">
+                    <div style="font-size: 2.5rem; margin-bottom: 24px;">📊</div>
+                    <h3>Report</h3>
+                    <p>Daily sell-out data, coverage percentage, and team performance metrics synced.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metrics-strip">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-box reveal">
+                    <h3>15+</h3>
+                    <p>Districts Covered</p>
+                </div>
+                <div class="metric-box reveal delay-100">
+                    <h3>300+</h3>
+                    <p>Sales Reps</p>
+                </div>
+                <div class="metric-box reveal delay-200">
+                    <h3>10k+</h3>
+                    <p>Outlets Reached</p>
+                </div>
+                <div class="metric-box reveal delay-300">
+                    <h3>34%</h3>
+                    <p>Avg Sales Lift</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="form-section">
+        <div class="container">
+            <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title text-center" style="margin-bottom: 32px;">Drive Your Sales</h2>
+                
+                <form class="lead-form">
+                    <input type="hidden" name="service" value="Distribution & Sales">
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="company" class="form-control" placeholder="Company / Brand *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+                    </div>
+                    <div style="margin-bottom: 32px;">
+                        <textarea name="message" class="form-control" placeholder="Tell us about your distribution targets..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Request Proposal</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">We Get You Out There.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../our-work.html">Our Work</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="merchandising.html">Merchandising</a></li>
+                        <li><a href="field-activations.html">Field Activations</a></li>
+                        <li><a href="retail-audit.html">Retail Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul style="color: var(--text-muted);">
+                        <li><span>📍</span> Bugolobi, Kampala</li>
+                        <li><span>📞</span> +256 39 3112860</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accPanels = document.querySelectorAll('.acc-panel');
+            
+            accPanels.forEach(panel => {
+                const header = panel.querySelector('.acc-header');
+                header.addEventListener('click', () => {
+                    // Close others
+                    accPanels.forEach(p => {
+                        if (p !== panel) p.classList.remove('active');
+                    });
+                    // Toggle clicked
+                    panel.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

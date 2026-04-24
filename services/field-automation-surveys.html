@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Force Automation & Surveys | Golden Marketing Uganda</title>
+    <meta name="description" content="Digitise your field operations. Real-time field reporting, digital data collection, and survey management dashboards in East Africa.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style>
+        .tech-hero {
+            padding: 160px 0 100px;
+            background-color: var(--bg-color);
+            position: relative;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5; z-index: 0; pointer-events: none;
+        }
+        
+        .hero-content { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+        
+        /* Premium Table Bento */
+        .table-bento {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            margin-top: 48px;
+        }
+        
+        .ps-table { width: 100%; border-collapse: collapse; }
+        .ps-table th, .ps-table td { padding: 24px; text-align: left; }
+        
+        .ps-table th { font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); }
+        .th-problem { background-color: var(--bg-color); width: 50%; border-bottom: 2px solid #ef4444; }
+        .th-solution { background-color: rgba(245, 184, 0, 0.1); color: #b38600 !important; width: 50%; border-bottom: 2px solid var(--primary-color); }
+        
+        .ps-table tr { border-bottom: 1px solid var(--border-color); }
+        .ps-table tr:last-child { border-bottom: none; }
+        
+        .ps-table td:first-child { color: var(--text-muted); }
+        .ps-table td:last-child { font-weight: 600; color: var(--text-main); background: rgba(245, 184, 0, 0.02); border-left: 1px solid var(--border-color); }
+
+        /* Flow Diagram */
+        .flow-bento {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px;
+            margin-top: 60px; position: relative; z-index: 2;
+        }
+        
+        @media (max-width: 992px) { .flow-bento { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 600px) { .flow-bento { grid-template-columns: 1fr; } }
+        
+        .flow-step {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: 24px; text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .flow-icon {
+            width: 48px; height: 48px;
+            background-color: var(--primary-color); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; font-weight: bold;
+            margin: 0 auto 16px;
+        }
+        
+        .flow-step h4 { margin-bottom: 8px; font-size: 1.1rem; }
+        .flow-step p { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* Surveys Bento */
+        .surveys-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 992px) { .surveys-bento { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .surveys-bento { grid-template-columns: 1fr; } }
+        
+        .survey-card {
+            background: var(--card-bg); padding: 32px; border-radius: var(--border-radius-lg);
+            border: 1px solid var(--border-color); display: flex; gap: 16px; align-items: flex-start;
+            box-shadow: var(--shadow-sm);
+        }
+        .survey-card .icon { font-size: 2rem; background: var(--bg-color); padding: 12px; border-radius: var(--border-radius-sm); }
+        
+        .form-section { padding: var(--section-padding); background-color: var(--bg-color); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <div class="dropdown active">
+                    <a href="#" class="active">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="merchandising.html">Merchandising</a>
+                        <a href="field-activations.html">Field Activations</a>
+                        <a href="field-automation-surveys.html" class="active">Field Force Automation</a>
+                        <a href="retail-audit.html">Retail Audit</a>
+                        <a href="distribution-sales.html">Distribution & Sales</a>
+                    </div>
+                </div>
+                <a href="../our-work.html">Our Work</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="tech-hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-content">
+            <h1 class="huge-text reveal">Field Intelligence.</h1>
+            <p class="subtitle reveal delay-200" style="margin: 24px auto 40px;">We digitise your field operations — from route planning to survey submission — so decisions are data-driven, not guesswork.</p>
+            <a href="#contact-form" class="btn btn-primary reveal delay-300">Request a Demo</a>
+        </div>
+    </header>
+
+    <section style="padding: var(--section-padding); background-color: var(--bg-color);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">The Solution</h2>
+            </div>
+            
+            <div class="table-bento reveal delay-100" style="overflow-x: auto;">
+                <table class="ps-table">
+                    <thead>
+                        <tr>
+                            <th class="th-problem">The Old Way</th>
+                            <th class="th-solution">The Golden Way</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Field reps submitting paper reports days late</td>
+                            <td>Mobile app submissions in real-time from the field</td>
+                        </tr>
+                        <tr>
+                            <td>No visibility on outlet visits happening</td>
+                            <td>GPS-tagged check-ins with photo proof of visit</td>
+                        </tr>
+                        <tr>
+                            <td>Surveys lost or incorrectly filled</td>
+                            <td>Structured digital survey forms with mandatory fields</td>
+                        </tr>
+                        <tr>
+                            <td>Managers flying blind on performance</td>
+                            <td>Live dashboard with outlet coverage and KPI metrics</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--section-padding); background-color: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">How it works</h2>
+            </div>
+            
+            <div class="flow-bento">
+                <div class="flow-step reveal">
+                    <div class="flow-icon">1</div>
+                    <h4>Brief</h4>
+                    <p>Client defines outlets, KPIs, and survey questions.</p>
+                </div>
+                <div class="flow-step reveal delay-100">
+                    <div class="flow-icon">2</div>
+                    <h4>Setup</h4>
+                    <p>Routes and outlet lists uploaded to the field app.</p>
+                </div>
+                <div class="flow-step reveal delay-200">
+                    <div class="flow-icon">3</div>
+                    <h4>Execution</h4>
+                    <p>Reps visit, check in, fill surveys, and upload photos.</p>
+                </div>
+                <div class="flow-step reveal delay-300">
+                    <div class="flow-icon">4</div>
+                    <h4>Aggregation</h4>
+                    <p>All submissions compiled in real-time backend.</p>
+                </div>
+                <div class="flow-step reveal delay-400">
+                    <div class="flow-icon">5</div>
+                    <h4>Reporting</h4>
+                    <p>Dashboard access + PDF reports delivered on schedule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: var(--section-padding); background-color: var(--bg-color);">
+        <div class="container">
+            <h2 class="section-title text-center reveal">Survey Types</h2>
+            
+            <div class="surveys-bento">
+                <div class="survey-card reveal">
+                    <div class="icon">📦</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Stock Availability</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Is the product in stock? What SKUs are present?</p>
+                    </div>
+                </div>
+                <div class="survey-card reveal delay-100">
+                    <div class="icon">🏷️</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Price Compliance</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Is RRP being maintained across channels?</p>
+                    </div>
+                </div>
+                <div class="survey-card reveal delay-200">
+                    <div class="icon">📊</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Competitor Share</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">What shelf space do competitors hold?</p>
+                    </div>
+                </div>
+                <div class="survey-card reveal">
+                    <div class="icon">🌍</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Distribution Gap</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Which outlets are NOT stocking our product?</p>
+                    </div>
+                </div>
+                <div class="survey-card reveal delay-100">
+                    <div class="icon">😊</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Consumer Satisfaction</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">How are end-users experiencing the brand?</p>
+                    </div>
+                </div>
+                <div class="survey-card reveal delay-200">
+                    <div class="icon">🛒</div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 8px;">Shopper Behaviour</h4>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">In-store path-to-purchase observation studies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="form-section">
+        <div class="container">
+            <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title text-center" style="margin-bottom: 32px;">Request a Demo</h2>
+                
+                <form class="lead-form">
+                    <input type="hidden" name="service" value="Field Automation">
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" name="company" class="form-control" placeholder="Company / Brand *" required>
+                    </div>
+                    <div style="margin-bottom: 16px;">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+                    </div>
+                    <div style="margin-bottom: 32px;">
+                        <textarea name="message" class="form-control" placeholder="What are your current reporting challenges?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Get Started</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">We Get You Out There.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../our-work.html">Our Work</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="merchandising.html">Merchandising</a></li>
+                        <li><a href="field-activations.html">Field Activations</a></li>
+                        <li><a href="retail-audit.html">Retail Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul style="color: var(--text-muted);">
+                        <li><span>📍</span> Bugolobi, Kampala</li>
+                        <li><span>📞</span> +256 39 3112860</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+</body>
+</html>

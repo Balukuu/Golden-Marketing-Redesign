@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Golden Marketing Uganda</title>
+    <meta name="description" content="Get in touch with Golden Marketing Uganda for premium merchandising, activations, and field marketing services.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .page-hero {
+            padding: 160px 0 80px;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5; z-index: 0; pointer-events: none;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+            position: relative; z-index: 2;
+        }
+
+        @media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; } }
+        
+        .info-bento { display: flex; flex-direction: column; gap: 24px; }
+        
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .info-card h4 { color: var(--text-main); margin-bottom: 8px; font-size: 1.1rem; }
+        .info-card p, .info-card a { color: var(--text-muted); font-size: 1rem; }
+        .info-card a:hover { color: var(--primary-color); }
+        
+        .form-bento {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .map-container {
+            width: 100%; height: 400px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-top: 40px;
+            position: relative; z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <div class="dropdown">
+                    <a href="#">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="services/merchandising.html">Merchandising</a>
+                        <a href="services/field-activations.html">Field Activations</a>
+                        <a href="services/field-automation-surveys.html">Field Force Automation</a>
+                        <a href="services/retail-audit.html">Retail Audit</a>
+                        <a href="services/distribution-sales.html">Distribution & Sales</a>
+                    </div>
+                </div>
+                <a href="our-work.html">Our Work</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero section-dark">
+        <div class="hero-bg-pattern"></div>
+        <div class="container">
+            <h1 class="huge-text reveal delay-100">Start a project.</h1>
+            
+            <div class="contact-grid">
+                <!-- Contact Details -->
+                <div class="info-bento reveal delay-200">
+                    <div class="info-card">
+                        <h4>Headquarters</h4>
+                        <p>Bugolobi, Luthuli Avenue, Plot 37B<br>Kampala, Uganda</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+256393112860">+256 39 3112860</a></p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>Email</h4>
+                        <p><a href="mailto:office@goldenmarketing.co.ug">office@goldenmarketing.co.ug</a></p>
+                    </div>
+                    
+                    <div class="info-card" style="background: var(--text-main);">
+                        <h4 style="color: #fff;">Direct WhatsApp</h4>
+                        <p><a href="https://wa.me/256393112860" target="_blank" style="color: var(--primary-color); font-weight: 600;">Chat with our team directly →</a></p>
+                    </div>
+                </div>
+                
+                <!-- Lead Form -->
+                <div class="form-bento reveal delay-300">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 24px;">Request a Proposal</h3>
+                    <form class="lead-form">
+                        <input type="hidden" name="service" value="General Inquiry">
+                        
+                        <div style="margin-bottom: 16px;">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <input type="text" name="company" class="form-control" placeholder="Company / Brand" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <textarea name="message" class="form-control" placeholder="How can we help you dominate the market?" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container reveal delay-400">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15959.04018873099!2d32.6105822!3d0.3150821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb1b59f3d9d3%3A0xc0fb13a0c20eddb!2sBugolobi%2C%20Kampala!5e0!3m2!1sen!2sug!4v1714000000000!5m2!1sen!2sug" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </header>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">We Get You Out There.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="our-work.html">Our Work</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services/merchandising.html">Merchandising</a></li>
+                        <li><a href="services/field-activations.html">Field Activations</a></li>
+                        <li><a href="services/field-automation-surveys.html">Automation & Surveys</a></li>
+                        <li><a href="services/retail-audit.html">Retail Audit</a></li>
+                        <li><a href="services/distribution-sales.html">Distribution & Sales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><span>📍</span> Bugolobi, Luthuli Ave, Kampala</li>
+                        <li><span>📞</span> +256 39 3112860</li>
+                        <li><span>📧</span> office@goldenmarketing.co.ug</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

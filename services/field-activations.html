@@ -1,0 +1,702 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Activations | Golden Marketing Uganda</title>
+    <meta name="description" content="High-energy brand activations, product sampling, and experiential campaigns across East Africa.">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* ── Hero ── */
+        .hero-section {
+            padding: 180px 0 100px;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+        .hero-bg-gradient {
+            position: absolute; top: -20%; right: -10%; width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(245,184,0,0.12) 0%, transparent 70%);
+            border-radius: 50%; z-index: 0; pointer-events: none; filter: blur(80px);
+        }
+        .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5; z-index: 0; pointer-events: none;
+        }
+
+        /* ── Activation Type Tabs ── */
+        .tabs-section { padding: var(--section-padding); background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
+
+        .tabs-nav {
+            display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color); padding-bottom: 24px;
+        }
+        .tab-btn {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 24px; border-radius: 100px;
+            background: transparent; border: 1px solid var(--border-color);
+            color: var(--text-muted); font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: all 0.3s ease; font-family: var(--font-main);
+            white-space: nowrap;
+        }
+        .tab-btn .tab-icon { font-size: 1.1rem; }
+        .tab-btn:hover { background: var(--bg-color); color: var(--text-main); border-color: var(--text-main); }
+        .tab-btn.active { background: var(--primary-gold); color: #000; border-color: var(--primary-gold); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: tabFadeIn 0.4s ease; }
+        @keyframes tabFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+        .tab-inner {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+        }
+        @media(max-width:768px){ .tab-inner { grid-template-columns:1fr; } }
+
+        .tab-meta h3 { font-size: clamp(1.8rem,3vw,2.5rem); margin-bottom: 16px; }
+        .tab-meta p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; }
+
+        .tab-points { display: flex; flex-direction: column; gap: 16px; }
+        .tab-point { display: flex; gap: 14px; align-items: flex-start; padding: 16px; background: var(--bg-color); border-radius: var(--border-radius-md); border: 1px solid var(--border-color); }
+        .tab-point .tp-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+        .tab-point h5 { font-size: 0.95rem; margin-bottom: 4px; }
+        .tab-point p { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+
+        /* ── Case Studies Grid ── */
+        .cases-section { padding: var(--section-padding); background-color: var(--bg-color); border-top: 1px solid var(--border-color); }
+        .cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+        @media(max-width:992px){ .cases-grid { grid-template-columns:1fr 1fr; } }
+        @media(max-width:640px){ .cases-grid { grid-template-columns:1fr; } }
+
+        .case-card {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg); overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.3s, box-shadow 0.4s;
+        }
+        .case-card:hover { transform: translateY(-6px); border-color: rgba(245,184,0,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .case-card-thumb {
+            width: 100%; height: 240px;
+            background-size: cover; background-position: center;
+            position: relative; flex-shrink: 0;
+        }
+        .case-card-thumb::after {
+            content:''; position:absolute; inset:0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+        }
+        .case-card-badge {
+            position: absolute; top:16px; left:16px; z-index:2;
+            background: rgba(245,184,0,0.15); color: var(--primary-gold);
+            border: 1px solid rgba(245,184,0,0.3); border-radius: 100px;
+            padding: 4px 12px; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .case-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+        .case-card-body h3 { font-size: 1.3rem; margin-bottom: 12px; }
+        .case-card-body p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; flex: 1; }
+        .case-mini-metrics { display: flex; gap: 20px; margin: 20px 0; padding: 16px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .case-mini-metric span { display:block; font-size:1.4rem; font-weight:800; color:var(--text-main); }
+        .case-mini-metric label { color:var(--text-muted); font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+        .btn-read-more {
+            display:inline-flex; align-items:center; gap:8px;
+            padding:12px 24px; border-radius:100px;
+            background: transparent; border: 1px solid var(--border-color);
+            color: var(--text-main); font-weight:600; font-size:0.88rem;
+            font-family: var(--font-main);
+            transition: all 0.3s ease; margin-top: auto;
+        }
+        .btn-read-more:hover { background: var(--primary-gold); border-color: var(--primary-gold); color:#000; }
+        .btn-read-more svg { transition: transform 0.3s; }
+        .btn-read-more:hover svg { transform: translateX(4px); }
+
+        /* ── Project Modal ── */
+        .project-modal {
+            position: fixed; inset: 0; z-index: 9000;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(16px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            padding: 24px;
+        }
+        .project-modal.open { opacity:1; visibility:visible; }
+        .modal-inner {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg); max-width: 960px; width: 100%;
+            max-height: 90vh; overflow-y: auto; position: relative;
+            transform: translateY(24px); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .project-modal.open .modal-inner { transform: translateY(0); }
+        .modal-close {
+            position: sticky; top: 0; left: 100%; z-index: 10;
+            width: 44px; height: 44px; background: var(--bg-color);
+            border: 1px solid var(--border-color); border-radius: 50%;
+            display: flex; align-items:center; justify-content:center;
+            font-size:1.2rem; color: var(--text-main); margin: 16px 16px 0 auto;
+            float:right; font-family: var(--font-main);
+        }
+        .modal-hero-img {
+            width:100%; height:320px; object-fit:cover;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            display:block;
+        }
+        .modal-body { padding: 40px; }
+        .modal-body h2 { font-size: clamp(1.6rem,3vw,2.2rem); margin-bottom:8px; }
+        .modal-body .modal-client { color: var(--primary-gold); font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:24px; display:block; }
+        .modal-metrics { display:flex; gap:24px; flex-wrap:wrap; margin:24px 0; padding:24px; background:var(--bg-color); border-radius:var(--border-radius-md); border:1px solid var(--border-color); }
+        .modal-metric span { display:block; font-size:2rem; font-weight:800; color:var(--text-main); }
+        .modal-metric label { color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; }
+        .modal-story { color:var(--text-muted); font-size:1rem; line-height:1.75; margin-bottom:32px; }
+        .modal-story strong { color:var(--text-main); }
+        .modal-gallery-title { font-size:1rem; font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px; color:var(--text-muted); }
+        .modal-gallery {
+            display: grid; grid-template-columns: repeat(3,1fr); gap:12px;
+        }
+        @media(max-width:600px){ .modal-gallery { grid-template-columns:1fr 1fr; } }
+        .modal-gallery img {
+            width:100%; aspect-ratio:4/3; object-fit:cover;
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, opacity 0.3s;
+        }
+        .modal-gallery img:hover { transform:scale(1.03); opacity:0.9; }
+
+        /* ── Stats Strip ── */
+        .stats-strip { padding: 80px 0; background-color: var(--card-bg); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        @media(max-width:768px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
+        .stat-item h3 { font-size: clamp(2rem,4vw,3rem); font-weight: 800; margin-bottom: 8px; background: linear-gradient(135deg, var(--primary-gold), #fff 60%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .stat-item p { color: var(--text-muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ── Form ── */
+        .form-section { padding: var(--section-padding); background-color: var(--bg-color); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="../index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <div class="dropdown active">
+                    <a href="#" class="active">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="merchandising.html">Merchandising</a>
+                        <a href="field-activations.html" class="active">Field Activations</a>
+                        <a href="field-automation-surveys.html">Field Force Automation</a>
+                        <a href="retail-audit.html">Retail Audit</a>
+                        <a href="distribution-sales.html">Distribution &amp; Sales</a>
+                    </div>
+                </div>
+                <a href="../our-work.html">Our Work</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../contact.html" class="btn btn-primary" style="margin-left:16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-section">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-gradient"></div>
+        <div class="container">
+            <div class="hero-split-layout">
+                <div class="hero-text-content">
+                    <h1 class="huge-text reveal delay-100">Stop.<br>Engage.<br>Convert.</h1>
+                    <p class="subtitle reveal delay-200" style="margin: 24px 0 40px;">We bring brands to life in markets, malls, campuses and communities across East Africa — with precision-trained teams and real results.</p>
+                    <div class="hero-buttons reveal delay-300">
+                        <a href="#contact-form" class="btn btn-primary">Plan an Activation</a>
+                        <a href="../our-work.html" class="btn btn-outline">View Gallery</a>
+                    </div>
+                </div>
+                <div class="hero-grid-container reveal delay-200">
+                    <div class="hero-animated-grid" data-category="activations"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- STATS STRIP -->
+    <section class="stats-strip">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3>500+</h3>
+                    <p>Brand Ambassadors</p>
+                </div>
+                <div class="stat-item reveal delay-100">
+                    <h3>6</h3>
+                    <p>Countries Active</p>
+                </div>
+                <div class="stat-item reveal delay-200">
+                    <h3>12k+</h3>
+                    <p>Consumer Engagements / Month</p>
+                </div>
+                <div class="stat-item reveal delay-300">
+                    <h3>98%</h3>
+                    <p>Client Retention Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTIVATION TYPES TABS -->
+    <section class="tabs-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:48px;">
+                <h2 class="section-title reveal">Activation Types</h2>
+            </div>
+
+            <div class="tabs-nav" role="tablist">
+                <button class="tab-btn active" data-tab="tab-1" role="tab"><span class="tab-icon">🎁</span>Consumer Promo</button>
+                <button class="tab-btn" data-tab="tab-2" role="tab"><span class="tab-icon">✨</span>Experiential</button>
+                <button class="tab-btn" data-tab="tab-3" role="tab"><span class="tab-icon">🚐</span>Road Shows</button>
+                <button class="tab-btn" data-tab="tab-4" role="tab"><span class="tab-icon">🤝</span>Trade</button>
+            </div>
+
+            <!-- Tab 1 -->
+            <div class="tab-content active" id="tab-1" role="tabpanel">
+                <div class="tab-inner">
+                    <div class="tab-meta">
+                        <h3>Consumer Promotions</h3>
+                        <p>Drive trial, repeat purchase and brand love through high-energy consumer promo campaigns designed to convert at the point of sale.</p>
+                        <a href="#contact-form" class="btn btn-primary">Brief Us on This</a>
+                    </div>
+                    <div class="tab-points">
+                        <div class="tab-point">
+                            <span class="tp-icon">🧪</span>
+                            <div>
+                                <h5>Product Sampling</h5>
+                                <p>Get your product into consumers' hands with structured sampling mechanics and trained brand ambassadors.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🎰</span>
+                            <div>
+                                <h5>Purchase Incentive Mechanics</h5>
+                                <p>Scratch cards, spin-to-win, buy-X-get-Y promotions that drive immediate sales uplift.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">👥</span>
+                            <div>
+                                <h5>Trained Brand Ambassadors</h5>
+                                <p>Brand-certified promotional staff who know your product and deliver your message flawlessly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2 -->
+            <div class="tab-content" id="tab-2" role="tabpanel">
+                <div class="tab-inner">
+                    <div class="tab-meta">
+                        <h3>Brand Experiences</h3>
+                        <p>Create lasting emotional connections between consumers and your brand through immersive, shareable brand zones and pop-up experiences.</p>
+                        <a href="#contact-form" class="btn btn-primary">Brief Us on This</a>
+                    </div>
+                    <div class="tab-points">
+                        <div class="tab-point">
+                            <span class="tp-icon">🏗️</span>
+                            <div>
+                                <h5>Immersive Brand Zones</h5>
+                                <p>Custom-built environments that pull consumers into your brand world at events, malls, and venues.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">📸</span>
+                            <div>
+                                <h5>Branded Photo Moments</h5>
+                                <p>Installations designed for organic social sharing — turning consumers into brand advocates.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🗺️</span>
+                            <div>
+                                <h5>Consumer Journey Mapping</h5>
+                                <p>Strategic planning of the consumer's end-to-end experience, from first impression to conversion.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3 -->
+            <div class="tab-content" id="tab-3" role="tabpanel">
+                <div class="tab-inner">
+                    <div class="tab-meta">
+                        <h3>Road Shows</h3>
+                        <p>Take your brand on the road. We execute multi-city, multi-region campaign rollouts with branded convoys that make noise and drive awareness at scale.</p>
+                        <a href="#contact-form" class="btn btn-primary">Brief Us on This</a>
+                    </div>
+                    <div class="tab-points">
+                        <div class="tab-point">
+                            <span class="tp-icon">🚌</span>
+                            <div>
+                                <h5>Branded Vehicle Convoys</h5>
+                                <p>Fully branded fleets that create spectacle and visibility across every route and district.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🌍</span>
+                            <div>
+                                <h5>Multi-City Rollout</h5>
+                                <p>Simultaneous or rolling execution across 6+ cities in Uganda, Kenya, Tanzania and beyond.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🎶</span>
+                            <div>
+                                <h5>Live Entertainment</h5>
+                                <p>DJs, MCs, live acts, and crowd engagement that keeps audiences energised and on-brand.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4 -->
+            <div class="tab-content" id="tab-4" role="tabpanel">
+                <div class="tab-inner">
+                    <div class="tab-meta">
+                        <h3>Trade Activations</h3>
+                        <p>Energise your channel partners and reward the trade. We design and execute programmes that build retailer loyalty and push sell-through.</p>
+                        <a href="#contact-form" class="btn btn-primary">Brief Us on This</a>
+                    </div>
+                    <div class="tab-points">
+                        <div class="tab-point">
+                            <span class="tp-icon">🏪</span>
+                            <div>
+                                <h5>Retailer Engagement</h5>
+                                <p>In-store activations and events that get retailers excited about your brand and motivated to push it.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🏆</span>
+                            <div>
+                                <h5>Trade Incentive Programmes</h5>
+                                <p>Structured contests, reward schemes and bonuses that drive sell-out performance at trade level.</p>
+                            </div>
+                        </div>
+                        <div class="tab-point">
+                            <span class="tp-icon">🎖️</span>
+                            <div>
+                                <h5>Distributor Recognition Events</h5>
+                                <p>Premium events that celebrate top-performing distributors and deepen channel relationships.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="cases-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">Case Studies</h2>
+                <p class="subtitle reveal delay-100" style="margin: 0 auto;">Real campaigns. Real numbers. Here's what we've delivered for some of East Africa's biggest brands.</p>
+            </div>
+
+            <div class="cases-grid">
+
+                <!-- Shell -->
+                <div class="case-card reveal">
+                    <div class="case-card-thumb" style="background-image:url('https://goldenmarketing.co.ug/wp-content/uploads/2023/11/My-Shell-Club-launch-event-1-scaled.jpg');">
+                        <span class="case-card-badge">Consumer Promo</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Shell Uganda: My Shell Club</h3>
+                        <p>Nationwide loyalty programme launch at forecourts — turning refuelling moments into enrolment opportunities across 6 cities.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>12k+</span><label>Enrolments</label></div>
+                            <div class="case-mini-metric"><span>4</span><label>Weeks</label></div>
+                            <div class="case-mini-metric"><span>3×</span><label>Target</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('shell')">
+                            Read Full Story
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coca-Cola -->
+                <div class="case-card reveal delay-100">
+                    <div class="case-card-thumb" style="background-image:url('../Images/Activations/GM-41.jpg');">
+                        <span class="case-card-badge">Brand Experience</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Coca-Cola: Taste the Feeling</h3>
+                        <p>A high-energy consumer sampling and experiential campaign that brought the Coca-Cola brand to life across campuses, markets and high-traffic urban zones.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>80k+</span><label>Samples</label></div>
+                            <div class="case-mini-metric"><span>12</span><label>Weeks</label></div>
+                            <div class="case-mini-metric"><span>4</span><label>Regions</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('cocacola')">
+                            Read Full Story
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Airtel -->
+                <div class="case-card reveal delay-200">
+                    <div class="case-card-thumb" style="background-image:url('../Images/Activations/ASK_7993.jpg');">
+                        <span class="case-card-badge">Road Show</span>
+                    </div>
+                    <div class="case-card-body">
+                        <h3>Airtel Uganda: Simu Ya Jamii</h3>
+                        <p>A multi-district road show taking Airtel's affordable smartphone offering directly to rural and peri-urban communities, driving SIM registrations and data bundle activations.</p>
+                        <div class="case-mini-metrics">
+                            <div class="case-mini-metric"><span>22</span><label>Districts</label></div>
+                            <div class="case-mini-metric"><span>35k+</span><label>SIM Activations</label></div>
+                            <div class="case-mini-metric"><span>8wk</span><label>Duration</label></div>
+                        </div>
+                        <button class="btn-read-more" onclick="openModal('airtel')">
+                            Read Full Story
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT MODALS -->
+
+    <!-- Shell Modal -->
+    <div class="project-modal" id="modal-shell" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('shell')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/My-Shell-Club-launch-event-1-scaled.jpg" alt="Shell My Shell Club Activation" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">Shell Uganda · Consumer Promotion · 2023</span>
+                <h2>My Shell Club: Loyalty Programme Launch</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>12,000+</span><label>App Enrolments</label></div>
+                    <div class="modal-metric"><span>6</span><label>Cities Covered</label></div>
+                    <div class="modal-metric"><span>4</span><label>Weeks On-Ground</label></div>
+                    <div class="modal-metric"><span>3×</span><label>Target Exceeded</label></div>
+                    <div class="modal-metric"><span>200+</span><label>Brand Ambassadors</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> Shell Uganda needed to rapidly drive awareness and enrolments for their new My Shell Club loyalty app across Uganda's major cities — with a target of 4,000 sign-ups in one month.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We deployed over 200 trained brand ambassadors to major Shell forecourts in Kampala, Entebbe, Jinja, Mbarara, Gulu and Mbale. Each ambassador was equipped with branded tablets, uniform, and a structured engagement script. They intercepted drivers during the natural pause of refuelling — the perfect moment for a product conversation.</p>
+                    <br>
+                    <p><strong>The Result:</strong> In just 4 weeks, we surpassed the original target by 3 times — driving over 12,000 verified app enrolments and establishing My Shell Club as one of Uganda's fastest-growing fuel loyalty programmes.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/My-Shell-Club-launch-event-1-scaled.jpg" alt="Shell activation 1" loading="lazy">
+                    <img src="../Images/Activations/GM-49.jpg" alt="Shell activation 2" loading="lazy">
+                    <img src="../Images/Activations/GM-59.jpg" alt="Shell activation 3" loading="lazy">
+                    <img src="../Images/Activations/GM-41.jpg" alt="Field team" loading="lazy">
+                    <img src="../Images/Activations/GM-11.jpg" alt="Consumer engagement" loading="lazy">
+                    <img src="../Images/Activations/GM-10.jpg" alt="Brand ambassador" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coca-Cola Modal -->
+    <div class="project-modal" id="modal-cocacola" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('cocacola')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="../Images/Activations/GM-41.jpg" alt="Coca-Cola Activation Hero" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">Coca-Cola · Experiential / Sampling · 2024</span>
+                <h2>Taste the Feeling: Consumer Sampling Campaign</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>80,000+</span><label>Units Sampled</label></div>
+                    <div class="modal-metric"><span>4</span><label>Regions</label></div>
+                    <div class="modal-metric"><span>12</span><label>Weeks</label></div>
+                    <div class="modal-metric"><span>150+</span><label>Activation Points</label></div>
+                    <div class="modal-metric"><span>95%</span><label>Brand Recall (Post-Survey)</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> Coca-Cola Uganda wanted to re-energise consumer connection with the brand across key urban and peri-urban markets in Central, Eastern, Western and Northern Uganda — particularly targeting 18–35 year olds.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We ran simultaneous activations across universities, busy taxi parks, shopping centres, and community markets. Branded experiential zones were set up at each location with chilled product, branded photo booths, and interactive consumer mechanics. Our teams captured consumer data and drove social sharing through branded hashtag moments.</p>
+                    <br>
+                    <p><strong>The Result:</strong> Over 80,000 units were sampled across 150+ unique touchpoints in 12 weeks. Post-campaign brand recall surveys showed 95% unaided brand awareness among those who experienced the activation, with a measurable uplift in retail offtake in activated markets.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="../Images/Activations/GM-41.jpg" alt="Coca-Cola activation" loading="lazy">
+                    <img src="../Images/Activations/GM-49.jpg" alt="Consumer sampling" loading="lazy">
+                    <img src="../Images/Activations/GM-64.jpg" alt="Brand ambassador" loading="lazy">
+                    <img src="../Images/Activations/GM-70.jpg" alt="Activation zone" loading="lazy">
+                    <img src="../Images/Activations/GM-88.jpg" alt="Field team" loading="lazy">
+                    <img src="../Images/Activations/GM-28.jpg" alt="Consumer engagement" loading="lazy">
+                    <img src="../Images/Activations/IMG_0190.jpg" alt="Event photos" loading="lazy">
+                    <img src="../Images/Activations/IMG_0142.jpg" alt="Activation crowd" loading="lazy">
+                    <img src="../Images/Activations/GM-23.jpg" alt="Campus activation" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Airtel Modal -->
+    <div class="project-modal" id="modal-airtel" role="dialog" aria-modal="true">
+        <div class="modal-inner">
+            <button class="modal-close" onclick="closeModal('airtel')" aria-label="Close">✕</button>
+            <img class="modal-hero-img" src="../Images/Activations/ASK_7993.jpg" alt="Airtel Road Show" loading="lazy">
+            <div class="modal-body">
+                <span class="modal-client">Airtel Uganda · Road Show · 2024</span>
+                <h2>Simu Ya Jamii: Rural Connectivity Road Show</h2>
+                <div class="modal-metrics">
+                    <div class="modal-metric"><span>22</span><label>Districts</label></div>
+                    <div class="modal-metric"><span>35,000+</span><label>SIM Activations</label></div>
+                    <div class="modal-metric"><span>8</span><label>Weeks</label></div>
+                    <div class="modal-metric"><span>12</span><label>Branded Vehicles</label></div>
+                    <div class="modal-metric"><span>180+</span><label>Field Agents</label></div>
+                </div>
+                <div class="modal-story">
+                    <p><strong>The Challenge:</strong> Airtel Uganda needed to penetrate underserved rural and peri-urban districts with their affordable smartphone and data bundle offering, driving SIM registration and network adoption outside major cities.</p>
+                    <br>
+                    <p><strong>Our Approach:</strong> We assembled a convoy of 12 fully branded vehicles — each equipped with a generator, sound system, branded gazebos, and a team of 8 field agents. The convoy moved through 22 districts over 8 weeks, staging community events at trading centres, weekly markets, and district headquarters. On-ground activities included live demos, device financing sign-ups, and data bundle activations managed via digital POS systems.</p>
+                    <br>
+                    <p><strong>The Result:</strong> Over 35,000 SIM activations were recorded, with an average of 1,600 per district visit. The campaign generated significant earned media in local radio and community social groups, amplifying reach well beyond direct touchpoints.</p>
+                </div>
+                <p class="modal-gallery-title">Campaign Photography</p>
+                <div class="modal-gallery">
+                    <img src="../Images/Activations/ASK_7993.jpg" alt="Airtel road show" loading="lazy">
+                    <img src="../Images/Activations/ASK_8003.jpg" alt="Field agents" loading="lazy">
+                    <img src="../Images/Activations/ASK_8157.jpg" alt="Community event" loading="lazy">
+                    <img src="../Images/Activations/ASK_8274.jpg" alt="SIM activation" loading="lazy">
+                    <img src="../Images/Activations/ASK_8339.jpg" alt="Branded convoy" loading="lazy">
+                    <img src="../Images/Activations/GM-14.jpg" alt="District activation" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <section id="contact-form" class="form-section">
+        <div class="container">
+            <div class="bento-card reveal" style="max-width:800px; margin:0 auto;">
+                <h2 class="section-title text-center" style="margin-bottom:8px;">Brief Us</h2>
+                <p class="text-center" style="color:var(--text-muted); margin-bottom:40px;">Tell us your brand, target audience, and timeline — we'll handle the rest.</p>
+                <form class="lead-form">
+                    <input type="hidden" name="service" value="Field Activations">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+                        <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
+                        <input type="text" name="company" class="form-control" placeholder="Company / Brand *" required>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
+                    </div>
+                    <div style="margin-bottom:32px;">
+                        <textarea name="message" class="form-control" placeholder="Describe your activation idea, target market, and expected dates..." required style="min-height:140px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem;">Request Activation Proposal →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">We Get You Out There.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../our-work.html">Our Work</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="merchandising.html">Merchandising</a></li>
+                        <li><a href="field-activations.html">Field Activations</a></li>
+                        <li><a href="retail-audit.html">Retail Audit</a></li>
+                        <li><a href="distribution-sales.html">Distribution &amp; Sales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul style="color:var(--text-muted);">
+                        <li><span>📍</span> Bugolobi, Kampala</li>
+                        <li><span>📞</span> +256 39 3112860</li>
+                        <li><span>📧</span> office@goldenmarketing.co.ug</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/forms.js"></script>
+    <script src="../js/hero-grid.js"></script>
+    <script>
+        // Tabs
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(btn.getAttribute('data-tab')).classList.add('active');
+                });
+            });
+
+            // Close modal on backdrop click
+            document.querySelectorAll('.project-modal').forEach(modal => {
+                modal.addEventListener('click', e => {
+                    if (e.target === modal) closeModal(modal.id.replace('modal-', ''));
+                });
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.project-modal.open').forEach(m => {
+                        closeModal(m.id.replace('modal-', ''));
+                    });
+                }
+            });
+        });
+
+        function openModal(id) {
+            const modal = document.getElementById('modal-' + id);
+            if (!modal) return;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            modal.querySelector('.modal-inner').scrollTop = 0;
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById('modal-' + id);
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>

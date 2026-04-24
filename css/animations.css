@@ -1,0 +1,73 @@
+/* animations.css - Premium Mixed Theme Animations */
+
+/* =========================================
+   PAGE TRANSITIONS
+   ========================================= */
+body { animation: premiumFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes premiumFadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* =========================================
+   PREMIUM SCROLL REVEALS
+   ========================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image Reveal */
+.reveal-img {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(10px);
+}
+
+.reveal-img.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* Stagger Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* =========================================
+   MARQUEE
+   ========================================= */
+.marquee-wrapper {
+  overflow: hidden; white-space: nowrap; display: flex;
+  position: relative;
+}
+
+.marquee-wrapper::before, .marquee-wrapper::after {
+  content: '';
+  position: absolute; top: 0; width: 150px; height: 100%; z-index: 2;
+}
+.marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-color), transparent); }
+.marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg-color), transparent); }
+
+.marquee-content { display: flex; animation: marquee 30s linear infinite; }
+.marquee-content img {
+  height: 40px; margin: 0 40px; object-fit: contain;
+  filter: grayscale(100%) opacity(0.3); transition: all 0.4s ease;
+}
+.marquee-content img:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

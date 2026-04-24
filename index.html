@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Marketing Uganda | Field Marketing Agency</title>
+    <meta name="description" content="East Africa's premier field marketing agency. Modern merchandising, activations, and route-to-market strategies.">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .hero-section {
+            padding: 180px 0 100px;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+        
+        .hero-bg-pattern {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.5; z-index: 0; pointer-events: none;
+        }
+        
+        .hero-bg-gradient {
+            position: absolute; top: -20%; left: -10%; width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(245, 184, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%; z-index: 0; pointer-events: none;
+            filter: blur(80px);
+        }
+        
+        .hero-content { position: relative; z-index: 10; max-width: 900px; margin: 0 auto; text-align: center; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 40px; }
+        
+        /* Stats Bento */
+        .stats-bento { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 80px; position: relative; z-index: 10; }
+        @media (max-width: 992px) { .stats-bento { grid-template-columns: repeat(2, 1fr); } }
+        
+        .stat-card {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg); padding: 32px; text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: var(--text-main); line-height: 1; margin-bottom: 8px; }
+        .stat-label { color: var(--text-muted); font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Services Bento */
+        .services-section { padding: var(--section-padding); }
+        .services-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 992px) { .services-bento { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .services-bento { grid-template-columns: 1fr; } }
+        
+        .service-icon {
+            width: 64px; height: 64px; background: var(--bg-color); border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 24px;
+        }
+        
+        .service-title { font-size: 1.5rem; margin-bottom: 12px; }
+        .service-link { color: var(--primary-gold); font-weight: 600; font-size: 0.95rem; margin-top: 24px; display: inline-block; }
+        
+        /* Split Bento */
+        .split-bento { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        @media (max-width: 992px) { .split-bento { grid-template-columns: 1fr; } }
+        .image-card { padding: 0; min-height: 400px; background-image: url('Images/Activations/IMG_0190.jpg'); background-size: cover; background-position: center; border: none; }
+        
+        .why-points { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
+        .why-point { display: flex; gap: 16px; align-items: flex-start; }
+        .point-icon { width: 40px; height: 40px; background: rgba(245, 184, 0, 0.1); color: var(--primary-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; border: 1px solid rgba(245, 184, 0, 0.2); }
+        .point-title { font-size: 1.1rem; margin-bottom: 4px; font-weight: 700; }
+
+        .logos-section { padding: 80px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .testimonials-section { padding: var(--section-padding); }
+        .test-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        @media (max-width: 992px) { .test-bento { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing Logo">
+            </a>
+            
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <div class="dropdown">
+                    <a href="#">Services ▾</a>
+                    <div class="dropdown-content">
+                        <a href="services/merchandising.html">Merchandising</a>
+                        <a href="services/field-activations.html">Field Activations</a>
+                        <a href="services/field-automation-surveys.html">Field Force Automation</a>
+                        <a href="services/retail-audit.html">Retail Audit</a>
+                        <a href="services/distribution-sales.html">Distribution & Sales</a>
+                    </div>
+                </div>
+                <a href="our-work.html">Our Work</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dark Premium Hero -->
+    <header class="hero-section">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-gradient"></div>
+        
+        <div class="container">
+            <div class="hero-split-layout">
+                <div class="hero-text-content">
+                    <h1 class="huge-text reveal delay-100">
+                        Precision engineering for modern brands.
+                    </h1>
+                    <p class="subtitle reveal delay-200">
+                        Award-winning merchandising, activations, and field intelligence across East Africa.
+                    </p>
+                    
+                    <div class="hero-buttons reveal delay-300">
+                        <a href="contact.html" class="btn btn-primary">Start a Project</a>
+                        <a href="our-work.html" class="btn btn-outline">Explore Our Work</a>
+                    </div>
+                </div>
+                
+                <div class="hero-grid-container reveal delay-200">
+                    <div class="hero-animated-grid"></div>
+                </div>
+            </div>
+            
+            <div class="stats-bento">
+                <div class="stat-card reveal delay-200">
+                    <div class="stat-number"><span class="counter-value" data-target="13" data-suffix="+">0</span></div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card reveal delay-300">
+                    <div class="stat-number"><span class="counter-value" data-target="6">0</span></div>
+                    <div class="stat-label">Countries Active</div>
+                </div>
+                <div class="stat-card reveal delay-400">
+                    <div class="stat-number"><span class="counter-value" data-target="50" data-suffix="+">0</span></div>
+                    <div class="stat-label">Global Brands</div>
+                </div>
+                <div class="stat-card reveal delay-500">
+                    <div class="stat-number"><span class="counter-value" data-target="1000" data-suffix="+">0</span></div>
+                    <div class="stat-label">Campaigns Done</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mixed Layout: Light Section -->
+    <section class="services-section section-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">Omnichannel BTL.</h2>
+            </div>
+            
+            <div class="services-bento">
+                <div class="bento-card reveal">
+                    <div class="service-icon">🛒</div>
+                    <h3 class="service-title">Merchandising</h3>
+                    <p style="color: var(--text-muted);">Strategic shelf presence, POSM placement, and planogram compliance.</p>
+                    <a href="services/merchandising.html" class="service-link mt-auto">Learn more →</a>
+                </div>
+                <div class="bento-card reveal delay-100">
+                    <div class="service-icon">📣</div>
+                    <h3 class="service-title">Field Activations</h3>
+                    <p style="color: var(--text-muted);">High-energy brand activations, product sampling, and experiential campaigns.</p>
+                    <a href="services/field-activations.html" class="service-link mt-auto">Learn more →</a>
+                </div>
+                <div class="bento-card reveal delay-200">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Field Intelligence</h3>
+                    <p style="color: var(--text-muted);">Real-time field reporting, digital data collection, and performance dashboards.</p>
+                    <a href="services/field-automation-surveys.html" class="service-link mt-auto">Learn more →</a>
+                </div>
+                <div class="bento-card reveal">
+                    <div class="service-icon">📋</div>
+                    <h3 class="service-title">Retail Audit</h3>
+                    <p style="color: var(--text-muted);">In-depth retail compliance checks and competitive shelf benchmarking.</p>
+                    <a href="services/retail-audit.html" class="service-link mt-auto">Learn more →</a>
+                </div>
+                <div class="bento-card reveal delay-100" style="grid-column: span 2;">
+                    <div class="service-icon">🚚</div>
+                    <h3 class="service-title">Distribution & Sales</h3>
+                    <p style="color: var(--text-muted);">End-to-end route-to-market execution, van sales, and rapid sales acceleration programs.</p>
+                    <a href="services/distribution-sales.html" class="service-link mt-auto">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dark Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="split-bento">
+                <div class="bento-card image-card reveal" style="background-image: url('https://goldenmarketing.co.ug/wp-content/uploads/2023/11/20231123114407_IMG_3042.jpg');"></div>
+                
+                <div class="bento-card reveal delay-100">
+                    <h2 class="section-title">Precision at scale.</h2>
+                    
+                    <div class="why-points">
+                        <div class="why-point">
+                            <div class="point-icon">1</div>
+                            <div>
+                                <h4 class="point-title">Regional Reach</h4>
+                                <p style="color: var(--text-muted); font-size: 0.95rem;">Active in Uganda, Kenya, Tanzania, Zambia, Rwanda & Mozambique.</p>
+                            </div>
+                        </div>
+                        <div class="why-point">
+                            <div class="point-icon">2</div>
+                            <div>
+                                <h4 class="point-title">Data-Driven</h4>
+                                <p style="color: var(--text-muted); font-size: 0.95rem;">Every activation tracked with real-time field reporting tools.</p>
+                            </div>
+                        </div>
+                        <div class="why-point">
+                            <div class="point-icon">3</div>
+                            <div>
+                                <h4 class="point-title">Elite Field Teams</h4>
+                                <p style="color: var(--text-muted); font-size: 0.95rem;">500+ heavily trained merchandisers, promoters and field agents.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logos-section section-light">
+        <div class="container" style="text-align: center; margin-bottom: 40px;">
+            <p style="color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Trusted by global brands</p>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/Airtel-logo.png" alt="Airtel">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/stanbic-logo.png" alt="Stanbic">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/unilever-logo.png" alt="Unilever">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/MTN-logo.png" alt="MTN">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/shell-logo.png" alt="Shell">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/lato-logo.png" alt="Lato">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/Airtel-logo.png" alt="Airtel">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/stanbic-logo.png" alt="Stanbic">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/unilever-logo.png" alt="Unilever">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/MTN-logo.png" alt="MTN">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/shell-logo.png" alt="Shell">
+                <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/12/lato-logo.png" alt="Lato">
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section section-light">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title reveal">Client Feedback</h2>
+            </div>
+            
+            <div class="test-bento">
+                <div class="bento-card reveal">
+                    <div style="color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 16px;">★★★★★</div>
+                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 32px; font-weight: 500;">"Golden Marketing transformed our rural distribution network. Their field teams are professional, and the daily data gives us unprecedented visibility."</p>
+                    <div style="display: flex; gap: 16px; align-items: center; margin-top: auto;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-color); display: flex; align-items: center; justify-content: center; font-weight: 700; border: 1px solid var(--border-color);">TM</div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Trade Marketing Manager</h4>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">Leading Telecom Provider</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bento-card reveal delay-100">
+                    <div style="color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 16px;">★★★★★</div>
+                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 32px; font-weight: 500;">"For our nationwide launch, we needed an agency that could handle logistics, staffing, and execution across 6 cities simultaneously. Flawless execution."</p>
+                    <div style="display: flex; gap: 16px; align-items: center; margin-top: auto;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-color); display: flex; align-items: center; justify-content: center; font-weight: 700; border: 1px solid var(--border-color);">BM</div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Brand Manager</h4>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">Global FMCG Brand</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bento-card reveal delay-200">
+                    <div style="color: var(--primary-gold); font-size: 1.2rem; margin-bottom: 16px;">★★★★★</div>
+                    <p style="color: var(--text-main); font-size: 1.05rem; margin-bottom: 32px; font-weight: 500;">"Their merchandising teams have consistently kept our planogram compliance above 90% in modern trade. A true partnership that impacts our bottom line."</p>
+                    <div style="display: flex; gap: 16px; align-items: center; margin-top: auto;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--bg-color); display: flex; align-items: center; justify-content: center; font-weight: 700; border: 1px solid var(--border-color);">SM</div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; margin-bottom: 2px;">Sales Director</h4>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">Beverage Company</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Dark -->
+    <section style="padding: 120px 0; border-top: 1px solid var(--border-color); text-align: center;">
+        <div class="container">
+            <h2 class="huge-text reveal">Ready to grow?</h2>
+            <p class="subtitle reveal delay-100" style="margin: 0 auto 40px;">Let's build a custom field marketing strategy that dominates East Africa.</p>
+            <a href="contact.html" class="btn btn-primary reveal delay-200">Get a Free Proposal</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="https://goldenmarketing.co.ug/wp-content/uploads/2023/11/gm22.png" alt="Golden Marketing" class="footer-logo">
+                    <p style="margin-bottom: 16px; font-size: 0.95rem;">We Get You Out There.</p>
+                    <p style="font-size: 0.85rem; line-height: 1.6;">East Africa's leading Below-The-Line Marketing Agency operating in Uganda, Kenya, Tanzania, Zambia, Rwanda & Mozambique.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="our-work.html">Our Work</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services/merchandising.html">Merchandising</a></li>
+                        <li><a href="services/field-activations.html">Field Activations</a></li>
+                        <li><a href="services/field-automation-surveys.html">Automation & Surveys</a></li>
+                        <li><a href="services/retail-audit.html">Retail Audit</a></li>
+                        <li><a href="services/distribution-sales.html">Distribution & Sales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li style="display: flex; gap: 8px;"><span>📍</span> Bugolobi, Luthuli Avenue</li>
+                        <li style="display: flex; gap: 8px;"><span>📞</span> +256 39 3112860</li>
+                        <li style="display: flex; gap: 8px;"><span>📧</span> office@goldenmarketing.co.ug</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golden Marketing Limited. All rights reserved.</div>
+                <div style="display: flex; gap: 16px;">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/256393112860" target="_blank" class="whatsapp-float">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007"/>
+        </svg>
+    </a>
+
+    <script src="js/main.js"></script>
+    <script src="js/hero-grid.js"></script>
+</body>
+</html>
