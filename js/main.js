@@ -3,28 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // =========================================
-  // CUSTOM PREMIUM CURSOR
-  // =========================================
-  const cursor = document.createElement('div');
-  cursor.classList.add('custom-cursor');
-  document.body.appendChild(cursor);
-
-  document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-  });
-
-  // Expand cursor on interactive elements
-  const interactives = document.querySelectorAll('a, button, .bento-card, .menu-toggle');
-  interactives.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-  });
-
-  // Hide native cursor completely
-  document.body.style.cursor = 'none';
-
-  // =========================================
   // BENTO CARD SPOTLIGHT (Mouse Tracking)
   // =========================================
   const bentoCards = document.querySelectorAll('.bento-card');
@@ -166,4 +144,20 @@ document.addEventListener('DOMContentLoaded', () => {
           if (parentDropdown) parentDropdown.querySelector('a').classList.add('active');
       }
   });
+  // =========================================
+  // TEXT ROTATOR (Hero Section)
+  // =========================================
+  const rotators = document.querySelectorAll('.text-rotator');
+  rotators.forEach(rotator => {
+      const items = rotator.querySelectorAll('.rotator-item');
+      if (items.length > 1) {
+          let currentIndex = 0;
+          setInterval(() => {
+              items[currentIndex].classList.remove('active');
+              currentIndex = (currentIndex + 1) % items.length;
+              items[currentIndex].classList.add('active');
+          }, 4000); // Rotate every 4 seconds
+      }
+  });
+
 });
