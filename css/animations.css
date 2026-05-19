@@ -1,73 +1,175 @@
-/* animations.css - Premium Mixed Theme Animations */
+/* Golden Marketing Uganda — Animations v3.0 */
 
-/* =========================================
-   PAGE TRANSITIONS
-   ========================================= */
-body { animation: premiumFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-@keyframes premiumFadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+/* ============================================================
+   PAGE FADE-IN
+   Fades in the whole page at 0.25s. On the homepage the hero
+   stagger takes over — it fires after this fade completes.
+   ============================================================ */
+body {
+  animation: pageFadeIn 0.25s ease both;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-/* =========================================
-   PREMIUM SCROLL REVEALS
-   ========================================= */
+/* ============================================================
+   SCROLL REVEAL
+   16px offset — subtle enough to not telegraph itself,
+   large enough to feel like motion.
+   ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Image Reveal */
-.reveal-img {
+/* Delay utilities */
+.delay-100 { transition-delay: 80ms; }
+.delay-200 { transition-delay: 160ms; }
+.delay-300 { transition-delay: 240ms; }
+.delay-400 { transition-delay: 320ms; }
+.delay-500 { transition-delay: 400ms; }
+
+/* ============================================================
+   TEXT ROTATOR
+   ============================================================ */
+.text-rotator { position: relative; display: block; }
+.rotator-item {
+  position: absolute; top: 0; left: 0; width: 100%;
+  opacity: 0; visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.4s;
+}
+.rotator-item.active {
+  opacity: 1; visibility: visible; transform: translateY(0); position: relative;
+}
+
+/* ============================================================
+   LAZY IMAGE FADE
+   ============================================================ */
+img[loading="lazy"] {
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   MOBILE NAV OPEN
+   Keyframe is fine here — this is an occasional action,
+   not a rapid-fire toggle.
+   ============================================================ */
+@keyframes navOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   TYPING CURSOR
+   Used by the hero typing animation (main.js initHeroTyping).
+   ============================================================ */
+.typing-cursor {
+  display: inline-block;
+  width: 2.5px;
+  height: 0.82em;
+  background: var(--gold);
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  border-radius: 2px;
+  animation: cursorBlink 0.75s step-end infinite;
+  transition: opacity 0.5s ease;
+}
+
+/* Smaller cursor for the sub-paragraph (inherits gold via CSS var) */
+.typing-cursor--sm {
+  width: 1.5px;
+  height: 0.78em;
+}
+
+/* Adding this class stops the blink and fades the cursor out */
+.typing-cursor-fade {
+  animation: none;
   opacity: 0;
-  transform: scale(0.9);
-  transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: blur(10px);
 }
 
-.reveal-img.active {
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
-/* Stagger Delays */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
-
-/* =========================================
-   MARQUEE
-   ========================================= */
-.marquee-wrapper {
-  overflow: hidden; white-space: nowrap; display: flex;
-  position: relative;
+/* ============================================================
+   FOCUS RING — global accessible focus
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
-.marquee-wrapper::before, .marquee-wrapper::after {
-  content: '';
-  position: absolute; top: 0; width: 150px; height: 100%; z-index: 2;
-}
-.marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--bg-color), transparent); }
-.marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--bg-color), transparent); }
+/* ============================================================
+   REDUCED MOTION
+   Keep opacity fades (aid comprehension).
+   Kill transform-based motion (causes motion sickness).
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
 
-.marquee-content { display: flex; animation: marquee 30s linear infinite; }
-.marquee-content img {
-  height: 40px; margin: 0 40px; object-fit: contain;
-  filter: grayscale(100%) opacity(0.3); transition: all 0.4s ease;
-}
-.marquee-content img:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  .rotator-item {
+    transform: none;
+    transition: opacity 0.2s ease, visibility 0.2s;
+  }
+
+  img[loading="lazy"] {
+    transition: opacity 0.2s ease;
+  }
+
+  .marquee-content { animation-play-state: paused; }
+
+  .wa-float,
+  .whatsapp-float { animation: none; }
+
+  /* Kill transform animations; allow opacity/color */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Restore opacity transitions explicitly */
+  .reveal,
+  img[loading="lazy"] {
+    transition-duration: 0.2s !important;
+  }
+
+  /* Hero stagger — show instantly, no slide-in */
+  .hero-stagger-1,
+  .hero-stagger-2,
+  .hero-stagger-3,
+  .hero-stagger-4,
+  .hero-stagger-5 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Kill Ken Burns on hero grid */
+  .hero-grid-img {
+    animation: none !important;
+  }
 }

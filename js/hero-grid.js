@@ -1,98 +1,80 @@
-// hero-grid.js - Organized 3x3 Animated Image Grid for Hero Section
+/* Golden Marketing — Hero Image Mosaic
+ *
+ * 2-column editorial grid, 5 cells:
+ *   [  tall  ] [ sm ]
+ *   [ (cont) ] [ sm ]
+ *   [ sm     ] [ sm ]
+ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const gridContainer = document.querySelector('.hero-animated-grid');
-    if (!gridContainer) return;
+(function () {
+  'use strict';
 
-    const isSubfolder = window.location.pathname.includes('/services') ||
-                         window.location.href.includes('/services/');
-    const pathPrefix = isSubfolder ? '../' : '';
+  const GRID_EL = document.querySelector('.hero-animated-grid');
+  if (!GRID_EL) return;
 
-    const allImages = [
-        'Images/Activations/IMG_0190.jpg',
-        'Images/Activations/GM-10.jpg',
-        'Images/Activations/GM-11.jpg',
-        'Images/Activations/GM-41.jpg',
-        'Images/Activations/GM-49.jpg',
-        'Images/Activations/GM-59.jpg',
-        'Images/Merchandising/4.png',
-        'Images/Merchandising/GM-1.jpg',
-        'Images/Merchandising/GM-5.jpg',
-        'Images/Merchandising/IMG_8133.jpg',
-        'Images/Merchandising/IMG_8184.jpg',
-        'Images/Merchandising/IMG_9100.jpg'
-    ];
+  const POOL = [
+    'Images/Activations/GM-28.jpg',
+    'Images/Merchandising/GM-1.jpg',
+    'Images/Activations/ASK_8274.jpg',
+    'Images/Activations/GM-64.jpg',
+    'Images/Activations/GM-70.jpg',
+    'Images/Merchandising/IMG_9003.jpg',
+    'Images/Activations/GM-88.jpg',
+    'Images/Activations/ASK_8157.jpg',
+    'Images/Activations/GM-49.jpg',
+    'Images/Merchandising/IMG_9100.jpg',
+    'Images/Activations/IMG_0142.jpg',
+    'Images/Activations/GM-41.jpg',
+  ];
 
-    const category = gridContainer.getAttribute('data-category');
-    let images = allImages;
-    if (category === 'merchandising') {
-        images = allImages.filter(img => img.includes('Merchandising'));
-    } else if (category === 'activations') {
-        images = allImages.filter(img => img.includes('Activations'));
-    }
+  /* 5-cell layout — cell 0 spans rows 1-2 (tall anchor) */
+  const LAYOUT = [
+    { rowSpan: 2 },
+    { rowSpan: 1 },
+    { rowSpan: 1 },
+    { rowSpan: 1 },
+    { rowSpan: 1 },
+  ];
 
-    // Create a 9-cell staggered masonry grid
-    const totalCells = 9;
-    for (let i = 0; i < totalCells; i++) {
-        const cell = document.createElement('div');
-        cell.className = 'hero-grid-cell';
-        // Give each cell a random height between 130px and 240px to create the staggered masonry look
-        const randomHeight = Math.floor(Math.random() * (240 - 130 + 1)) + 130;
-        cell.style.height = `${randomHeight}px`;
-        gridContainer.appendChild(cell);
-    }
+  const KB = ['kb-0', 'kb-1', 'kb-2', 'kb-3'];
+  const cells = [];
 
-    const cells = Array.from(gridContainer.children);
+  function buildGrid() {
+    const shuffled = [...POOL].sort(() => Math.random() - 0.5);
 
-    function animateRandomCell() {
-        if (!cells || cells.length === 0) return;
-        
-        // Find cells that aren't currently active
-        const inactiveCells = cells.filter(c => !c.classList.contains('active'));
-        if (inactiveCells.length === 0) return; // All cells are busy
+    LAYOUT.forEach(function (def, i) {
+      const cell = document.createElement('div');
+      cell.className = 'hero-grid-cell';
+      if (def.rowSpan === 2) cell.style.gridRow = 'span 2';
 
-        // Pick a random inactive cell
-        const randomCell = inactiveCells[Math.floor(Math.random() * inactiveCells.length)];
-        
-        // Pick a random image
-        const randomImage = images[Math.floor(Math.random() * images.length)];
+      const inner = document.createElement('div');
+      inner.className = 'hero-grid-img ' + KB[i % KB.length];
+      inner.style.backgroundImage = 'url(' + shuffled[i % shuffled.length] + ')';
+      inner.style.animationDuration = (16 + Math.random() * 10).toFixed(1) + 's';
+      inner.style.animationDelay = '-' + (Math.random() * 20).toFixed(1) + 's';
 
-        // Preload image visually
-        randomCell.style.backgroundImage = `url('${pathPrefix}${randomImage}')`;
-        
-        // Force reflow
-        void randomCell.offsetWidth;
-        
-        // Fade it in
-        randomCell.classList.add('active');
+      cell.appendChild(inner);
+      GRID_EL.appendChild(cell);
+      cells.push({ cell: cell });
+    });
+  }
 
-        // Display for 2.5s to 4.5s
-        const displayTime = Math.random() * 2000 + 2500;
-        
-        // Fade it out
-        setTimeout(() => {
-            if (randomCell) {
-                randomCell.classList.remove('active');
-            }
-        }, displayTime);
-    }
+  function revealCells() {
+    cells.forEach(function (c, i) {
+      setTimeout(function () { c.cell.classList.add('active'); }, 160 + i * 100);
+    });
+  }
 
-    // Main animation loop — stops automatically if the grid is removed from DOM
-    let loopTimeout = null;
-    function loop() {
-        if (!document.body.contains(gridContainer)) return; // Stop if unmounted
-        animateRandomCell();
-        // Trigger next image appearance at a random interval (600ms to 1200ms)
-        loopTimeout = setTimeout(loop, Math.random() * 600 + 600);
-    }
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Initial burst of images on load (populate 4 out of 9 cells immediately)
-    for (let i = 0; i < 4; i++) {
-        setTimeout(() => {
-            if (document.body.contains(gridContainer)) animateRandomCell();
-        }, Math.random() * 1000);
-    }
+  buildGrid();
 
-    // Start continuous loop after a short delay
-    loopTimeout = setTimeout(loop, 500);
-});
+  if (prefersReduced) {
+    cells.forEach(function (c) { c.cell.classList.add('active'); });
+    return;
+  }
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(revealCells);
+  });
+})();

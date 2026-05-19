@@ -1,312 +1,251 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retail Audit | Golden Marketing Uganda</title>
-    <meta name="description" content="In-depth retail compliance checks, competitive shelf benchmarking, and trade channel intelligence across East Africa.">
-    
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    
-    <style>
-        .light-hero {
-            background-color: var(--bg-color);
-            padding: 160px 0 100px;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-bg-pattern {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.5; z-index: 0; pointer-events: none;
-        }
-
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        @media (max-width: 992px) { .hero-layout { grid-template-columns: 1fr; text-align: center; } }
-        
-        /* Dashboard Mockup (Light version) */
-        .mockup-container {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .mockup-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px; }
-        .mockup-title { font-weight: 700; font-size: 1.2rem; }
-        .mockup-score { color: var(--primary-color); font-size: 2rem; font-weight: 800; }
-        
-        .mockup-bar-wrap { margin-bottom: 24px; }
-        .mockup-bar { height: 8px; background: var(--bg-color); border-radius: 4px; overflow: hidden; margin-top: 12px; }
-        .mockup-fill { height: 100%; background: var(--primary-color); border-radius: 4px; }
-        
-        .audit-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-        @media (max-width: 992px) { .audit-bento { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .audit-bento { grid-template-columns: 1fr; } }
-        
-        /* Personas Bento */
-        .persona-bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-        @media (max-width: 992px) { .persona-bento { grid-template-columns: 1fr; } }
-        
-        .persona-card { padding: 40px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-sm); }
-        .p-quote { font-style: italic; font-size: 1.1rem; margin-bottom: 32px; color: var(--text-main); line-height: 1.6; }
-        
-        /* Formats */
-        .formats-grid { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-        .format-badge {
-            background: var(--card-bg); border: 1px solid var(--border-color);
-            padding: 12px 32px; border-radius: 100px; color: var(--text-main);
-            font-weight: 600; font-size: 0.95rem; box-shadow: var(--shadow-sm);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retail Audit — Golden Marketing Uganda</title>
+  <meta name="description" content="Independent retail audits for FMCG brands in Uganda and East Africa. Accurate, unbiased in-store data on distribution, pricing, visibility, and compliance.">
+  <meta name="keywords" content="retail audit uganda, in-store audit east africa, distribution audit kampala, shelf compliance audit">
+  <meta property="og:title" content="Retail Audit — Golden Marketing Uganda">
+  <meta property="og:description" content="Independent retail audits giving brands accurate in-store data across East Africa.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://goldenmarketing.ug/services/retail-audit.html">
+  <link rel="icon" href="../gm22.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css?v=3.0">
+  <link rel="stylesheet" href="../css/animations.css?v=3.0">
+  <link rel="stylesheet" href="../css/responsive.css?v=3.0">
 </head>
 <body>
+  <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner container">
+      <a href="../index.html" class="nav-logo" aria-label="Golden Marketing Uganda home">
+        <img src="../gm22.png" alt="Golden Marketing Uganda" width="140" height="40" loading="eager">
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="../index.html" class="nav-link">Home</a></li>
+        <li><a href="../our-work.html" class="nav-link">Our Work</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            What We Do
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="merchandising.html" role="menuitem">Merchandising</a>
+            <a href="field-activations.html" role="menuitem">Field Activations</a>
+            <a href="dynamic-roadshows.html" role="menuitem">Dynamic Roadshows</a>
+            <a href="events-management.html" role="menuitem">Events Management</a>
+            <a href="field-automation-surveys.html" role="menuitem">Field Automation &amp; Surveys</a>
+            <a href="retail-audit.html" role="menuitem" class="active">Retail Audit</a>
+            <a href="distribution-sales.html" role="menuitem">Distribution &amp; Sales</a>
+            <a href="strategy.html" role="menuitem">Strategy &amp; Consulting</a>
+          </div>
+        </li>
+        <li><a href="../about.html" class="nav-link">About</a></li>
+        <li><a href="../contact.html" class="nav-link">Contact</a></li>
+        <li><a href="../contact.html" class="btn btn-primary btn-sm">Get a Proposal</a></li>
+      </ul>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <nav class="navbar">
-        <div class="nav-container container">
-            <a href="../index.html" class="nav-logo">
-                <img src="../gm22.png" alt="Golden Marketing Logo">
-            </a>
-            <div class="menu-toggle"><span></span><span></span><span></span></div>
-            <div class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="../about.html">About</a>
-                <div class="dropdown active">
-                    <a href="#" class="active">Services &#9662;</a>
-                    <div class="dropdown-content">
-                        <a href="merchandising.html">Merchandising</a>
-                        <a href="field-activations.html">Field Activations</a>
-                        <a href="field-automation-surveys.html">Field Force Automation</a>
-                        <a href="retail-audit.html" class="active">Retail Audit</a>
-                        <a href="distribution-sales.html">Distribution &amp; Sales</a>
-                    </div>
-                </div>
-                <a href="../our-work.html">Our Work</a>
-                <a href="../contact.html">Contact</a>
-                <a href="../contact.html" class="btn btn-primary" style="margin-left: 16px;">Get a Proposal</a>
-            </div>
+  <main>
+    <section class="page-hero section-surface">
+      <div class="container">
+        <div class="page-hero-inner">
+          <p class="eyebrow reveal">Service</p>
+          <h1 class="page-hero-title reveal delay-100">Retail Audit</h1>
+          <p class="page-hero-subtitle reveal delay-200">Unbiased, systematic in-store data that tells you exactly what is happening at the shelf — distribution rates, pricing compliance, POSM presence, and share of shelf across your trade universe.</p>
         </div>
-    </nav>
-
-    <header class="light-hero">
-        <div class="hero-bg-pattern"></div>
-        <div class="container">
-            <div class="hero-layout">
-                <div class="reveal">
-                    <h1 class="huge-text">Trade Truth.</h1>
-                    <p class="subtitle" style="margin: 24px 0 40px;">In-depth retail compliance checks and competitive shelf benchmarking across East Africa.</p>
-                    <a href="#contact-form" class="btn btn-primary">Audit Your Shelf</a>
-                </div>
-                
-                <div class="reveal delay-200">
-                    <div class="mockup-container">
-                        <div class="mockup-header">
-                            <div class="mockup-title">National Audit Index</div>
-                            <div class="mockup-score">74%</div>
-                        </div>
-                        
-                        <div class="mockup-bar-wrap">
-                            <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">Planogram Compliance <span style="float:right; color: var(--text-main);">68%</span></div>
-                            <div class="mockup-bar"><div class="mockup-fill" style="width: 68%;"></div></div>
-                        </div>
-                        
-                        <div class="mockup-bar-wrap">
-                            <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">POSM Presence <span style="float:right; color: var(--text-main);">81%</span></div>
-                            <div class="mockup-bar"><div class="mockup-fill" style="width: 81%; background: #10B981;"></div></div>
-                        </div>
-                        
-                        <div class="mockup-bar-wrap">
-                            <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">Price Compliance <span style="float:right; color: var(--text-main);">79%</span></div>
-                            <div class="mockup-bar"><div class="mockup-fill" style="width: 79%;"></div></div>
-                        </div>
-                        
-                        <div class="mockup-bar-wrap" style="margin-bottom:0;">
-                            <div style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">Stock Availability <span style="float:right; color: var(--text-main);">88%</span></div>
-                            <div class="mockup-bar"><div class="mockup-fill" style="width: 88%; background: #10B981;"></div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section style="padding: var(--section-padding); background-color: var(--card-bg);">
-        <div class="container">
-            <h2 class="section-title text-center reveal">What we audit</h2>
-            
-            <div class="audit-bento">
-                <div class="bento-card reveal">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#128202;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Shelf Share</h4>
-                    <p style="color: var(--text-muted);">Your product vs competitors, space and facings measurements.</p>
-                </div>
-                <div class="bento-card reveal delay-100">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#128203;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Planogram Compliance</h4>
-                    <p style="color: var(--text-muted);">Are your brand standards and layouts being maintained?</p>
-                </div>
-                <div class="bento-card reveal delay-200">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#128176;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Price Compliance</h4>
-                    <p style="color: var(--text-muted);">Is your Recommended Retail Price being respected at trade level?</p>
-                </div>
-                <div class="bento-card reveal">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#128443;&#65039;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">POSM Presence</h4>
-                    <p style="color: var(--text-muted);">Are your in-store materials installed and in good condition?</p>
-                </div>
-                <div class="bento-card reveal delay-100">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#128230;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Stock Availability</h4>
-                    <p style="color: var(--text-muted);">Are key SKUs available, visible, and within expiry dates?</p>
-                </div>
-                <div class="bento-card reveal delay-200">
-                    <div style="font-size: 2rem; margin-bottom: 20px;">&#127978;</div>
-                    <h4 style="font-size: 1.2rem; margin-bottom: 12px;">Outlet Standards</h4>
-                    <p style="color: var(--text-muted);">Is the retail environment meeting your brand guidelines?</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <section style="padding: var(--section-padding); background-color: var(--bg-color);">
-        <div class="container">
-            <h2 class="section-title text-center reveal">Built for decision makers</h2>
-            
-            <div class="persona-bento">
-                <div class="persona-card reveal">
-                    <p class="p-quote">"I need to know if our latest POSM rollout actually happened across the country, not just in Kampala."</p>
-                    <div style="border-top: 1px solid var(--border-color); padding-top: 24px;">
-                        <div style="font-weight: 700; color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase;">FMCG Brand Managers</div>
-                    </div>
-                </div>
-                <div class="persona-card reveal delay-100">
-                    <p class="p-quote">"We need independent data on competitor pricing and shelf space to adjust our trade strategies."</p>
-                    <div style="border-top: 1px solid var(--border-color); padding-top: 24px;">
-                        <div style="font-weight: 700; color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase;">Trade Sales Teams</div>
-                    </div>
-                </div>
-                <div class="persona-card reveal delay-200">
-                    <p class="p-quote">"I need to verify that our distributors are actually pushing all SKUs, not just the fast movers."</p>
-                    <div style="border-top: 1px solid var(--border-color); padding-top: 24px;">
-                        <div style="font-weight: 700; color: var(--primary-color); font-size: 0.95rem; text-transform: uppercase;">Distributor Managers</div>
-                    </div>
-                </div>
+    <section class="section">
+      <div class="container">
+        <div class="service-page-grid">
+          <div class="service-includes reveal">
+            <h2 class="section-title">What it includes</h2>
+            <ul class="service-includes-list">
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Distribution checks — numeric and weighted distribution by outlet type</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Shelf price tracking and competitor price benchmarking</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Share of shelf measurement against key competitors</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>POSM compliance — presence, placement, and condition of branded materials</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Out-of-stock identification with root cause classification</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Photo evidence for every audit data point</span></li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l4 4 8-8"/></svg><span>Monthly or quarterly trend reports for KPI tracking over time</span></li>
+            </ul>
+          </div>
+          <div class="service-sidebar reveal delay-200">
+            <div class="service-cta-card">
+              <h3>Get an audit designed</h3>
+              <p>Tell us your brand, outlet universe, and key questions. We will propose an audit methodology and cost within 48 hours.</p>
+              <a href="../contact.html" class="btn btn-primary">Request a proposal</a>
+              <a href="https://wa.me/256393112860" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp us</a>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section style="padding: var(--section-padding); background-color: var(--card-bg); border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <h2 class="section-title text-center reveal">Reporting Formats</h2>
-            <div class="formats-grid reveal delay-100">
-                <div class="format-badge">Weekly Tracker</div>
-                <div class="format-badge">Monthly Deep-Dive</div>
-                <div class="format-badge">Quarterly Trend Report</div>
-                <div class="format-badge">Custom Live Dashboards</div>
-            </div>
+    <section class="section section-surface">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">How it works</p>
+          <h2 class="section-title">Our process</h2>
         </div>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <span class="process-number">01</span>
+            <div class="process-content">
+              <h3 class="process-title">Outlet universe &amp; questionnaire design</h3>
+              <p>We work with you to define the outlet sample — trade type, geography, and size — and design a questionnaire that captures exactly the KPIs your commercial team tracks.</p>
+            </div>
+          </div>
+          <div class="process-step reveal delay-100">
+            <span class="process-number">02</span>
+            <div class="process-content">
+              <h3 class="process-title">Field data collection</h3>
+              <p>Trained audit agents visit each outlet in the sample, collecting data on mobile devices with time and geo-stamps. Every data point is backed by a photograph, eliminating ambiguity.</p>
+            </div>
+          </div>
+          <div class="process-step reveal delay-200">
+            <span class="process-number">03</span>
+            <div class="process-content">
+              <h3 class="process-title">Analysis &amp; trend reporting</h3>
+              <p>We clean, analyse, and present the data in a structured report. Recurring audits are benchmarked against previous waves so you can see the trajectory — not just a snapshot.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact-form" style="padding: var(--section-padding); background-color: var(--bg-color);">
-        <div class="container">
-            <div class="bento-card reveal" style="max-width: 800px; margin: 0 auto;">
-                <h2 class="section-title text-center" style="margin-bottom: 32px;">Request an Audit</h2>
-                
-                <form class="lead-form">
-                    <input type="hidden" name="service" value="Retail Audit">
-                    <div style="margin-bottom: 16px;">
-                        <input type="text" name="name" class="form-control" placeholder="Full Name *" required>
-                    </div>
-                    <div style="margin-bottom: 16px;">
-                        <input type="text" name="company" class="form-control" placeholder="Company / Brand *" required>
-                    </div>
-                    <div style="margin-bottom: 16px;">
-                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
-                    </div>
-                    <div style="margin-bottom: 32px;">
-                        <textarea name="message" class="form-control" placeholder="What specific retail data are you trying to track?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Get a Proposal</button>
-                </form>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">In the field</p>
+          <h2 class="section-title">Retail audit in action</h2>
         </div>
+        <div class="photo-gallery">
+          <div class="photo-item reveal"><img src="../Images/Merchandising/IMG_8133.jpg" alt="Auditor checking shelf compliance" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+          <div class="photo-item reveal delay-100"><img src="../Images/Merchandising/IMG_8134.jpg" alt="Price survey at retail outlet" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+          <div class="photo-item reveal delay-200"><img src="../Images/Activations/ASK_8339.jpg" alt="POSM compliance check" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+          <div class="photo-item reveal delay-100"><img src="https://drive.google.com/uc?export=view&id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31" alt="Shelf share measurement" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+          <div class="photo-item reveal delay-200"><img src="https://drive.google.com/uc?export=view&id=1tu3a2qV5M4_7m-tHwFW1J0Kus6CJ0jqb" alt="Out-of-stock identification" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+          <div class="photo-item reveal delay-300"><img src="../Images/Merchandising/IMG_8135.jpg" alt="Trade audit in supermarket" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+        </div>
+      </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <img src="../gm22.png" alt="Golden Marketing" class="footer-logo">
-                    <p style="color: var(--text-muted); margin-bottom: 16px;">We Get You Out There.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../about.html">About Us</a></li>
-                        <li><a href="../our-work.html">Our Work</a></li>
-                        <li><a href="../contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="merchandising.html">Merchandising</a></li>
-                        <li><a href="field-activations.html">Field Activations</a></li>
-                        <li><a href="field-automation-surveys.html">Field Force Automation</a></li>
-                        <li><a href="retail-audit.html">Retail Audit</a></li>
-                        <li><a href="distribution-sales.html">Distribution &amp; Sales</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul style="color: var(--text-muted);">
-                        <li style="display: flex; gap: 8px;"><span>📍</span> Bugolobi, Kampala</li>
-                        <li style="display: flex; gap: 8px;"><span>📞</span> +256 39 3112860</li>
-                        <li style="display: flex; gap: 8px;"><span>📧</span> office@goldenmarketing.co.ug</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>&copy; 2026 Golden Marketing Limited. All rights reserved. | <a href="https://blactec.ug" target="_blank" style="color: var(--primary-gold); font-weight: 600;">Designed by BlacTec</a></div>
-                <div style="display: flex; gap: 16px;">
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="https://wa.me/256393112860" target="_blank">WhatsApp</a>
-                    <a href="#">LinkedIn</a>
-                </div>
-            </div>
+    <section class="section section-surface">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow">Keep exploring</p>
+          <h2 class="section-title">Related services</h2>
         </div>
-    </footer>
+        <div class="related-services">
+          <a href="merchandising.html" class="related-service-card reveal">
+            <h3 class="related-service-title">Merchandising</h3>
+            <p>Fix the compliance gaps your audit uncovers with a consistent merchandising programme.</p>
+            <span class="related-service-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+          </a>
+          <a href="field-automation-surveys.html" class="related-service-card reveal delay-100">
+            <h3 class="related-service-title">Field Automation &amp; Surveys</h3>
+            <p>Add consumer sentiment data to complement your trade-facing retail audit intelligence.</p>
+            <span class="related-service-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+          </a>
+          <a href="distribution-sales.html" class="related-service-card reveal delay-200">
+            <h3 class="related-service-title">Distribution &amp; Sales</h3>
+            <p>Identify distribution gaps in your audit and fill them with our route-to-market execution teams.</p>
+            <span class="related-service-arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <!-- WhatsApp -->
-    <a href="https://wa.me/256393112860" target="_blank" class="whatsapp-float">
-        <svg viewBox="0 0 32 32" width="32" height="32" fill="currentColor">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.479 2.015 7.781l-2.015 7.352 7.525-1.974c2.24 1.22 4.811 1.916 7.545 1.916 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.356c-2.457 0-4.757-0.655-6.733-1.794l-0.483-0.278-4.463 1.17 1.192-4.348-0.305-0.485c-1.241-1.974-1.954-4.305-1.954-6.804 0-7.042 5.727-12.768 12.768-12.768s12.768 5.727 12.768 12.768c0 7.042-5.727 12.768-12.768 12.768zM22.569 19.34c-0.362-0.181-2.141-1.056-2.473-1.176s-0.573-0.181-0.814 0.181c-0.241 0.362-0.935 1.176-1.146 1.417s-0.422 0.271-0.784 0.090c-0.362-0.181-1.527-0.563-2.91-1.795-1.077-0.961-1.805-2.148-2.016-2.51s-0.023-0.558 0.158-0.738c0.163-0.162 0.362-0.422 0.543-0.633s0.241-0.362 0.362-0.603c0.121-0.241 0.060-0.452-0.030-0.633s-0.814-1.959-1.115-2.682c-0.293-0.704-0.591-0.609-0.814-0.62-0.21-0.011-0.452-0.011-0.693-0.011s-0.633 0.090-0.964 0.452c-0.332 0.362-1.266 1.236-1.266 3.014s1.3 3.497 1.481 3.738c0.181 0.241 2.557 3.905 6.194 5.474 0.865 0.373 1.539 0.596 2.066 0.764 0.868 0.275 1.659 0.237 2.284 0.144 0.697-0.104 2.141-0.874 2.442-1.718s0.301-1.567 0.211-1.718c-0.090-0.151-0.332-0.241-0.693-0.422z"></path>
-        </svg>
-    </a>
+    <section class="cta-band section-surface">
+      <div class="container">
+        <div class="cta-band-inner reveal">
+          <div class="cta-band-text">
+            <h2 class="cta-band-title">See what is really happening at the shelf.</h2>
+            <p class="cta-band-sub">Get unbiased in-store data that your sales team can act on immediately.</p>
+          </div>
+          <div class="cta-band-actions">
+            <a href="../contact.html" class="btn btn-primary btn-lg">Get a proposal</a>
+            <a href="../our-work.html" class="btn btn-ghost btn-lg">See our work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script src="../js/main.js"></script>
-    <script src="../js/forms.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" aria-label="Golden Marketing Uganda home"><img src="../gm22.png" alt="Golden Marketing Uganda" width="120" height="34" loading="lazy"></a>
+          <p class="footer-tagline">Field marketing and brand activation across East and Central Africa.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/GoldenMarketingUganda" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/goldenmarketingug" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.linkedin.com/company/golden-marketing-uganda" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Services</h4>
+          <ul class="footer-links">
+            <li><a href="merchandising.html">Merchandising</a></li>
+            <li><a href="field-activations.html">Field Activations</a></li>
+            <li><a href="dynamic-roadshows.html">Dynamic Roadshows</a></li>
+            <li><a href="events-management.html">Events Management</a></li>
+            <li><a href="field-automation-surveys.html">Field Automation &amp; Surveys</a></li>
+            <li><a href="retail-audit.html">Retail Audit</a></li>
+            <li><a href="distribution-sales.html">Distribution &amp; Sales</a></li>
+            <li><a href="strategy.html">Strategy &amp; Consulting</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../our-work.html">Our Work</a></li>
+            <li><a href="../careers.html">Careers</a></li>
+            <li><a href="../news.html">News</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+          <div class="footer-contact-block">
+            <p><a href="mailto:info@goldenmarketing.ug">info@goldenmarketing.ug</a></p>
+            <p><a href="tel:+256393112860">+256 393 112 860</a></p>
+            <p>Kampala, Uganda</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear">2025</span> Golden Marketing Uganda. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/256393112860" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+    });
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    });
+  </script>
+  <script src="../js/main.js?v=3.0"></script>
 </body>
 </html>
