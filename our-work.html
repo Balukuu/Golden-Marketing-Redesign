@@ -37,108 +37,187 @@
 
   <style>
     /* Gallery-specific styles not in main style.css */
-    .brand-section { margin-bottom: 72px; }
+    .brand-section { margin-bottom: 80px; }
     .brand-section.hidden { display: none; }
 
     .brand-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       padding-bottom: 20px;
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
       gap: 12px;
     }
-    .brand-title-wrap { display: flex; align-items: center; gap: 14px; }
+    .brand-title-wrap { display: flex; align-items: center; gap: 16px; }
     .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .brand-name { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+    .brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); }
+    .brand-logo-img { height: 28px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s var(--ease-out); }
+    .brand-section:hover .brand-logo-img { filter: grayscale(0%); opacity: 1; }
+    .coke-badge {
+      background: #E60000; color: var(--white); font-family: var(--font-display);
+      font-weight: 800; font-style: italic; padding: 4px 10px; font-size: 0.8rem;
+      letter-spacing: -0.02em; border-radius: var(--r-sm); box-shadow: 0 4px 12px rgba(230,0,0,0.15);
+    }
     .brand-count {
-      font-size: 0.75rem; font-weight: 500; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--text-muted);
-      padding: 3px 10px; background: var(--surface); border: 1px solid var(--border);
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.5px; color: var(--text-secondary);
+      padding: 4px 12px; background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r-pill);
     }
-    .brand-count.pending { background: #FEF3C7; color: #92400E; border-color: #FCD34D; }
-    .brand-meta { font-size: 0.82rem; color: var(--text-muted); }
+    .brand-meta { font-size: 0.85rem; font-weight: 500; color: var(--text-tertiary); }
+
+    /* Local sub-filtering styling */
+    .sub-filter-bar { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+    .sub-filter-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.78rem; font-weight: 600;
+      padding: 6px 14px; border-radius: var(--r-pill); transition: all 0.2s var(--ease-out);
+      cursor: pointer;
+    }
+    .sub-filter-btn:hover { background: var(--surface-2); color: var(--text-primary); }
+    .sub-filter-btn.active { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
-    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 540px) { .gallery-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr; } }
 
     .gallery-item {
-      border-radius: var(--r-lg);
+      border-radius: var(--r-md);
       overflow: hidden;
       position: relative;
       cursor: pointer;
       border: 1px solid var(--border);
       background: var(--surface);
-      transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s;
       aspect-ratio: 4/3;
     }
-    .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .gallery-item:active { transform: scale(0.97); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
-    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+    .gallery-item:active { transform: scale(0.98); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out); }
+    .gallery-item:hover img { transform: scale(1.05); }
 
     .gallery-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(12,12,12,0.85) 0%, rgba(12,12,12,0.2) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(30, 30, 46, 0.95) 0%, rgba(30, 30, 46, 0.4) 60%, transparent 100%);
       display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 20px; opacity: 0;
-      transition: opacity 0.25s var(--ease-out);
-    }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .overlay-tag {
-      display: inline-block; padding: 3px 10px;
-      background: var(--gold); color: var(--ink);
-      border-radius: var(--r-pill); font-size: 0.68rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; align-self: flex-start;
-    }
-    .overlay-label { color: var(--white); font-weight: 500; font-size: 0.92rem; line-height: 1.35; }
-
-    .brand-pending-block {
-      background: var(--surface); border: 2px dashed var(--border);
-      border-radius: var(--r-xl); padding: 56px 40px; text-align: center;
-    }
-    .brand-pending-block p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
-    .brand-pending-icon { display: flex; justify-content: center; margin-bottom: 16px; opacity: 0.35; }
-    .drive-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-top: 16px; font-size: 0.85rem; font-weight: 500;
-      color: var(--gold); border-bottom: 1px solid var(--gold);
-      padding-bottom: 2px; transition: opacity 0.2s;
-    }
-    .drive-link:hover { opacity: 0.7; }
-
-    /* Lightbox */
-    .lightbox {
-      position: fixed; inset: 0;
-      background: rgba(12,12,12,0.95); backdrop-filter: blur(12px);
-      z-index: 10000; display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
+      padding: 24px; opacity: 0;
       transition: opacity 0.3s var(--ease-out);
     }
-    .lightbox.active { opacity: 1; pointer-events: all; }
-    .lightbox img {
-      max-width: 88vw; max-height: 88vh;
-      border-radius: var(--r-lg); box-shadow: 0 40px 80px rgba(0,0,0,0.7);
-      transform: scale(0.92); transition: transform 0.4s var(--ease-out);
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    
+    .overlay-tag {
+      display: inline-block; padding: 4px 10px;
+      background: var(--gold); color: var(--white);
+      border-radius: var(--r-pill); font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; align-self: flex-start;
+      box-shadow: 0 4px 10px rgba(184, 146, 42, 0.25);
     }
-    .lightbox.active img { transform: scale(1); }
+    .overlay-label {
+      color: var(--white); font-weight: 600; font-size: 0.95rem; line-height: 1.3;
+      transform: translateY(8px); transition: transform 0.3s var(--ease-out);
+    }
+    .gallery-item:hover .overlay-label { transform: translateY(0); }
+
+    /* Skeleton Loading Shimmer */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 37%, var(--surface) 63%);
+      background-size: 400% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+    }
+    @keyframes skeleton-loading {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .grid-actions { display: flex; justify-content: center; margin-top: 32px; }
+    .view-more-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px; border: 1px dashed var(--border-strong);
+      border-radius: var(--r-pill); font-size: 0.85rem; font-weight: 600;
+      color: var(--text-secondary); background: transparent; cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+    .view-more-btn:hover {
+      border-color: var(--gold); color: var(--gold);
+      background: var(--gold-subtle); transform: translateY(-2px);
+    }
+    .view-more-btn:active { transform: scale(0.97); }
+
+    /* Immersive slideshow Lightbox */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(12,12,20,0.98); backdrop-filter: blur(20px);
+      z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    
+    .lightbox-container {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 75vh; max-width: 1200px; padding: 0 64px;
+    }
+    .lightbox-img-wrap {
+      max-width: 100%; max-height: 100%; border-radius: var(--r-md);
+      overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1); background: #08080c;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox img {
+      max-width: 100%; max-height: 75vh; object-fit: contain;
+      opacity: 0; transform: scale(0.96) translateY(12px);
+      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+    .lightbox.active img { opacity: 1; transform: scale(1) translateY(0); }
+    
+    .lightbox-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 50%;
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s var(--ease-out); z-index: 10010;
+      user-select: none; -webkit-user-select: none;
+    }
+    .lightbox-arrow:hover { background: var(--gold); color: var(--white); border-color: var(--gold); transform: translateY(-50%) scale(1.08); }
+    .lightbox-arrow:active { transform: translateY(-50%) scale(0.95); }
+    .lightbox-arrow-left { left: 16px; }
+    .lightbox-arrow-right { right: 16px; }
+    
     .lightbox-close {
       position: absolute; top: 24px; right: 24px;
       width: 44px; height: 44px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 50%; color: var(--white);
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background 0.2s, transform 0.2s;
+      cursor: pointer; transition: all 0.25s var(--ease-out); z-index: 10020;
     }
-    .lightbox-close:hover { background: var(--gold); color: var(--ink); transform: rotate(90deg); }
+    .lightbox-close:hover { background: #dc2626; border-color: #dc2626; color: var(--white); transform: rotate(90deg); }
+    
+    .lightbox-footer { margin-top: 24px; text-align: center; color: var(--white); z-index: 10010; }
+    .lightbox-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+    .lightbox-counter { font-size: 0.75rem; color: var(--text-muted-dark); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* Custom Glassmorphism Filter Bar */
+    .filter-bar {
+      display: inline-flex; background: rgba(236, 238, 248, 0.6);
+      backdrop-filter: blur(10px); border: 1px solid var(--border);
+      border-radius: var(--r-pill); padding: 6px; margin-bottom: 56px;
+      gap: 4px; box-shadow: var(--shadow-sm); flex-wrap: wrap; justify-content: center;
+    }
+    .filter-btn {
+      background: transparent; border: none; color: var(--text-secondary);
+      font-size: 0.85rem; font-weight: 600; padding: 10px 22px;
+      border-radius: var(--r-pill); transition: all 0.25s var(--ease-out);
+      cursor: pointer;
+    }
+    .filter-btn:hover { color: var(--ink); background: rgba(0,0,0,0.03); }
+    .filter-btn.active { background: var(--white); color: var(--ink); box-shadow: var(--shadow-sm); }
   </style>
 </head>
 <body>
@@ -199,7 +278,7 @@
 
     <!-- ── GALLERY SECTION ── -->
     <section class="section">
-      <div class="container">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center;">
 
         <!-- FILTER BAR -->
         <div class="filter-bar" role="tablist" aria-label="Filter by brand">
@@ -211,152 +290,90 @@
           <button class="filter-btn" data-filter="shell" role="tab" aria-selected="false">Shell Vivo</button>
         </div>
 
-        <!--
-          COCA-COLA
-          Drive folder: 1KNzZTQUo9gJWvCWvRC_-VD5u7wrlkP1w
-          Images uploaded: 2
-        -->
-        <div class="brand-section reveal" data-brand="cocacola">
-          <div class="brand-header">
-            <div class="brand-title-wrap">
-              <div class="brand-dot" aria-hidden="true"></div>
-              <div class="brand-name">Coca-Cola</div>
-              <span class="brand-count">2 images</span>
-            </div>
-            <span class="brand-meta">Activations &amp; Merchandising</span>
-          </div>
-
-          <div class="gallery-grid">
-            <!-- Drive image: Cocacola/ASK_8339.jpg -->
-            <div class="gallery-item" role="button" tabindex="0" aria-label="View Fanta Snacking Campaign">
-              <img src="https://drive.google.com/uc?export=view&id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31"
-                   alt="Coca-Cola Activation — Fanta Snacking Campaign"
-                   loading="lazy"
-                   onerror="this.src='Images/Activations/ASK_8339.jpg'">
-              <div class="gallery-overlay" aria-hidden="true">
-                <span class="overlay-tag">Activation</span>
-                <div class="overlay-label">Fanta Snacking Campaign</div>
+        <div style="width: 100%;">
+          <!-- COCA-COLA -->
+          <div class="brand-section reveal" data-brand="cocacola">
+            <div class="brand-header">
+              <div class="brand-title-wrap">
+                <div class="brand-dot" aria-hidden="true"></div>
+                <div class="brand-name">Coca-Cola</div>
+                <span class="coke-badge">Coca-Cola</span>
               </div>
+              <span class="brand-meta">Activations &amp; Merchandising</span>
             </div>
-            <!-- Drive image: Featured Image/Cocacola/IMG_8257.jpg -->
-            <div class="gallery-item" role="button" tabindex="0" aria-label="View Fanta Cheza Schools Activations">
-              <img src="https://drive.google.com/uc?export=view&id=1tu3a2qV5M4_7m-tHwFW1J0Kus6CJ0jqb"
-                   alt="Coca-Cola — Fanta Cheza Schools Activations"
-                   loading="lazy"
-                   onerror="this.src='Images/Merchandising/IMG_8133.jpg'">
-              <div class="gallery-overlay" aria-hidden="true">
-                <span class="overlay-tag">Activation</span>
-                <div class="overlay-label">Fanta Cheza Schools Activations</div>
+            <div class="sub-filter-bar" data-brand="cocacola">
+              <button class="sub-filter-btn active" data-subfilter="all">All Campaigns</button>
+              <button class="sub-filter-btn" data-subfilter="activation">Activations</button>
+              <button class="sub-filter-btn" data-subfilter="merchandising">Merchandising</button>
+            </div>
+            <div class="gallery-grid" id="grid-cocacola"></div>
+            <div class="grid-actions" id="actions-cocacola"></div>
+          </div>
+
+          <!-- LATITUDE CHOCOLATE -->
+          <div class="brand-section reveal" data-brand="latitude">
+            <div class="brand-header">
+              <div class="brand-title-wrap">
+                <div class="brand-dot" aria-hidden="true"></div>
+                <div class="brand-name">Latitude Chocolate</div>
+                <img src="lato-logo.png" alt="Latitude Chocolate Logo" class="brand-logo-img">
               </div>
+              <span class="brand-meta">Meals on Wheels &amp; Distribution</span>
             </div>
-          </div>
-        </div>
-
-        <!--
-          LATITUDE CHOCOLATE
-          Drive folder: 1-9OavOOEO2fnDocagfhFqFNJvcsUCQsV
-          Status: PENDING — no images uploaded yet
-        -->
-        <div class="brand-section reveal" data-brand="latitude">
-          <div class="brand-header">
-            <div class="brand-title-wrap">
-              <div class="brand-dot" aria-hidden="true"></div>
-              <div class="brand-name">Latitude Chocolate</div>
-              <span class="brand-count pending">Pending images</span>
-            </div>
-            <span class="brand-meta">Activations &amp; Merchandising</span>
+            <div class="gallery-grid" id="grid-latitude"></div>
+            <div class="grid-actions" id="actions-latitude"></div>
           </div>
 
-          <div class="brand-pending-block">
-            <div class="brand-pending-icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="30" height="24" rx="3"/><circle cx="14" cy="19" r="4"/><path d="M5 29l8-8 5 5 5-4 12 11"/><path d="M30 9V5M20 9V5M10 9V5"/></svg>
+          <!-- UNILEVER -->
+          <div class="brand-section reveal" data-brand="unilever">
+            <div class="brand-header">
+              <div class="brand-title-wrap">
+                <div class="brand-dot" aria-hidden="true"></div>
+                <div class="brand-name">Unilever</div>
+                <img src="unilever_logo.png" alt="Unilever Logo" class="brand-logo-img">
+              </div>
+              <span class="brand-meta">Clean Ninja Schools &amp; Merchandising</span>
             </div>
-            <p><strong>Campaigns include:</strong> Meals on Wheels &amp; more.<br>Upload Latitude Chocolate campaign photos to the Drive folder below and they will appear here automatically once the site is updated.</p>
-            <a href="https://drive.google.com/drive/folders/1-9OavOOEO2fnDocagfhFqFNJvcsUCQsV" target="_blank" rel="noopener noreferrer" class="drive-link">
-              Open Drive Folder
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7h9M7.5 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!--
-          UNILEVER
-          Drive folder: 1V_QafM7CfeJAACGfm1UqvTvDKBVMzgLl
-          Status: PENDING — no images uploaded yet
-        -->
-        <div class="brand-section reveal" data-brand="unilever">
-          <div class="brand-header">
-            <div class="brand-title-wrap">
-              <div class="brand-dot" aria-hidden="true"></div>
-              <div class="brand-name">Unilever</div>
-              <span class="brand-count pending">Pending images</span>
+            <div class="sub-filter-bar" data-brand="unilever">
+              <button class="sub-filter-btn active" data-subfilter="all">All Campaigns</button>
+              <button class="sub-filter-btn" data-subfilter="activation">Activations</button>
+              <button class="sub-filter-btn" data-subfilter="merchandising">Merchandising</button>
             </div>
-            <span class="brand-meta">Merchandising &amp; Activations</span>
+            <div class="gallery-grid" id="grid-unilever"></div>
+            <div class="grid-actions" id="actions-unilever"></div>
           </div>
 
-          <div class="brand-pending-block">
-            <div class="brand-pending-icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="30" height="24" rx="3"/><circle cx="14" cy="19" r="4"/><path d="M5 29l8-8 5 5 5-4 12 11"/><path d="M30 9V5M20 9V5M10 9V5"/></svg>
+          <!-- UBL -->
+          <div class="brand-section reveal" data-brand="ubl">
+            <div class="brand-header">
+              <div class="brand-title-wrap">
+                <div class="brand-dot" aria-hidden="true"></div>
+                <div class="brand-name">UBL</div>
+                <img src="ubl-logo-enhanced.png" alt="UBL Logo" class="brand-logo-img">
+              </div>
+              <span class="brand-meta">Rwenzori Marathon &amp; School Campaigns</span>
             </div>
-            <p><strong>Campaigns include:</strong> Clean Ninja Schools Project &amp; more.<br>Upload Unilever campaign photos to the Drive folder below and they will appear here automatically once the site is updated.</p>
-            <a href="https://drive.google.com/drive/folders/1V_QafM7CfeJAACGfm1UqvTvDKBVMzgLl" target="_blank" rel="noopener noreferrer" class="drive-link">
-              Open Drive Folder
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7h9M7.5 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!--
-          UBL (Uganda Breweries)
-          Drive folder: 1KYE9faqkoGffyCPxLqR0iO2lWq0h06wh
-          Status: PENDING — no images uploaded yet
-        -->
-        <div class="brand-section reveal" data-brand="ubl">
-          <div class="brand-header">
-            <div class="brand-title-wrap">
-              <div class="brand-dot" aria-hidden="true"></div>
-              <div class="brand-name">UBL</div>
-              <span class="brand-count pending">Pending images</span>
-            </div>
-            <span class="brand-meta">Activations &amp; Distribution</span>
+            <div class="gallery-grid" id="grid-ubl"></div>
+            <div class="grid-actions" id="actions-ubl"></div>
           </div>
 
-          <div class="brand-pending-block">
-            <div class="brand-pending-icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="30" height="24" rx="3"/><circle cx="14" cy="19" r="4"/><path d="M5 29l8-8 5 5 5-4 12 11"/><path d="M30 9V5M20 9V5M10 9V5"/></svg>
+          <!-- SHELL VIVO -->
+          <div class="brand-section reveal" data-brand="shell">
+            <div class="brand-header">
+              <div class="brand-title-wrap">
+                <div class="brand-dot" aria-hidden="true"></div>
+                <div class="brand-name">Shell Vivo Energy</div>
+                <img src="Shell.png" alt="Shell Vivo Logo" class="brand-logo-img">
+              </div>
+              <span class="brand-meta">Forecourt Activations &amp; Merchandising</span>
             </div>
-            <p><strong>Campaigns include:</strong> Rwenzori Marathon, Back to School &amp; more.<br>Upload UBL campaign photos to the Drive folder below and they will appear here automatically once the site is updated.</p>
-            <a href="https://drive.google.com/drive/folders/1KYE9faqkoGffyCPxLqR0iO2lWq0h06wh" target="_blank" rel="noopener noreferrer" class="drive-link">
-              Open Drive Folder
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7h9M7.5 3l4 4-4 4"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!--
-          SHELL VIVO
-          Drive folder: 1Wk09FzVTjFarPugoy_syFIYiGOMtHnZN
-          Status: PENDING — no images uploaded yet
-        -->
-        <div class="brand-section reveal" data-brand="shell">
-          <div class="brand-header">
-            <div class="brand-title-wrap">
-              <div class="brand-dot" aria-hidden="true"></div>
-              <div class="brand-name">Shell Vivo</div>
-              <span class="brand-count pending">Pending images</span>
+            <div class="sub-filter-bar" data-brand="shell">
+              <button class="sub-filter-btn active" data-subfilter="all">All Campaigns</button>
+              <button class="sub-filter-btn" data-subfilter="activation">Activations</button>
+              <button class="sub-filter-btn" data-subfilter="merchandising">Merchandising</button>
             </div>
-            <span class="brand-meta">Activations &amp; Merchandising</span>
-          </div>
-
-          <div class="brand-pending-block">
-            <div class="brand-pending-icon" aria-hidden="true">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="30" height="24" rx="3"/><circle cx="14" cy="19" r="4"/><path d="M5 29l8-8 5 5 5-4 12 11"/><path d="M30 9V5M20 9V5M10 9V5"/></svg>
-            </div>
-            <p><strong>Campaigns include:</strong> Vivo Energy Forecourt Activations.<br>Upload Shell Vivo campaign photos to the Drive folder below and they will appear here automatically once the site is updated.</p>
-            <a href="https://drive.google.com/drive/folders/1Wk09FzVTjFarPugoy_syFIYiGOMtHnZN" target="_blank" rel="noopener noreferrer" class="drive-link">
-              Open Drive Folder
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7h9M7.5 3l4 4-4 4"/></svg>
-            </a>
+            <div class="gallery-grid" id="grid-shell"></div>
+            <div class="grid-actions" id="actions-shell"></div>
           </div>
         </div>
 
@@ -438,12 +455,26 @@
     </div>
   </footer>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 2l14 14M16 2L2 16"/></svg>
+  <!-- Lightbox Slideshow -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Campaign image slideshow">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close slideshow">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l14 14M16 2L2 16"/></svg>
     </button>
-    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" aria-label="Previous image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="lightbox-container">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+    </div>
+    <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" aria-label="Next image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="lightbox-footer">
+      <div class="lightbox-title" id="lightboxTitle"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
   </div>
 
   <!-- WhatsApp Float -->
@@ -452,47 +483,365 @@
   </a>
 
   <script>
-    // Brand filter
+    // Brand Gallery Data
+    const galleryData = [
+      {
+        id: "cocacola",
+        name: "Coca-Cola",
+        meta: "Activations & Merchandising",
+        images: [
+          { name: "ASK_7993.jpg", id: "1mAMyfYn_xL9h6Ua0oNHizFpo78wnpDPu", type: "activation", title: "Fanta Snacking Campaign" },
+          { name: "ASK_8003.jpg", id: "1j-iko37HgOKYl-4mqcBys751EIa2qy7m", type: "activation", title: "Fanta Snacking Campaign Activation" },
+          { name: "ASK_8157.jpg", id: "1PSHKXrFQqadUB9KPplE8WYo7aUF1IU9Y", type: "activation", title: "Fanta Snacking Retail Campaign" },
+          { name: "ASK_8274.jpg", id: "1Wr4lk5UBo2erCXd52E_F9nVsx5vot35U", type: "activation", title: "Fanta Roadshow Activations" },
+          { name: "GM-6.jpg", id: "1bbZW7QnTv5iwjKO5rtL8AhxYbT0D2HB1", type: "activation", title: "Coca-Cola Christmas Campaign" },
+          { name: "GM-10.jpg", id: "1l0k7hrdmazWD-GpMz7LV8rSPyT7tWa4I", type: "activation", title: "Coca-Cola Retail Experiential" },
+          { name: "GM-11.jpg", id: "10XM3tn0J6uZ7GilGEeOYyfk7213UCo2P", type: "activation", title: "Coke Studio Campus Activation" },
+          { name: "GM-14.jpg", id: "1dT-pqHszDQEC23c5vFUoACZF8fnzVTCP", type: "activation", title: "Coca-Cola Zero Sugar Launch" },
+          { name: "GM-23.jpg", id: "1FfZScRg7HBpaQkmqbJQBVoCSx_Z-_FHT", type: "activation", title: "Coca-Cola Zero Sugar Launch Activation" },
+          { name: "GM-41.jpg", id: "1VgkFMkM2ceAh-uZQYPNqIi7yNWAQXLsV", type: "activation", title: "Coca-Cola Plaza Experiential" },
+          { name: "GM-59.jpg", id: "1ccNoF2ZH-ydCyzgnX_363rFf417RUxW0", type: "activation", title: "Coca-Cola Caravan Tour" },
+          { name: "GM-64.jpg", id: "1Jjpg_WpI8UpUvp0jgN7KA02_S4zQVTph", type: "activation", title: "Coca-Cola Distribution Drive" },
+          { name: "GM-70.jpg", id: "1lDwNqoyNNHH0esW4t3W6pmu-yxuhFgG7", type: "activation", title: "Coca-Cola Caravan Roadshow" },
+          { name: "IMG_0036.JPG", id: "1xIj5WcFwf6ezzm5v8jxyqI9V6TUT4X5L", type: "activation", title: "Fanta Cheza Schools Activations" },
+          { name: "IMG_0050.JPG", id: "1gHSvLGAbWev_Zror4EaZI4QS67v7y3Xw", type: "activation", title: "Fanta Cheza School Dance Activations" },
+          { name: "IMG_0142.jpg", id: "13t5p3cTmfjIi40RGH2QnFhpwpfmP6_io", type: "activation", title: "Coca-Cola Food Festival Activation" },
+          { name: "IMG_0190.jpg", id: "17k_5q4P5kTJj6mDLQlqjMJM5ngKH2FoW", type: "activation", title: "Coca-Cola Campus Concert Activation" },
+          { name: "4.png", id: "1NaeGO0wIy-4fEv0qIStYOEWVAWp_zwv9", type: "merchandising", title: "Coca-Cola Store Planogram Compliance" },
+          { name: "IMG_8133.jpg", id: "1vjtdQAXioimw4vkg4vTrKVawzvb0YFD_", type: "merchandising", title: "Fanta Cheza Merchandising" },
+          { name: "IMG_8184.jpg", id: "1ymV8NXISZl5rsVqaHTzsA81z6fiO-C01", type: "merchandising", title: "Coca-Cola Supermarket Shelf Merchandising" },
+          { name: "IMG_8239.jpg", id: "1zHsIFqCzOeexPPLpaNdl7A80O37kX8Om", type: "merchandising", title: "Coca-Cola Retail Stand Display" }
+        ]
+      },
+      {
+        id: "latitude",
+        name: "Latitude Chocolate",
+        meta: "Meals on Wheels & Retails",
+        images: [
+          { name: "IMG_9100.jpg", id: "1GUdbBgsSTfGOU9RaigUSBJhP00TYgtDo", type: "activation", title: "Latitude Meals on Wheels Event" },
+          { name: "IMG_9103.jpg", id: "1CN-0UzabliTymEIp_kecIFcU9eikuqeq", type: "activation", title: "Latitude Chocolate Brand Activations" },
+          { name: "IMG_9128.jpg", id: "1k9bDTgxjaYuhBj3cpo1j0ScZhdp8knf7", type: "merchandising", title: "Latitude Chocolate Supermarket Display" },
+          { name: "IMG_9131.jpg", id: "15NTXOzbzlhVYlFKGqPmg4KDw_BkJOhol", type: "merchandising", title: "Latitude Chocolate POSM Placement" },
+          { name: "IMG_9140.jpg", id: "1Tx_XByaIcSS8ruPfiGVzt-3m4XKnzih_", type: "merchandising", title: "Latitude Chocolate Retail Shelf Setup" },
+          { name: "IMG_9153.jpg", id: "1T_iLUv_Lp7h_0KKhKp3GRsn5Hy2QJ0bU", type: "activation", title: "Latitude Chocolate Consumer Tasting" },
+          { name: "IMG_9177.jpg", id: "1KBiYc0dwdGfsNfFmGsWIso2mjS3hf_Uq", type: "activation", title: "Latitude Chocolate Pop-up Activation" },
+          { name: "IMG_9184.jpg", id: "17bncoA75hh0rXPdMhBCiTYIlWbpCTU2j", type: "activation", title: "Latitude Chocolate Meals on Wheels Setup" },
+          { name: "IMG_9187.jpg", id: "1fBsUtq_TRUZm61MyUqtDHHDbIzhSVcq2", type: "activation", title: "Latitude Meals on Wheels Roadshow" }
+        ]
+      },
+      {
+        id: "unilever",
+        name: "Unilever",
+        meta: "Clean Ninja Schools & Merchandising",
+        images: [
+          { name: "GM-28.jpg", id: "1QH6aIDXuwtsWpQqTk7OC2yQZBRfxaOgG", type: "activation", title: "Unilever Clean Ninja Schools Project" },
+          { name: "GM-49.jpg", id: "1q73yIbzdTZXSOF8JwiqujvF3d35sBuHC", type: "activation", title: "Unilever Omo School Washing Activations" },
+          { name: "GM-88.jpg", id: "1sD5THGA-hcg3WHW4W56SWubqaE9zYbnZ", type: "activation", title: "Unilever Geisha Schools Health Campaign" },
+          { name: "IMG_8983.jpg", id: "1duZeGkBR2v5IScfB_HbhA1QSaMkBs3Or", type: "activation", title: "Unilever Lifebuoy Hygiene Drive" },
+          { name: "IMG_8972.jpg", id: "15Wc_3UAVPQLKyKiMXqI6xjMdJzBejO3L", type: "merchandising", title: "Unilever Royco In-Store Merchandising" },
+          { name: "IMG_9003.jpg", id: "1bEdRvWtFmky3cN_dvclKjfaEXkMYBxHR", type: "merchandising", title: "Unilever Omo End-Cap Display" },
+          { name: "IMG_9012.jpg", id: "16bQ3SdA8u1Tg07tjXRAaBfOhf6GhrJL4", type: "merchandising", title: "Unilever Blue Band Shelf Display" },
+          { name: "IMG_9045.jpg", id: "1FezemIhOGOvE5uUsjTVpk7J_HpbCkcTU", type: "merchandising", title: "Unilever Sunlight Category Shelf Setup" },
+          { name: "IMG_9056.jpg", id: "1psAEag1BHsdYIrwxIy1Ww5SJ1ZTQEyKn", type: "merchandising", title: "Unilever Lifebuoy Soap Retail Counter" },
+          { name: "IMG_9066.jpg", id: "1R1W-8Lccpdq_G_4cqnXU811Njq7Qqp-k", type: "merchandising", title: "Unilever Vaseline Promotional Bay" }
+        ]
+      },
+      {
+        id: "ubl",
+        name: "UBL",
+        meta: "Marathon & School Campaigns",
+        images: [
+          { name: "IMG_3474.jpg", id: "12Qxm7xgTTeYRSxqA3pqWrnWNc9eOww5-", type: "activation", title: "UBL Rwenzori Marathon Activation" },
+          { name: "IMG_3486.jpg", id: "1oSaHfWGQkG73V9V-xnh3_e0qDqW1tJJh", type: "activation", title: "UBL Rwenzori Marathon Branding" },
+          { name: "IMG_3492.jpg", id: "1Ssd1N4OKqUfH8WjoNIYawVtdKhzwU0eE", type: "activation", title: "UBL Rwenzori Marathon Experience" },
+          { name: "IMG_3500.jpg", id: "1n0napyexKvPOilWTxh13AI5L0jJkZscD", type: "activation", title: "UBL Back to School Campaign" },
+          { name: "IMG_3514.jpg", id: "1tMpPKV5DiQUf7ZUITScF1pcCg9X8d-rZ", type: "activation", title: "UBL Back to School Activation Event" },
+          { name: "IMG_3522.jpg", id: "1lYwKE3s7hzUuGDyq23cMbE1DTsma4wDO", type: "activation", title: "UBL Senator Beer Market Activation" },
+          { name: "IMG_3528.jpg", id: "184iE79SA8GUgbJbhSxYldEO-IgDSsTrq", type: "activation", title: "UBL Bell Lager Concert Activation" }
+        ]
+      },
+      {
+        id: "shell",
+        name: "Shell Vivo",
+        meta: "Forecourt Activations & Merchandising",
+        images: [
+          { name: "GM-1.jpg", id: "12Jk8LpG-TQ0H7K0sy9xgttZP1AKrH52Y", type: "activation", title: "Vivo Energy Shell Forecourt Activation" },
+          { name: "GM-2.jpg", id: "1AKITaz89s1vLWcz93PZeGXSUlw3hV9EO", type: "activation", title: "Shell Helix Lubricant Promotion" },
+          { name: "GM-3.jpg", id: "1azkXTXKdrsfNMTxLhxThszgu852xyOr1", type: "activation", title: "Shell Fuel Discount Campaign" },
+          { name: "GM-4.jpg", id: "1EluGosJGRioG_g4xAYM_05i9ERCeh0WS", type: "activation", title: "Shell Fuel Save Launch" },
+          { name: "GM-5.jpg", id: "1RGykIrA5kypnirnYVsscY76A4pz2gntH", type: "activation", title: "Shell Fuel Save Customer Engagement" },
+          { name: "GM-6.jpg", id: "1EejIuqNVxL0soXrYNaX5sJfpv-jSLs-1", type: "activation", title: "Shell Club Card Registration Drive" },
+          { name: "GM-7.jpg", id: "1S_xm-x-tDjqDhWe_YnXxVgoD-yxxxpY6", type: "activation", title: "Shell Club Rewards Activation" },
+          { name: "GM-8.jpg", id: "1OiErKzp79it0VCcb9Y98qEI4qHOC4GRj", type: "activation", title: "Vivo Energy Gas Launch Promo" },
+          { name: "GM-9.jpg", id: "1gPkXfxPrBklY-L4doNcx0Bc-JJs57Aiw", type: "activation", title: "Shell Gas Cylinder Activations" },
+          { name: "GM-10.jpg", id: "1Mm7r4dMaqz-7QdxepTpzLkYaT4If0Uu_", type: "activation", title: "Shell Helix Mechanics Training Event" },
+          { name: "GM-11.jpg", id: "1WbFb5N1FWklb8UD1K6vDL7IqNpx7tvul", type: "activation", title: "Shell Helix Mechanics Workshop" },
+          { name: "GM-12.jpg", id: "1TXED50jj09q2gZ8YjnT_Zl4pY0HcWIEr", type: "activation", title: "Shell Helix Mechanics Rewards Activations" },
+          { name: "GM-13.jpg", id: "1dAZ8P3LOjGjm4giZPMaxDO8kObBCP8e1", type: "activation", title: "Shell Fuel Save Roadshow Activation" },
+          { name: "GM-14.jpg", id: "17tCDzYFsfhEufNdULo6tFJcLhTPeGKx4", type: "activation", title: "Shell Fuel Save Roadshow Concert" },
+          { name: "GM-15.jpg", id: "122ytWqfNj2vAzcR9k0QzFoFJ8hmsit8k", type: "activation", title: "Vivo Energy Shell Select Store Launch" },
+          { name: "GM-16.jpg", id: "12le0QpiUQZ1KzVIrhSnYlmNjhXfmN4-_", type: "activation", title: "Shell Select Cafe Customer Experience" },
+          { name: "GM-17.jpg", id: "1H3WGp6grVjs7ykNAVbmBRq6E4iAKzNul", type: "activation", title: "Shell Select Store Opening Event" },
+          { name: "GM-18.jpg", id: "17GJG3qhubJQ25dUxBEU61LSppGRi_TZV", type: "activation", title: "Shell Select Store In-Store Tasting" },
+          { name: "GM-19.jpg", id: "1Y3Bfi0_TLoCiZYdE8Q-XGNZ8aSikOnZs", type: "activation", title: "Shell Forecourt Fuel Promo Activations" },
+          { name: "GM-1.jpg", id: "1gYZOHoGl4l-a9X4WdKDszzkN76JWBSA7", type: "merchandising", title: "Shell Select Store Merchandising Compliance" },
+          { name: "GM-5.jpg", id: "1_AcBJKbed8lI1fkAkfbI3isSmgt8YX9j", type: "merchandising", title: "Shell Helix Lubricants Shelf Display" },
+          { name: "GM-7.jpg", id: "1TaGatT7hf2aL-l3QgCEB7yogZB-JeA8F", type: "merchandising", title: "Shell Gas Cylinder Display Stand" },
+          { name: "GM-23.jpg", id: "12pIfeyc7PuxTeBu0v4uk2NHGoszAZ694", type: "merchandising", title: "Shell Select Store Beverage Coolers Planogram" },
+          { name: "GM-25.jpg", id: "1EWpV-TvgyDiF_vA6C4phU1wLkaFrA-FJ", type: "merchandising", title: "Shell Select Store Confectionery Shelves" }
+        ]
+      }
+    ];
+
+    // State
+    const state = {
+      mainFilter: 'all',
+      brandSubFilters: {
+        cocacola: 'all',
+        unilever: 'all',
+        shell: 'all'
+      },
+      expandedBrands: {
+        cocacola: false,
+        latitude: false,
+        unilever: false,
+        ubl: false,
+        shell: false
+      },
+      lightboxActiveIndex: 0,
+      lightboxImages: []
+    };
+
+    // Render helper
+    function getFilteredImages(brandId) {
+      const brand = galleryData.find(b => b.id === brandId);
+      if (!brand) return [];
+      const subfilter = state.brandSubFilters[brandId] || 'all';
+      if (subfilter === 'all') {
+        return brand.images;
+      }
+      return brand.images.filter(img => img.type === subfilter);
+    }
+
+    function renderGrids() {
+      galleryData.forEach(brand => {
+        const grid = document.getElementById(`grid-${brand.id}`);
+        const actions = document.getElementById(`actions-${brand.id}`);
+        if (!grid) return;
+
+        const allFiltered = getFilteredImages(brand.id);
+        const isExpanded = state.expandedBrands[brand.id];
+        
+        // Curate list based on expansion (6 items max by default)
+        const visibleImages = isExpanded ? allFiltered : allFiltered.slice(0, 6);
+
+        // Generate HTML
+        let html = '';
+        visibleImages.forEach((img, idx) => {
+          const thumbUrl = `https://drive.google.com/thumbnail?id=${img.id}&sz=w800`;
+          const tagLabel = img.type === 'activation' ? 'Activation' : 'Merchandising';
+          
+          html += `
+            <div class="gallery-item" role="button" tabindex="0" aria-label="View ${img.title}" 
+                 data-brand-id="${brand.id}" data-image-index="${idx}">
+              <img src="${thumbUrl}" alt="${brand.name} — ${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
+              <div class="gallery-overlay" aria-hidden="true">
+                <span class="overlay-tag">${tagLabel}</span>
+                <div class="overlay-label">${img.title}</div>
+              </div>
+            </div>
+          `;
+        });
+        
+        if (allFiltered.length === 0) {
+          grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 48px 0;">No campaigns found in this category.</p>';
+        } else {
+          grid.innerHTML = html;
+        }
+
+        // View More button logic
+        if (allFiltered.length > 6) {
+          actions.innerHTML = `
+            <button class="view-more-btn">
+              <span>${isExpanded ? 'Show Less' : `+ View More (${allFiltered.length - 6} more)`}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: ${isExpanded ? 'rotate(180deg)' : 'none'}; transition: transform 0.2s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          `;
+          const btn = actions.querySelector('.view-more-btn');
+          btn.addEventListener('click', () => {
+            state.expandedBrands[brand.id] = !state.expandedBrands[brand.id];
+            renderGrids();
+          });
+        } else {
+          actions.innerHTML = '';
+        }
+      });
+
+      // Bind click handlers to gallery items
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const brandId = item.dataset.brandId;
+          const index = parseInt(item.dataset.imageIndex, 10);
+          openSlideshow(brandId, index);
+        });
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const brandId = item.dataset.brandId;
+            const index = parseInt(item.dataset.imageIndex, 10);
+            openSlideshow(brandId, index);
+          }
+        });
+      });
+    }
+
+    // Lightbox & Slideshow logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxNextBtn = document.getElementById('lightboxNext');
+    const lightboxPrevBtn = document.getElementById('lightboxPrev');
+
+    function openSlideshow(brandId, index) {
+      state.lightboxImages = getFilteredImages(brandId);
+      state.lightboxActiveIndex = index;
+      
+      updateSlideshow();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function updateSlideshow() {
+      const img = state.lightboxImages[state.lightboxActiveIndex];
+      if (!img) return;
+
+      lightboxImg.style.opacity = '0';
+      lightboxImg.style.transform = 'scale(0.96) translateY(12px)';
+      
+      const highResUrl = `https://drive.google.com/uc?export=view&id=${img.id}`;
+      
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        lightboxImg.src = highResUrl;
+        lightboxImg.alt = img.title;
+        lightboxImg.style.opacity = '1';
+        lightboxImg.style.transform = 'scale(1) translateY(0)';
+      };
+      tempImg.src = highResUrl;
+
+      lightboxTitle.textContent = img.title;
+      lightboxCounter.textContent = `Campaign Image ${state.lightboxActiveIndex + 1} of ${state.lightboxImages.length}`;
+    }
+
+    function slideshowNext() {
+      if (state.lightboxImages.length === 0) return;
+      state.lightboxActiveIndex = (state.lightboxActiveIndex + 1) % state.lightboxImages.length;
+      updateSlideshow();
+    }
+
+    function slideshowPrev() {
+      if (state.lightboxImages.length === 0) return;
+      state.lightboxActiveIndex = (state.lightboxActiveIndex - 1 + state.lightboxImages.length) % state.lightboxImages.length;
+      updateSlideshow();
+    }
+
+    function closeSlideshow() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    lightboxClose.addEventListener('click', closeSlideshow);
+    lightboxNextBtn.addEventListener('click', e => { e.stopPropagation(); slideshowNext(); });
+    lightboxPrevBtn.addEventListener('click', e => { e.stopPropagation(); slideshowPrev(); });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-container') || e.target.classList.contains('lightbox-img-wrap')) {
+        closeSlideshow();
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeSlideshow();
+      if (e.key === 'ArrowRight' || e.key === 'd') slideshowNext();
+      if (e.key === 'ArrowLeft' || e.key === 'a') slideshowPrev();
+    });
+
+    // Touch Swipe Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    lightbox.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 50) {
+        if (swipeDistance > 0) {
+          slideshowPrev();
+        } else {
+          slideshowNext();
+        }
+      }
+    }
+
+    // Main Brand Tabs Filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const brandSections = document.querySelectorAll('.brand-section');
+    
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
         btn.classList.add('active');
         btn.setAttribute('aria-selected', 'true');
+        
         const filter = btn.dataset.filter;
         brandSections.forEach(sec => {
-          sec.classList.toggle('hidden', filter !== 'all' && sec.dataset.brand !== filter);
+          const brandId = sec.dataset.brand;
+          if (filter === 'all' || brandId === filter) {
+            sec.style.display = 'block';
+            sec.classList.remove('hidden');
+          } else {
+            sec.style.display = 'none';
+            sec.classList.add('hidden');
+          }
         });
       });
     });
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    const openLightbox = (src, alt) => {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      lightboxClose.focus();
-    };
-    const closeLightbox = () => {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    };
-
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      const img = item.querySelector('img');
-      item.addEventListener('click', () => openLightbox(img.src, img.alt));
-      item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img.src, img.alt); } });
+    // Local Sub-filtering setup
+    document.querySelectorAll('.sub-filter-bar').forEach(bar => {
+      const brandId = bar.dataset.brand;
+      const btns = bar.querySelectorAll('.sub-filter-btn');
+      
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          state.brandSubFilters[brandId] = btn.dataset.subfilter;
+          state.expandedBrands[brandId] = false;
+          renderGrids();
+        });
+      });
     });
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    // Initial Setup
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGrids();
+    });
   </script>
   <script src="js/main.js?v=3.0"></script>
 </body>
