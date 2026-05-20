@@ -167,7 +167,6 @@ function initHeroTyping() {
   const LINE1     = 'We put your brand';
   const LINE2     = 'in the room.';
   const SPEED_H1  = 38;
-  const SPEED_SUB = 14;
 
   /* Phrases that replace the <em> every 20 s — max ~14 chars */
   const PHRASES   = [
@@ -179,10 +178,6 @@ function initHeroTyping() {
   ];
   let phraseIdx = 0;
   const ROTATE_INTERVAL = 20000;
-
-  const subText = heroSub
-    ? heroSub.textContent.trim().replace(/\s+/g, ' ')
-    : '';
 
   heroTitle.innerHTML = '';
 
@@ -218,9 +213,7 @@ function initHeroTyping() {
     } else {
       setTimeout(function () {
         cursor.classList.add('typing-cursor-fade');
-        if (heroSub && subText) {
-          setTimeout(function () { typeSubText(heroSub, subText, SPEED_SUB); }, 200);
-        }
+        setTimeout(function () { cursor.remove(); }, 550);
         /* Start phrase rotation after typing finishes */
         startPhraseRotation(em);
       }, 420);
@@ -246,35 +239,6 @@ function initHeroTyping() {
         setTimeout(function () { em.classList.remove('phrase-in'); }, 450);
       }, 300);
     }, ROTATE_INTERVAL);
-  }
-
-  function typeSubText(el, text, speed) {
-    const subHeight = el.offsetHeight;
-    el.style.minHeight = subHeight + 'px';
-
-    el.innerHTML = '';
-    el.style.opacity = '1';
-
-    const textNode  = document.createTextNode('');
-    const subCursor = document.createElement('span');
-    subCursor.className = 'typing-cursor typing-cursor--sm';
-    el.appendChild(textNode);
-    el.appendChild(subCursor);
-
-    let i = 0;
-    function typeChar() {
-      if (i < text.length) {
-        textNode.textContent = text.slice(0, ++i);
-        setTimeout(typeChar, speed);
-      } else {
-        setTimeout(function () {
-          subCursor.classList.add('typing-cursor-fade');
-          el.style.minHeight = '';
-          setTimeout(function () { subCursor.remove(); }, 600);
-        }, 500);
-      }
-    }
-    typeChar();
   }
 
   /* No label stagger delay needed anymore — start sooner */
