@@ -27,13 +27,17 @@
     'Images/Activations/GM-41.jpg',
   ];
 
-  /* 5-cell layout — cell 0 spans rows 1-2 (tall anchor) */
+  /* 9-cell balanced layout for a 3x4 grid */
   const LAYOUT = [
-    { rowSpan: 2 },
-    { rowSpan: 1 },
-    { rowSpan: 1 },
-    { rowSpan: 1 },
-    { rowSpan: 1 },
+    { rowSpan: 2, colSpan: 1 }, // Cell 0: tall left
+    { rowSpan: 1, colSpan: 1 }, // Cell 1: row 1, col 2
+    { rowSpan: 1, colSpan: 1 }, // Cell 2: row 1, col 3
+    { rowSpan: 2, colSpan: 1 }, // Cell 3: tall right
+    { rowSpan: 1, colSpan: 1 }, // Cell 4: row 2, col 2
+    { rowSpan: 1, colSpan: 1 }, // Cell 5: row 3, col 1
+    { rowSpan: 1, colSpan: 1 }, // Cell 6: row 3, col 2
+    { rowSpan: 1, colSpan: 2 }, // Cell 7: wide bottom-left
+    { rowSpan: 1, colSpan: 1 }, // Cell 8: bottom-right
   ];
 
   const KB = ['kb-0', 'kb-1', 'kb-2', 'kb-3'];
@@ -45,15 +49,29 @@
     LAYOUT.forEach(function (def, i) {
       const cell = document.createElement('div');
       cell.className = 'hero-grid-cell';
-      if (def.rowSpan === 2) cell.style.gridRow = 'span 2';
+      if (def.rowSpan > 1) cell.style.gridRow = 'span ' + def.rowSpan;
+      if (def.colSpan > 1) cell.style.gridColumn = 'span ' + def.colSpan;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'hero-grid-img-wrap';
 
       const inner = document.createElement('div');
       inner.className = 'hero-grid-img ' + KB[i % KB.length];
-      inner.style.backgroundImage = 'url(' + shuffled[i % shuffled.length] + ')';
+      const imgSrc = shuffled[i % shuffled.length];
+      inner.style.backgroundImage = 'url(' + imgSrc + ')';
+      
+      // Override background position for specific images to crop out top-cut text banners
+      if (imgSrc.includes('GM-1.jpg')) {
+        inner.style.backgroundPosition = 'center 85%';
+      } else if (imgSrc.includes('IMG_9100.jpg')) {
+        inner.style.backgroundPosition = 'center bottom';
+      }
+
       inner.style.animationDuration = (16 + Math.random() * 10).toFixed(1) + 's';
       inner.style.animationDelay = '-' + (Math.random() * 20).toFixed(1) + 's';
 
-      cell.appendChild(inner);
+      wrap.appendChild(inner);
+      cell.appendChild(wrap);
       GRID_EL.appendChild(cell);
       cells.push({ cell: cell });
     });

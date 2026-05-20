@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -143,10 +143,10 @@
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav class="site-nav" id="siteNav" role="navigation" aria-label="Main navigation">
-    <div class="nav-inner container">
-      <a href="index.html" class="nav-logo" aria-label="Golden Marketing Uganda home">
+  <!-- ── NAVBAR ── -->
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Golden Marketing Home">
         <img src="gm22.png" alt="Golden Marketing Uganda" width="140" height="40" loading="eager">
       </a>
 
@@ -171,12 +171,15 @@
         </li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
-        <li><a href="contact.html" class="btn btn-primary btn-sm">Get a Proposal</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm mobile-only-cta">Get a Proposal</a></li>
       </ul>
 
-      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span>
-      </button>
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-sm desktop-only-cta">Get a Proposal</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -449,22 +452,6 @@
   </a>
 
   <script>
-    document.getElementById('footerYear').textContent = new Date().getFullYear();
-
-    // Dropdown toggle
-    document.querySelectorAll('.nav-dropdown-trigger').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
-        btn.setAttribute('aria-expanded', String(!expanded));
-      });
-    });
-    document.addEventListener('click', e => {
-      if (!e.target.closest('.nav-dropdown')) {
-        document.querySelectorAll('.nav-dropdown-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
-      }
-    });
-
     // Brand filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const brandSections = document.querySelectorAll('.brand-section');

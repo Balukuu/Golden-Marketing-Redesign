@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -24,34 +24,37 @@
   <!-- ── NAVBAR ── -->
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Golden Marketing">
-        <img src="gm22.png" alt="Golden Marketing" height="32">
+      <a href="index.html" class="nav-logo" aria-label="Golden Marketing Home">
+        <img src="gm22.png" alt="Golden Marketing Uganda" width="140" height="40" loading="eager">
       </a>
-      <div class="nav-links" id="navLinks">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="our-work.html" class="nav-link">Our Work</a>
-        <div class="nav-dropdown">
-          <button class="nav-link nav-dropdown-trigger" aria-expanded="false">
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="our-work.html" class="nav-link">Our Work</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
             What We Do
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <div class="nav-dropdown-panel">
-            <a href="services/merchandising.html">Merchandising</a>
-            <a href="services/field-activations.html">Field Activations</a>
-            <a href="services/dynamic-roadshows.html">Dynamic Roadshows</a>
-            <a href="services/events-management.html">Events Management</a>
-            <a href="services/field-automation-surveys.html">Field Intelligence</a>
-            <a href="services/retail-audit.html">Retail Audit</a>
-            <a href="services/distribution-sales.html">Distribution &amp; Sales</a>
-            <a href="services/strategy.html">Strategy</a>
+          <div class="nav-dropdown-panel" role="menu">
+            <a href="services/merchandising.html" role="menuitem">Merchandising</a>
+            <a href="services/field-activations.html" role="menuitem">Field Activations</a>
+            <a href="services/dynamic-roadshows.html" role="menuitem">Dynamic Roadshows</a>
+            <a href="services/events-management.html" role="menuitem">Events Management</a>
+            <a href="services/field-automation-surveys.html" role="menuitem">Field Automation &amp; Surveys</a>
+            <a href="services/retail-audit.html" role="menuitem">Retail Audit</a>
+            <a href="services/distribution-sales.html" role="menuitem">Distribution &amp; Sales</a>
+            <a href="services/strategy.html" role="menuitem">Strategy &amp; Consulting</a>
           </div>
-        </div>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </div>
+        </li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="contact.html" class="btn btn-primary btn-sm mobile-only-cta">Get a Proposal</a></li>
+      </ul>
+
       <div class="nav-actions">
-        <a href="contact.html" class="btn btn-primary btn-sm">Get a Proposal</a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+        <a href="contact.html" class="btn btn-primary btn-sm desktop-only-cta">Get a Proposal</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span>
         </button>
       </div>
@@ -67,7 +70,7 @@
             We put your brand<br>
             <em>in the room.</em>
           </h1>
-          <p class="hero-sub hero-stagger-3" style="animation:none;opacity:0;">
+          <p class="hero-sub hero-stagger-3">
             Trusted by 50+ global brands to drive visibility,
             activations, and growth across East Africa's 6 key markets.
           </p>
@@ -145,33 +148,49 @@
   <div class="rule"></div>
 
   <!-- ── WHAT WE DO — 3 PILLARS ── -->
-  <section class="section section-surface">
+  <section class="section section-dark pillars-section">
     <div class="container">
-      <div class="section-header">
-        <span class="label">What Sets Us Apart</span>
-        <h2 class="section-title">Built for African markets.</h2>
+      <div class="pillars-intro reveal">
+        <span class="pillars-eyebrow">What Sets Us Apart</span>
+        <h2 class="pillars-heading">Built for<br>African markets.</h2>
+        <p class="pillars-sub">Three core advantages that make Golden Marketing the partner global brands choose when entering East Africa.</p>
       </div>
       <div class="pillars-grid">
         <div class="pillar reveal">
+          <span class="pillar-num" aria-hidden="true">01</span>
           <div class="pillar-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <h3>Pan-African Reach</h3>
           <p>Ground-level teams across 6 countries who know the market, the culture, and the consumer.</p>
+          <div class="pillar-stat">
+            <span class="pillar-stat-num">6</span>
+            <span class="pillar-stat-label">Countries Covered</span>
+          </div>
         </div>
         <div class="pillar reveal delay-100">
+          <span class="pillar-num" aria-hidden="true">02</span>
           <div class="pillar-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
           </div>
           <h3>Real-Time Intelligence</h3>
           <p>Every visit, every shelf, every activation — GPS-verified and reported live to your dashboard.</p>
+          <div class="pillar-stat">
+            <span class="pillar-stat-num">100%</span>
+            <span class="pillar-stat-label">GPS Verified</span>
+          </div>
         </div>
         <div class="pillar reveal delay-200">
+          <span class="pillar-num" aria-hidden="true">03</span>
           <div class="pillar-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3>Elite Field Teams</h3>
           <p>2,000+ rigorously trained merchandisers, promoters, and field agents representing your brand.</p>
+          <div class="pillar-stat">
+            <span class="pillar-stat-num">2,000+</span>
+            <span class="pillar-stat-label">Active Field Agents</span>
+          </div>
         </div>
       </div>
     </div>
@@ -437,7 +456,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2025 Golden Marketing Limited</span>
+        <span>&copy; <span id="footerYear">2025</span> Golden Marketing Limited</span>
         <span><a href="https://blactec.ug" target="_blank" rel="noopener">Designed by BlacTec</a></span>
       </div>
     </div>

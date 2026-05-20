@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const formData = new FormData(form);
           const name = formData.get('name') || '';
           const company = formData.get('company') || '';
+          const phone = formData.get('phone') || '';
+          const email = formData.get('email') || '';
           const service = formData.get('service') || '';
           const message = formData.get('message') || '';
 
@@ -38,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
           let waMessage = `Hi Golden Marketing, I'd like to get a proposal.\n\n`;
           if (name) waMessage += `*Name:* ${name}\n`;
           if (company) waMessage += `*Company:* ${company}\n`;
+          if (phone) waMessage += `*Phone:* ${phone}\n`;
+          if (email) waMessage += `*Email:* ${email}\n`;
           if (service) waMessage += `*Service:* ${service}\n`;
           if (message) waMessage += `*Message:* ${message}\n`;
 
@@ -59,4 +63,43 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 1000);
       });
   });
+
+  // Pre-fill form from query params (e.g. contact.html?role=promoter)
+  const params = new URLSearchParams(window.location.search);
+  const role = params.get('role');
+  if (role) {
+    const serviceSelect = document.getElementById('service');
+    const messageTextarea = document.getElementById('message');
+    
+    // Nice role names mapping
+    const rolesMap = {
+      'field-sales': 'Field Sales Agent',
+      'promoter': 'Brand Promoter',
+      'supervisor': 'Field Supervisor',
+      'coordinator': 'Project Coordinator'
+    };
+    
+    const roleTitle = rolesMap[role] || role.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    
+    // Pre-fill the project textarea
+    if (messageTextarea) {
+      messageTextarea.value = `Hi Golden Marketing team,\n\nI am writing to apply for the ${roleTitle} position advertised on your Careers page. Please find my credentials attached/details below.`;
+    }
+    
+    // Select the "Careers / Job Application" option if it exists, otherwise fallback to "Multiple Services"
+    if (serviceSelect) {
+      // Let's look for a careers option
+      let careersOption = Array.from(serviceSelect.options).find(opt => opt.value.toLowerCase().includes('career'));
+      if (careersOption) {
+        serviceSelect.value = careersOption.value;
+      } else {
+        // Create the careers option dynamically if it is not present
+        const opt = document.createElement('option');
+        opt.value = 'Careers / Job Application';
+        opt.textContent = 'Careers / Job Application';
+        serviceSelect.appendChild(opt);
+        serviceSelect.value = 'Careers / Job Application';
+      }
+    }
+  }
 });

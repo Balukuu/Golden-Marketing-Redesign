@@ -104,23 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ── LEGACY: Mobile Menu Toggle (#menuToggle) ──
-  const menuToggle = document.getElementById('menuToggle');
-  const legacyNav  = menuToggle ? document.getElementById('navLinks') : null;
-  if (menuToggle && legacyNav && !hamburger) {
-    menuToggle.addEventListener('click', () => {
-      legacyNav.classList.toggle('active');
-      const spans = menuToggle.querySelectorAll('span');
-      const open  = legacyNav.classList.contains('active');
-      spans[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
-      if (spans[1]) spans[1].style.opacity = open ? '0' : '1';
-      if (spans[2]) spans[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
-    });
-    legacyNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (legacyNav.classList.contains('active')) menuToggle.click();
-      });
-    });
+  // ── Footer Copyright Year ──
+  const footerYear = document.getElementById('footerYear');
+  if (footerYear) {
+    footerYear.textContent = new Date().getFullYear().toString();
   }
 
   // ── Active Nav Link ──
@@ -167,7 +154,6 @@ function initHeroTyping() {
   const LINE1     = 'We put your brand';
   const LINE2     = 'in the room.';
   const SPEED_H1  = 38;
-  const SPEED_SUB = 14;
 
   /* Phrases that replace the <em> every 20 s — max ~14 chars */
   const PHRASES   = [
@@ -179,10 +165,6 @@ function initHeroTyping() {
   ];
   let phraseIdx = 0;
   const ROTATE_INTERVAL = 20000;
-
-  const subText = heroSub
-    ? heroSub.textContent.trim().replace(/\s+/g, ' ')
-    : '';
 
   heroTitle.innerHTML = '';
 
@@ -218,9 +200,7 @@ function initHeroTyping() {
     } else {
       setTimeout(function () {
         cursor.classList.add('typing-cursor-fade');
-        if (heroSub && subText) {
-          setTimeout(function () { typeSubText(heroSub, subText, SPEED_SUB); }, 200);
-        }
+        setTimeout(function () { cursor.remove(); }, 550);
         /* Start phrase rotation after typing finishes */
         startPhraseRotation(em);
       }, 420);
@@ -246,35 +226,6 @@ function initHeroTyping() {
         setTimeout(function () { em.classList.remove('phrase-in'); }, 450);
       }, 300);
     }, ROTATE_INTERVAL);
-  }
-
-  function typeSubText(el, text, speed) {
-    const subHeight = el.offsetHeight;
-    el.style.minHeight = subHeight + 'px';
-
-    el.innerHTML = '';
-    el.style.opacity = '1';
-
-    const textNode  = document.createTextNode('');
-    const subCursor = document.createElement('span');
-    subCursor.className = 'typing-cursor typing-cursor--sm';
-    el.appendChild(textNode);
-    el.appendChild(subCursor);
-
-    let i = 0;
-    function typeChar() {
-      if (i < text.length) {
-        textNode.textContent = text.slice(0, ++i);
-        setTimeout(typeChar, speed);
-      } else {
-        setTimeout(function () {
-          subCursor.classList.add('typing-cursor-fade');
-          el.style.minHeight = '';
-          setTimeout(function () { subCursor.remove(); }, 600);
-        }, 500);
-      }
-    }
-    typeChar();
   }
 
   /* No label stagger delay needed anymore — start sooner */
