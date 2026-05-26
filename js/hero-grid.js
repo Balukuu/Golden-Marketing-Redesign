@@ -12,19 +12,23 @@
   const GRID_EL = document.querySelector('.hero-animated-grid');
   if (!GRID_EL) return;
 
+  // On mobile/tablet (≤1024px) the grid is rendered as a faint background texture
+  // at opacity 0.14. Skip loading 12 Drive images to save ~1.2 MB on mobile.
+  if (window.matchMedia('(max-width: 1024px)').matches) return;
+
   const POOL = [
-    'Images/Activations/GM-28.jpg',
-    'Images/Merchandising/GM-1.jpg',
-    'Images/Activations/ASK_8274.jpg',
-    'Images/Activations/GM-64.jpg',
-    'Images/Activations/GM-70.jpg',
-    'Images/Merchandising/IMG_9003.jpg',
-    'Images/Activations/GM-88.jpg',
-    'Images/Activations/ASK_8157.jpg',
-    'Images/Activations/GM-49.jpg',
-    'Images/Merchandising/IMG_9100.jpg',
-    'Images/Activations/IMG_0142.jpg',
-    'Images/Activations/GM-41.jpg',
+    'https://drive.google.com/thumbnail?id=1QH6aIDXuwtsWpQqTk7OC2yQZBRfxaOgG&sz=w1000', // GM-28.jpg
+    'https://drive.google.com/thumbnail?id=1gYZOHoGl4l-a9X4WdKDszzkN76JWBSA7&sz=w1000', // GM-1.jpg
+    'https://drive.google.com/thumbnail?id=1Wr4lk5UBo2erCXd52E_F9nVsx5vot35U&sz=w1000', // ASK_8274.jpg
+    'https://drive.google.com/thumbnail?id=1Jjpg_WpI8UpUvp0jgN7KA02_S4zQVTph&sz=w1000', // GM-64.jpg
+    'https://drive.google.com/thumbnail?id=1lDwNqoyNNHH0esW4t3W6pmu-yxuhFgG7&sz=w1000', // GM-70.jpg
+    'https://drive.google.com/thumbnail?id=1bEdRvWtFmky3cN_dvclKjfaEXkMYBxHR&sz=w1000', // IMG_9003.jpg
+    'https://drive.google.com/thumbnail?id=1sD5THGA-hcg3WHW4W56SWubqaE9zYbnZ&sz=w1000', // GM-88.jpg
+    'https://drive.google.com/thumbnail?id=1PSHKXrFQqadUB9KPplE8WYo7aUF1IU9Y&sz=w1000', // ASK_8157.jpg
+    'https://drive.google.com/thumbnail?id=1q73yIbzdTZXSOF8JwiqujvF3d35sBuHC&sz=w1000', // GM-49.jpg
+    'https://drive.google.com/thumbnail?id=1GUdbBgsSTfGOU9RaigUSBJhP00TYgtDo&sz=w1000', // IMG_9100.jpg
+    'https://drive.google.com/thumbnail?id=13t5p3cTmfjIi40RGH2QnFhpwpfmP6_io&sz=w1000', // IMG_0142.jpg
+    'https://drive.google.com/thumbnail?id=1VgkFMkM2ceAh-uZQYPNqIi7yNWAQXLsV&sz=w1000', // GM-41.jpg
   ];
 
   /* 9-cell balanced layout for a 3x4 grid */
@@ -61,9 +65,9 @@
       inner.style.backgroundImage = 'url(' + imgSrc + ')';
       
       // Override background position for specific images to crop out top-cut text banners
-      if (imgSrc.includes('GM-1.jpg')) {
+      if (imgSrc.includes('1gYZOHoGl4l-a9X4WdKDszzkN76JWBSA7')) {
         inner.style.backgroundPosition = 'center 85%';
-      } else if (imgSrc.includes('IMG_9100.jpg')) {
+      } else if (imgSrc.includes('1GUdbBgsSTfGOU9RaigUSBJhP00TYgtDo')) {
         inner.style.backgroundPosition = 'center bottom';
       }
 

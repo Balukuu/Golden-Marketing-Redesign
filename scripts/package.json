@@ -1,0 +1,12 @@
+{
+  "name": "gm-linkedin-sync",
+  "version": "1.0.0",
+  "description": "LinkedIn post sync script for Golden Marketing Uganda website",
+  "scripts": {
+    "sync": "node sync-linkedin.js",
+    "install-browser": "npx playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.44.0"
+  }
+}
