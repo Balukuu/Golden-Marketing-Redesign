@@ -149,6 +149,8 @@
 
   .brand-pending-block { padding: 32px 24px; }
   .impact-stat { padding: 24px 20px; }
+  .careers-grid { grid-template-columns: 1fr; }
+  .featured-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
 
   /* About page */
   .about-intro-stats .impact-stats { grid-template-columns: repeat(4, 1fr); }
@@ -195,5 +197,25 @@
   .related-services { grid-template-columns: 1fr; }
   .stat-number { font-size: 2rem; }
   .careers-grid { grid-template-columns: 1fr; }
-  .news-grid { grid-template-columns: 1fr; }
+
+  /* Service page */
+  .service-page-grid { gap: 32px; }
+
+  /* Featured work grid on small phones */
+  .featured-grid { gap: 16px; }
+}
+
+/* ============================================================
+   VERY SMALL MOBILE ≤ 360px
+   ============================================================ */
+@media (max-width: 360px) {
+  :root {
+    --text-hero: clamp(1.7rem, 9vw, 2.4rem);
+    --pad-x: 16px;
+  }
+
+  .btn-lg { padding: 13px 24px; font-size: 0.95rem; }
+  .pillars-grid { gap: 10px; }
+  .pillar { padding: 28px 20px 24px; }
+  .impact-stat { padding: 20px 14px; }
 }
