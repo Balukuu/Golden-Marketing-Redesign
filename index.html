@@ -80,25 +80,61 @@
           </div>
           <div class="hero-micro-stats hero-stagger-5" style="animation-delay:1.8s;">
             <div class="micro-stat">
-              <span class="micro-num">13+</span>
+              <span class="micro-num" data-target="13">0</span>
               <span class="micro-label">Years</span>
             </div>
             <div class="micro-divider"></div>
             <div class="micro-stat">
-              <span class="micro-num">6</span>
+              <span class="micro-num" data-target="6">0</span>
               <span class="micro-label">Countries</span>
             </div>
             <div class="micro-divider"></div>
             <div class="micro-stat">
-              <span class="micro-num">50+</span>
+              <span class="micro-num" data-target="50">0</span>
               <span class="micro-label">Brands</span>
             </div>
             <div class="micro-divider"></div>
             <div class="micro-stat">
-              <span class="micro-num">2,000+</span>
+              <span class="micro-num" data-target="2000">0</span>
               <span class="micro-label">Field Agents</span>
             </div>
           </div>
+
+          <script>
+            const observerOptions = { threshold: 0.5 };
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  const nums = document.querySelectorAll('.micro-num[data-target]');
+                  nums.forEach(num => {
+                    if (!num.dataset.animated) {
+                      animateCounter(num);
+                      num.dataset.animated = 'true';
+                    }
+                  });
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, observerOptions);
+
+            function animateCounter(element) {
+              const target = parseInt(element.dataset.target);
+              const increment = Math.ceil(target / 60);
+              let current = 0;
+              
+              const interval = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  element.textContent = (target === 13 ? '13+' : target === 50 ? '50+' : target === 2000 ? '2,000+' : target);
+                  clearInterval(interval);
+                } else {
+                  element.textContent = current;
+                }
+              }, 30);
+            }
+
+            observer.observe(document.querySelector('.hero-micro-stats'));
+          </script>
         </div>
         <div class="hero-visual">
           <div class="hero-animated-grid">
@@ -295,7 +331,7 @@
       </div>
       <div class="work-grid">
         <a href="our-work.html" class="work-card card reveal">
-          <div class="work-card-img" style="background-image:url('https://drive.google.com/uc?export=view&id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31'); background-color:var(--surface-2);"></div>
+          <div class="work-card-img" style="background-image:url('https://drive.google.com/thumbnail?id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31&sz=w1000');"></div>
           <div class="work-card-body">
             <div class="work-card-meta">
               <span class="work-tag">Activations</span>
