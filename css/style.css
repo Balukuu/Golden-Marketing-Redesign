@@ -1034,7 +1034,7 @@ blockquote {
 .author-role-sm { font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 2px; }
 
 /* ============================================================
-   CTA BAND
+   CTA BAND — light (service pages)
    ============================================================ */
 .cta-band { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .cta-band-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
