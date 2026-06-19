@@ -20,6 +20,220 @@
   <link rel="stylesheet" href="../css/style.css?v=3.0">
   <link rel="stylesheet" href="../css/animations.css?v=3.0">
   <link rel="stylesheet" href="../css/responsive.css?v=3.0">
+  <style>
+    /* Local style overrides for field activations premium polish */
+    .page-hero-image {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      padding: 80px 0;
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(12,12,12,0.85) 0%, rgba(12,12,12,0.4) 100%);
+      z-index: 1;
+    }
+    .page-hero-inner-light { position: relative; z-index: 2; }
+    .page-hero-inner-light .eyebrow { color: var(--gold-on-dark) !important; }
+    .page-hero-inner-light .page-hero-title { color: var(--white) !important; }
+    .page-hero-inner-light .page-hero-subtitle { color: rgba(255,255,255,0.75) !important; }
+    
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: var(--r-pill);
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      color: var(--text-secondary);
+      font-family: var(--font-ui);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .filter-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
+      background: var(--surface);
+      transform: translateY(-1px);
+    }
+    .filter-btn.active {
+      background: var(--ink);
+      color: var(--white);
+      border-color: var(--ink);
+      box-shadow: 0 4px 12px rgba(30, 30, 46, 0.15);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .gallery-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+    .gallery-item {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      transition: transform var(--duration-med) var(--ease-out), box-shadow var(--duration-med) var(--ease-out);
+      aspect-ratio: 4/3;
+    }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--duration-slow) var(--ease-out);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity var(--duration-med) var(--ease-out);
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    
+    .overlay-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: var(--r-pill);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+      align-self: flex-start;
+    }
+    .overlay-label {
+      color: var(--white);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      line-height: 1.3;
+    }
+
+    /* Shimmer */
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 37%, var(--surface) 63%);
+      background-size: 400% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+    }
+    @keyframes skeleton-loading {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Actions */
+    .grid-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+    }
+    .view-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border: 1.5px dashed var(--border-strong);
+      border-radius: var(--r-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+    }
+    .view-more-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-subtle);
+      transform: translateY(-2px);
+    }
+    .view-more-btn:active { transform: scale(0.97); }
+
+    /* Lightbox slideshow overrides */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(12,12,20,0.98); backdrop-filter: blur(20px);
+      z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    
+    .lightbox-container {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 75vh; max-width: 1200px; padding: 0 64px;
+    }
+    .lightbox-img-wrap {
+      max-width: 100%; max-height: 100%; border-radius: var(--r-lg);
+      overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.1); background: #08080c;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox img {
+      max-width: 100%; max-height: 75vh; object-fit: contain;
+      opacity: 0; transform: scale(0.96) translateY(12px);
+      transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    }
+    .lightbox.active img { opacity: 1; transform: scale(1) translateY(0); }
+    
+    .lightbox-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 52px; height: 52px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 50%;
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s var(--ease-out); z-index: 10010;
+      user-select: none;
+    }
+    .lightbox-arrow:hover { background: var(--gold); color: var(--white); border-color: var(--gold); transform: translateY(-50%) scale(1.08); }
+    .lightbox-arrow:active { transform: translateY(-50%) scale(0.95); }
+    .lightbox-arrow-left { left: 16px; }
+    .lightbox-arrow-right { right: 16px; }
+    
+    .lightbox-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%; color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.25s var(--ease-out); z-index: 10020;
+    }
+    .lightbox-close:hover { background: #dc2626; border-color: #dc2626; color: var(--white); transform: rotate(90deg); }
+    
+    .lightbox-footer { margin-top: 24px; text-align: center; color: var(--white); z-index: 10010; }
+    .lightbox-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+    .lightbox-counter { font-size: 0.75rem; color: var(--text-muted-dark); letter-spacing: 0.05em; text-transform: uppercase; }
+  </style>
 </head>
 <body>
 
@@ -66,9 +280,10 @@
   <main>
 
     <!-- ── PAGE HERO ── -->
-    <section class="page-hero section-surface">
+    <section class="page-hero page-hero-image" style="background-image: url('https://drive.google.com/uc?export=view&id=1TR5jQxzMQHQCgKY9C-eb74h-09cZw-xP');">
+      <div class="page-hero-overlay"></div>
       <div class="container">
-        <div class="page-hero-inner">
+        <div class="page-hero-inner page-hero-inner-light">
           <p class="eyebrow reveal">Service</p>
           <h1 class="page-hero-title reveal delay-100">Field Activations</h1>
           <p class="page-hero-subtitle reveal delay-200">We take your brand off the shelf and put it directly in the hands of consumers. Sampling events, demonstrations, and experiential campaigns that drive trial and loyalty.</p>
@@ -160,18 +375,23 @@
 
     <!-- ── PHOTO GALLERY ── -->
     <section class="section">
-      <div class="container">
-        <div class="section-header reveal">
+      <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="section-header reveal text-center" style="margin-bottom: 32px;">
           <p class="eyebrow">In the field</p>
           <h2 class="section-title">Activations in action</h2>
         </div>
-        <div class="photo-gallery">
-          <div class="photo-item reveal"><img src="https://drive.google.com/thumbnail?id=1TR5jQxzMQHQCgKY9C-eb74h-09cZw-xP&sz=w800" alt="Royco sampling activation — consumer product demonstration" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
-          <div class="photo-item reveal delay-100"><img src="https://drive.google.com/uc?export=view&id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31" alt="Fanta activation — consumer engagement" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
-          <div class="photo-item reveal delay-200"><img src="https://drive.google.com/uc?export=view&id=1tu3a2qV5M4_7m-tHwFW1J0Kus6CJ0jqb" alt="Field brand ambassador sampling event" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
-          <div class="photo-item reveal delay-100"><img src="https://drive.google.com/thumbnail?id=1mAMyfYn_xL9h6Ua0oNHizFpo78wnpDPu&sz=w800" alt="Schools activation programme" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
-          <div class="photo-item reveal delay-200"><img src="https://drive.google.com/thumbnail?id=1j-iko37HgOKYl-4mqcBys751EIa2qy7m&sz=w800" alt="Consumer product demonstration" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
-          <div class="photo-item reveal delay-300"><img src="https://drive.google.com/thumbnail?id=1PSHKXrFQqadUB9KPplE8WYo7aUF1IU9Y&sz=w800" alt="Brand ambassador team at activation site" loading="lazy" onerror="this.closest('.photo-item').style.background='var(--surface)'"></div>
+
+        <!-- Brand filter bar -->
+        <div class="filter-bar" role="tablist" aria-label="Filter activations by brand">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Campaigns</button>
+          <button class="filter-btn" data-filter="royco" role="tab" aria-selected="false">Royco</button>
+          <button class="filter-btn" data-filter="pepsodent" role="tab" aria-selected="false">Pepsodent</button>
+          <button class="filter-btn" data-filter="omo" role="tab" aria-selected="false">Omo</button>
+        </div>
+
+        <div style="width: 100%;">
+          <div class="gallery-grid" id="activations-gallery"></div>
+          <div class="grid-actions" id="gallery-actions"></div>
         </div>
       </div>
     </section>
@@ -275,6 +495,228 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
   </a>
 
+  <!-- Lightbox Slideshow -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Campaign image slideshow">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close slideshow">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 2l14 14M16 2L2 16"/></svg>
+    </button>
+    <button class="lightbox-arrow lightbox-arrow-left" id="lightboxPrev" aria-label="Previous image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <div class="lightbox-container">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+    </div>
+    <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" aria-label="Next image">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    <div class="lightbox-footer">
+      <div class="lightbox-title" id="lightboxTitle"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
+
   <script src="../js/main.js?v=3.0"></script>
+  
+  <script>
+    // Field Activations Gallery Data (from Drive link)
+    const galleryData = [
+      { name: "_MG_0002.jpg", id: "1TR5jQxzMQHQCgKY9C-eb74h-09cZw-xP", brand: "royco", title: "Royco Taste of Beans Experiential Activation" },
+      { name: "_MG_0006.jpg", id: "1rLHidERZwfRgHSLIuRDY1UnP7yRhGaKU", brand: "royco", title: "Royco Brand Ambassador In-Store Sampling" },
+      { name: "_MG_0010.jpg", id: "1DWPkcmJSA3zrfXf1H6hEtDrLLVkOYIi0", brand: "royco", title: "Royco Consumer Product Demonstration" },
+      { name: "_MG_0013.jpg", id: "1nhv1VlbPlpxMmtU2_IKdsujHhMU0eEI0", brand: "royco", title: "Royco Brand Ambassador Team" },
+      { name: "_MG_0016.jpg", id: "1u0rOyAJMdg5Vp4-0JMhS_KScHWXF8NUW", brand: "royco", title: "Royco Experiential Truck Setup" },
+      { name: "_MG_0042.jpg", id: "1FJ4qYbRCRkBrFvQqDDneSqhAygNPk2Wk", brand: "royco", title: "Royco Mobile Demonstration Unit" },
+      { name: "_MG_0062.jpg", id: "1xMWnBHjVrTg1deD8tV4vv_KtOnYaTlof", brand: "pepsodent", title: "Pepsodent Dental Checkup Station" },
+      { name: "_MG_0066.jpg", id: "18-IFeoJoKpW8kqsfyRE-ItxDRZuYcCgV", brand: "pepsodent", title: "Pepsodent School Hygiene Campaign" },
+      { name: "_MG_0068.jpg", id: "1vM5VnG8Vf_qkSTMQgtyv1i7NQBIqw8T1", brand: "pepsodent", title: "Pepsodent Brushing Demo Station" },
+      { name: "_MG_0082.jpg", id: "1c26DQE4pcApdkA2zRFJlE3JvOI8Jl-aP", brand: "pepsodent", title: "Pepsodent Free Dental Checkup Event" },
+      { name: "_MG_0113.jpg", id: "1LdXI-jS3za4x3EtHE7LjuMKhB2Ztkj4Q", brand: "pepsodent", title: "Pepsodent School Engagement Programme" },
+      { name: "_MG_0150.jpg", id: "1-NzZjw1Q1bU0nesEVOGPKipKfXDorFaQ", brand: "omo", title: "Omo School Washing Activation Challenge" },
+      { name: "_MG_0219.jpg", id: "1uXBTmcSgBF79EaJgLljPtPxto62Vnrv3", brand: "omo", title: "Omo School Washing Demonstration Day" },
+      { name: "_MG_0408.jpg", id: "1SriZQ0RdIgTzlo8XdFwMmwRS4GhCY5oD", brand: "omo", title: "Omo On-ground Washing Campaign Event" }
+    ];
+
+    // Gallery state
+    const state = {
+      filter: 'all',
+      expanded: false,
+      lightboxIndex: 0,
+      lightboxImages: []
+    };
+
+    // Render function
+    function renderGallery() {
+      const grid = document.getElementById('activations-gallery');
+      const actions = document.getElementById('gallery-actions');
+      if (!grid) return;
+
+      // Filter images
+      const filtered = state.filter === 'all' 
+        ? galleryData 
+        : galleryData.filter(img => img.brand === state.filter);
+
+      // Determine visible chunk (default 6, or all if expanded)
+      const visibleCount = state.expanded ? filtered.length : 6;
+      const visible = filtered.slice(0, visibleCount);
+
+      // Build HTML
+      let html = '';
+      visible.forEach((img, idx) => {
+        const thumbUrl = `https://drive.google.com/thumbnail?id=${img.id}&sz=w800`;
+        html += `
+          <div class="gallery-item reveal" role="button" tabindex="0" aria-label="View ${img.title}" 
+               data-index="${idx}">
+            <img src="${thumbUrl}" alt="${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
+            <div class="gallery-overlay" aria-hidden="true">
+              <span class="overlay-tag">Activation</span>
+              <div class="overlay-label">${img.title}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-tertiary); padding: 48px 0;">No campaigns found in this category.</p>';
+      } else {
+        grid.innerHTML = html;
+      }
+
+      // Render View More actions
+      if (filtered.length > 6) {
+        actions.innerHTML = `
+          <button class="view-more-btn">
+            <span>${state.expanded ? 'Show Less' : `+ View More (${filtered.length - 6} more)`}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: ${state.expanded ? 'rotate(180deg)' : 'none'}; transition: transform 0.2s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        `;
+        const btn = actions.querySelector('.view-more-btn');
+        btn.addEventListener('click', () => {
+          state.expanded = !state.expanded;
+          renderGallery();
+        });
+      } else {
+        actions.innerHTML = '';
+      }
+
+      // Re-bind click event handlers
+      grid.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.dataset.index, 10);
+          openLightbox(filtered, idx);
+        });
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const idx = parseInt(item.dataset.index, 10);
+            openLightbox(filtered, idx);
+          }
+        });
+      });
+
+      // Trigger Scroll Reveal for any new images
+      if (typeof window.initReveal === 'function') {
+        window.initReveal();
+      }
+    }
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+
+    function openLightbox(images, index) {
+      state.lightboxImages = images;
+      state.lightboxIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    function updateLightbox() {
+      const img = state.lightboxImages[state.lightboxIndex];
+      if (!img) return;
+
+      lightboxImg.style.opacity = '0';
+      lightboxImg.style.transform = 'scale(0.96) translateY(12px)';
+      
+      const highResUrl = `https://drive.google.com/uc?export=view&id=${img.id}`;
+      
+      const temp = new Image();
+      temp.onload = () => {
+        lightboxImg.src = highResUrl;
+        lightboxImg.alt = img.title;
+        lightboxImg.style.opacity = '1';
+        lightboxImg.style.transform = 'scale(1) translateY(0)';
+      };
+      temp.src = highResUrl;
+
+      lightboxTitle.textContent = img.title;
+      lightboxCounter.textContent = `Image ${state.lightboxIndex + 1} of ${state.lightboxImages.length}`;
+    }
+
+    function nextSlide() {
+      if (state.lightboxImages.length === 0) return;
+      state.lightboxIndex = (state.lightboxIndex + 1) % state.lightboxImages.length;
+      updateLightbox();
+    }
+
+    function prevSlide() {
+      if (state.lightboxImages.length === 0) return;
+      state.lightboxIndex = (state.lightboxIndex - 1 + state.lightboxImages.length) % state.lightboxImages.length;
+      updateLightbox();
+    }
+
+    // Event bindings
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxNext.addEventListener('click', nextSlide);
+    lightboxPrev.addEventListener('click', prevSlide);
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Close on clicking backdrop (outside image wrap)
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-container')) {
+        closeLightbox();
+      }
+    });
+
+    // Brand filter click bindings
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        state.filter = btn.dataset.filter;
+        state.expanded = false; // Reset fold on filter change
+        renderGallery();
+      });
+    });
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGallery();
+    });
+  </script>
 </body>
 </html>
