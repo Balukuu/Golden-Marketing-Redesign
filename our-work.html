@@ -14,8 +14,9 @@
 
   <!--
     IMAGE SOURCE POLICY
-    All images sourced from: https://drive.google.com/drive/folders/1xUGSd29346dPaFvZOj01dm6p89xzhhzz
-    Format: https://drive.google.com/uc?export=view&id=FILE_ID
+    Images are stored locally in the /images folder (downloaded from Google Drive).
+    Original Drive source: https://drive.google.com/drive/folders/1xUGSd29346dPaFvZOj01dm6p89xzhhzz
+    Local path format: images/FILE_ID.jpg  (FILE_ID is the original Drive file ID)
 
     Drive folders (brand → Drive folder ID):
       Cocacola       → 1KNzZTQUo9gJWvCWvRC_-VD5u7wrlkP1w  [IMAGES AVAILABLE]
@@ -29,7 +30,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css?v=3.0">
   <link rel="stylesheet" href="css/animations.css?v=3.0">
@@ -288,7 +289,7 @@
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Golden Marketing Home">
-        <img src="gm22.png" alt="Golden Marketing Uganda" width="140" height="40" loading="eager">
+        <img decoding="async" src="gm22.png" alt="Golden Marketing Uganda" width="140" height="40" loading="eager">
       </a>
 
       <ul class="nav-links" id="navLinks" role="list">
@@ -327,7 +328,7 @@
   <main>
 
     <!-- ── PAGE HERO ── -->
-    <section class="page-hero page-hero-image" style="background-image: url('https://drive.google.com/uc?export=view&id=1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31');">
+    <section class="page-hero page-hero-image" style="background-image: url('images/1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31.jpg');">
       <div class="page-hero-overlay"></div>
       <div class="container">
         <div class="page-hero-inner page-hero-inner-light">
@@ -359,7 +360,7 @@
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">Coca-Cola</div>
-                <img src="century.png" alt="Century Logo" class="brand-logo-img">
+                <img loading="lazy" decoding="async" src="century.png" alt="Century Logo" class="brand-logo-img">
               </div>
               <span class="brand-meta">Activations &amp; Merchandising</span>
             </div>
@@ -378,7 +379,7 @@
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">Latitude Chocolate</div>
-                <img src="lato-logo.png" alt="Latitude Chocolate Logo" class="brand-logo-img">
+                <img loading="lazy" decoding="async" src="lato-logo.png" alt="Latitude Chocolate Logo" class="brand-logo-img">
               </div>
               <span class="brand-meta">Meals on Wheels &amp; Distribution</span>
             </div>
@@ -392,7 +393,7 @@
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">Unilever</div>
-                <img src="unilever_logo.png" alt="Unilever Logo" class="brand-logo-img">
+                <img loading="lazy" decoding="async" src="unilever_logo.png" alt="Unilever Logo" class="brand-logo-img">
               </div>
               <span class="brand-meta">Clean Ninja Schools &amp; Merchandising</span>
             </div>
@@ -411,7 +412,7 @@
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">UBL</div>
-                <img src="ubl-logo-enhanced.png" alt="UBL Logo" class="brand-logo-img">
+                <img loading="lazy" decoding="async" src="ubl-logo-enhanced.png" alt="UBL Logo" class="brand-logo-img">
               </div>
               <span class="brand-meta">Rwenzori Marathon &amp; School Campaigns</span>
             </div>
@@ -425,7 +426,7 @@
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">Shell Vivo Energy</div>
-                <img src="Shell.png" alt="Shell Vivo Logo" class="brand-logo-img">
+                <img loading="lazy" decoding="async" src="Shell.png" alt="Shell Vivo Logo" class="brand-logo-img">
               </div>
               <span class="brand-meta">Forecourt Activations &amp; Merchandising</span>
             </div>
@@ -468,7 +469,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" aria-label="Home">
-            <img src="gm22.png" alt="Golden Marketing" class="footer-logo">
+            <img loading="lazy" decoding="async" src="gm22.png" alt="Golden Marketing" class="footer-logo">
           </a>
           <p>East Africa's field marketing agency.<br>Uganda &middot; Kenya &middot; Tanzania &middot; Zambia &middot; Rwanda &middot; Mozambique</p>
                     <div class="footer-socials">
@@ -532,7 +533,7 @@
     </button>
     <div class="lightbox-container">
       <div class="lightbox-img-wrap">
-        <img id="lightboxImg" src="" alt="">
+        <img loading="lazy" decoding="async" id="lightboxImg" src="" alt="">
       </div>
     </div>
     <button class="lightbox-arrow lightbox-arrow-right" id="lightboxNext" aria-label="Next image">
@@ -705,13 +706,13 @@
         // Generate HTML
         let html = '';
         visibleImages.forEach((img, idx) => {
-          const thumbUrl = `https://drive.google.com/thumbnail?id=${img.id}&sz=w800`;
+          const thumbUrl = `images/thumbs/${img.id}.jpg`;
           const tagLabel = img.type === 'activation' ? 'Activation' : 'Merchandising';
           
           html += `
             <div class="gallery-item" role="button" tabindex="0" aria-label="View ${img.title}" 
                  data-brand-id="${brand.id}" data-image-index="${idx}">
-              <img src="${thumbUrl}" alt="${brand.name} — ${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
+              <img decoding="async" src="${thumbUrl}" alt="${brand.name} — ${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
               <div class="gallery-overlay" aria-hidden="true">
                 <span class="overlay-tag">${tagLabel}</span>
                 <div class="overlay-label">${img.title}</div>
@@ -788,7 +789,7 @@
       lightboxImg.style.opacity = '0';
       lightboxImg.style.transform = 'scale(0.96) translateY(12px)';
       
-      const highResUrl = `https://drive.google.com/uc?export=view&id=${img.id}`;
+      const highResUrl = `images/${img.id}.jpg`;
       
       const tempImg = new Image();
       tempImg.onload = () => {
