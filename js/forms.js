@@ -36,31 +36,32 @@ document.addEventListener('DOMContentLoaded', () => {
           const service = formData.get('service') || '';
           const message = formData.get('message') || '';
 
-          // Format WhatsApp message
-          let waMessage = `Hi Golden Marketing, I'd like to get a proposal.\n\n`;
-          if (name) waMessage += `*Name:* ${name}\n`;
-          if (company) waMessage += `*Company:* ${company}\n`;
-          if (phone) waMessage += `*Phone:* ${phone}\n`;
-          if (email) waMessage += `*Email:* ${email}\n`;
-          if (service) waMessage += `*Service:* ${service}\n`;
-          if (message) waMessage += `*Message:* ${message}\n`;
+          // Compose email
+          const recipient = 'office@goldenmarketing.co.ug';
+          const subject = `Proposal request${service ? ' — ' + service : ''}${company ? ' (' + company + ')' : ''}`;
+          let body = `Hi Golden Marketing,\n\nI'd like to request a proposal.\n\n`;
+          if (name) body += `Name: ${name}\n`;
+          if (company) body += `Company: ${company}\n`;
+          if (phone) body += `Phone: ${phone}\n`;
+          if (email) body += `Email: ${email}\n`;
+          if (service) body += `Service: ${service}\n`;
+          if (message) body += `\nMessage:\n${message}\n`;
 
-          const encodedMessage = encodeURIComponent(waMessage);
-          const whatsappUrl = `https://wa.me/256393112860?text=${encodedMessage}`;
+          const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
           // Visual feedback
           const submitBtn = form.querySelector('button[type="submit"]');
           const originalText = submitBtn.innerText;
-          submitBtn.innerText = 'Redirecting to WhatsApp...';
+          submitBtn.innerText = 'Opening your email app...';
           submitBtn.style.opacity = '0.7';
 
-          // Open WhatsApp
+          // Open the user's email client with the message pre-filled
           setTimeout(() => {
-              window.open(whatsappUrl, '_blank');
+              window.location.href = mailtoUrl;
               submitBtn.innerText = originalText;
               submitBtn.style.opacity = '1';
               form.reset();
-          }, 1000);
+          }, 800);
       });
   });
 
