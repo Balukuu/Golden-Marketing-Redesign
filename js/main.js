@@ -83,17 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('navHamburger');
   const navLinks  = document.getElementById('navLinks');
   if (hamburger && navLinks) {
+    // Inject a close (X) button into the mobile menu overlay
+    let closeBtn = navLinks.querySelector('.nav-close');
+    if (!closeBtn) {
+      closeBtn = document.createElement('button');
+      closeBtn.className = 'nav-close';
+      closeBtn.type = 'button';
+      closeBtn.setAttribute('aria-label', 'Close menu');
+      closeBtn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+      navLinks.prepend(closeBtn);
+    }
+
+    const collapseDropdowns = () => {
+      navLinks.querySelectorAll('.nav-dropdown-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    };
+    const closeMenu = () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      collapseDropdowns();
+    };
+
     hamburger.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
+      if (!open) collapseDropdowns();
     });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      });
+    closeBtn.addEventListener('click', closeMenu);
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
     });
   }
 

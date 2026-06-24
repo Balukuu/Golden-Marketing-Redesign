@@ -1,30 +1,18 @@
 /* Golden Marketing Uganda — Responsive v3.0 */
 
+/* Mobile-menu close button is hidden until the menu overlay is open */
+.nav-close { display: none; }
+
 /* ============================================================
    TABLET ≤ 1024px
    ============================================================ */
 @media (max-width: 1024px) {
   .services-grid  { grid-template-columns: repeat(2,1fr); }
   .impact-layout  { grid-template-columns: 1fr; gap: 48px; }
-  .hero-layout    { grid-template-columns: 1fr; min-height: auto; padding: 64px 0; position: relative; }
-  .hero-visual {
-    display: block !important;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.14;
-    filter: grayscale(100%) contrast(70%) brightness(110%);
-    pointer-events: none;
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
-  }
-  .hero-float-card { display: none !important; }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-  }
+  /* Keep the full desktop side-by-side hero (text + collage) on tablets/laptops */
+  .hero-layout    { grid-template-columns: 1fr 1.12fr; gap: clamp(20px, 3.5vw, 44px); padding: 56px 0; }
+  .hero-visual    { height: min(760px, calc(100vh - 120px)); }
+  .hero-sub       { max-width: none; }
   .work-grid      { grid-template-columns: 1fr 1fr; }
   .pillars-grid   { grid-template-columns: 1fr 1fr; }
   .pillars-intro  { grid-template-columns: 1fr 1fr; }
@@ -53,6 +41,30 @@
 @media (max-width: 768px) {
   :root { --pad-section: 56px; }
 
+  /* Hero collapses to single column with collage as a soft, clean backdrop */
+  .hero-layout { grid-template-columns: 1fr; gap: 0; padding: 56px 0; position: relative; }
+  .hero-visual {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin-right: 0;
+    z-index: 0;
+    opacity: 0.09;
+    filter: grayscale(100%) contrast(65%) brightness(112%) blur(3px);
+    pointer-events: none;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+  .hero-float-card { display: none !important; }
+  /* Centered hero content on phones */
+  .hero-content { position: relative; z-index: 2; text-align: center; }
+  .hero-title { text-align: center; }
+  .hero-sub { max-width: 460px; margin-left: auto; margin-right: auto; }
+  .hero-ctas { justify-content: center; }
+  .hero-micro-stats { justify-content: center; }
+
   /* Nav */
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
@@ -72,22 +84,61 @@
     flex-direction: column;
     position: fixed;
     inset: 0;
-    background: var(--ink);
-    z-index: 99;
-    padding: 80px 28px 40px;
-    gap: 4px;
-    align-items: flex-start;
+    background: linear-gradient(180deg, var(--ink) 0%, #14141f 100%);
+    z-index: 101;
+    padding: 84px 24px 32px;
+    gap: 2px;
+    align-items: stretch;
+    overflow-y: auto;
     animation: navOpen var(--duration-med) var(--ease-out);
   }
-  .nav-links.open .nav-link {
-    font-size: 1.5rem;
+  /* Close (X) button injected into the overlay */
+  .nav-close {
+    position: absolute;
+    top: 11px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.85);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  }
+  .nav-close:hover { background: rgba(255,255,255,0.1); color: var(--gold); transform: rotate(90deg); }
+  .nav-close:active { transform: rotate(90deg) scale(0.94); }
+
+  .nav-links.open > li { width: 100%; }
+  .nav-links.open .nav-link,
+  .nav-links.open .nav-dropdown-trigger {
+    font-size: 1.2rem;
     font-weight: 500;
-    padding: 12px 0;
+    padding: 16px 4px;
     border-radius: 0;
     width: 100%;
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.82);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
   }
+  .nav-links.open .nav-link.active { color: var(--gold); }
   .nav-links.open .nav-link:hover { background: none; color: var(--gold); }
+
+  /* Dropdown as a collapsible accordion */
+  .nav-links.open .nav-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+  }
+  .nav-links.open .nav-dropdown-trigger svg {
+    display: block;
+    transition: transform var(--duration-med) var(--ease-out);
+  }
+  .nav-links.open .nav-dropdown-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .nav-links.open .nav-dropdown-trigger[aria-expanded="true"] { color: var(--gold); }
   .nav-links.open .nav-dropdown-panel {
     position: static;
     opacity: 1;
@@ -95,23 +146,40 @@
     transform: none;
     box-shadow: none;
     border: none;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.04);
     border-radius: var(--r-md);
-    padding: 8px 0;
-    margin: 4px 0 8px;
     min-width: unset;
     width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 8px;
+    margin: 0;
+    transition: max-height var(--duration-med) var(--ease-out), padding var(--duration-med) var(--ease-out), margin var(--duration-med) var(--ease-out);
+  }
+  .nav-links.open .nav-dropdown-trigger[aria-expanded="true"] + .nav-dropdown-panel {
+    max-height: 520px;
+    padding: 6px 8px;
+    margin: 6px 0 8px;
   }
   .nav-links.open .nav-dropdown-panel a {
-    font-size: 1rem;
-    padding: 10px 16px;
+    font-size: 0.98rem;
+    padding: 11px 14px;
     color: rgba(255,255,255,0.6);
+    border-radius: var(--r-sm);
   }
   .nav-links.open .nav-dropdown-panel a:hover {
     background: rgba(255,255,255,0.07);
     color: var(--white);
   }
-  .nav-links.open .nav-dropdown-trigger svg { display: none; }
+  /* Prominent CTA pinned to the bottom of the menu */
+  .nav-links.open > li:last-child { margin-top: auto; padding-top: 20px; }
+  .nav-links.open .mobile-only-cta {
+    margin-top: 0;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1rem;
+  }
 
   /* Hamburger → X */
   .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }

@@ -464,11 +464,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
 
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: clamp(32px, 5vw, 64px);
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
   min-height: calc(100vh - 64px);
-  padding: clamp(40px, 6vh, 80px) 0;
+  padding: clamp(32px, 5vh, 72px) 0;
 }
 
 .hero-title {
@@ -521,9 +521,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
 .micro-divider { width: 1px; height: 42px; background: var(--border); flex-shrink: 0; }
 
 .hero-visual {
-  height: clamp(550px, 82vh, 850px);
+  /* Fill most of the viewport height while never running off the bottom */
+  height: min(840px, calc(100vh - 110px));
   width: 100%;
   max-width: none;
+  margin-right: clamp(0px, 1vw, 24px);
   position: relative;
   overflow: visible;
 }
@@ -535,7 +537,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
   gap: 12px;
   height: 100%;
   width: 100%;
-  transform: skewX(-7deg) scale(1.04); /* Skew the container to create diagonal cells */
+  transform: skewX(-6deg) scale(1.02); /* Skew the container to create diagonal cells */
   transform-origin: center;
   position: relative;
 }
