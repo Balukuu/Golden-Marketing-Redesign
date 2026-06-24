@@ -4,6 +4,16 @@
 .nav-close { display: none; }
 
 /* ============================================================
+   LAPTOP SCALE — render the big-screen layout, uniformly shrunk
+   so it stays airy/clean instead of feeling crowded. Large
+   monitors (>1750px) keep the full 100% scale.
+   (Width-based; CSS zoom does not affect media-query evaluation.)
+   ============================================================ */
+@media (min-width: 1025px) and (max-width: 1750px) { body { zoom: 0.92; } }
+@media (min-width: 1025px) and (max-width: 1500px) { body { zoom: 0.87; } }
+@media (min-width: 1025px) and (max-width: 1300px) { body { zoom: 0.83; } }
+
+/* ============================================================
    TABLET ≤ 1024px
    ============================================================ */
 @media (max-width: 1024px) {
