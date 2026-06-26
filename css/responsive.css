@@ -31,7 +31,6 @@
   .cta-band-inner { flex-direction: column; gap: 28px; }
 
   .about-intro-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-intro-stats { position: static; }
   .timeline-grid  { grid-template-columns: 1fr 1fr; }
   .values-grid    { grid-template-columns: 1fr 1fr; }
   .contact-layout { grid-template-columns: 1fr; gap: 48px; }
@@ -40,7 +39,6 @@
   .service-sidebar { position: static; }
   .service-cta-card { position: static; }
   .related-services  { grid-template-columns: 1fr 1fr; }
-  .news-grid      { grid-template-columns: 1fr 1fr; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 }
@@ -206,7 +204,6 @@
   .hero-micro-stats { flex-wrap: wrap; gap: 16px; }
   .footer-grid    { grid-template-columns: 1fr; gap: 32px; }
   .gallery-grid   { grid-template-columns: 1fr 1fr; }
-  .news-grid      { grid-template-columns: 1fr; }
   .careers-grid   { grid-template-columns: 1fr; }
   .related-services { grid-template-columns: 1fr; }
   .photo-gallery  { grid-template-columns: 1fr 1fr; }
@@ -225,13 +222,9 @@
   .cta-band-actions { justify-content: center; }
   .section-header-row { flex-direction: column; align-items: flex-start; gap: 16px; }
 
-  .brand-pending-block { padding: 32px 24px; }
   .impact-stat { padding: 24px 20px; }
   .careers-grid { grid-template-columns: 1fr; }
   .featured-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  /* About page */
-  .about-intro-stats .impact-stats { grid-template-columns: repeat(4, 1fr); }
 
   /* Careers */
   .careers-open-inner { flex-direction: column; align-items: flex-start; }
@@ -269,7 +262,6 @@
   .values-grid      { grid-template-columns: 1fr; }
   .filter-bar       { gap: 6px; }
   .filter-btn       { padding: 8px 14px; font-size: 0.8rem; }
-  .about-intro-stats .impact-stats { grid-template-columns: 1fr 1fr; }
   .process-step { grid-template-columns: 1fr; gap: 8px; }
   .process-number { font-size: 1.5rem; }
   .related-services { grid-template-columns: 1fr; }

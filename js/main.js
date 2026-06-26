@@ -56,30 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(c => counterObs.observe(c));
   }
 
-  // ── Text Rotator (legacy) ──
-  document.querySelectorAll('.text-rotator').forEach(rotator => {
-    const items = rotator.querySelectorAll('.rotator-item');
-    if (items.length > 1) {
-      let idx = 0;
-      setInterval(() => {
-        items[idx].classList.remove('active');
-        idx = (idx + 1) % items.length;
-        items[idx].classList.add('active');
-      }, 3500);
-    }
-  });
-
-  // ── Solutions Accordion (legacy) ──
-  const solPanels = document.querySelectorAll('.sol-panel');
-  if (solPanels.length > 0) {
-    const activate = p => { solPanels.forEach(x => x.classList.remove('active')); p.classList.add('active'); };
-    solPanels.forEach(p => {
-      p.addEventListener('mouseenter', () => activate(p));
-      p.addEventListener('click', () => activate(p));
-    });
-  }
-
-  // ── NEW: Mobile Nav (site-nav / #navHamburger) ──
+  // ── Mobile Nav (site-nav / #navHamburger) ──
   const hamburger = document.getElementById('navHamburger');
   const navLinks  = document.getElementById('navLinks');
   if (hamburger && navLinks) {
@@ -178,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initHeroTyping() {
   const heroTitle = document.querySelector('.hero-title');
-  const heroSub   = document.querySelector('.hero-sub');
   if (!heroTitle) return;
 
   const LINE1     = 'We put your brand';

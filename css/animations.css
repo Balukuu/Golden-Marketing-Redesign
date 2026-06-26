@@ -34,8 +34,6 @@ body {
 .delay-100 { transition-delay: 80ms; }
 .delay-200 { transition-delay: 160ms; }
 .delay-300 { transition-delay: 240ms; }
-.delay-400 { transition-delay: 320ms; }
-.delay-500 { transition-delay: 400ms; }
 
 /* ============================================================
    TEXT ROTATOR
@@ -85,12 +83,6 @@ img[loading="lazy"] {
   border-radius: 2px;
   animation: cursorBlink 0.75s step-end infinite;
   transition: opacity 0.5s ease;
-}
-
-/* Smaller cursor for the sub-paragraph (inherits gold via CSS var) */
-.typing-cursor--sm {
-  width: 1.5px;
-  height: 0.78em;
 }
 
 /* Adding this class stops the blink and fades the cursor out */
@@ -157,7 +149,6 @@ img[loading="lazy"] {
   }
 
   /* Hero stagger — show instantly, no slide-in */
-  .hero-stagger-1,
   .hero-stagger-2,
   .hero-stagger-3,
   .hero-stagger-4,
