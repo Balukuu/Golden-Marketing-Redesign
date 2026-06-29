@@ -529,9 +529,21 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
   gap: 12px;
   height: 100%;
   width: 100%;
+  max-width: 100%;
   transform: skewX(-6deg) scale(1.02); /* Skew the container to create diagonal cells */
   transform-origin: center;
   position: relative;
+}
+
+/* Containment safety: the mosaic must never exceed its column or the viewport.
+   min-width:0 stops the grid tracks from blowing out their container, and the
+   large-screen cap keeps the un-zoomed (>1750px) layout from running off-screen. */
+.hero-content,
+.hero-visual { min-width: 0; }
+
+@media (min-width: 1751px) {
+  .hero .container { max-width: 1520px; }
+  .hero-visual { height: min(780px, calc(100vh - 140px)); }
 }
 
 .hero-grid-cell {
@@ -1555,6 +1567,8 @@ section.page-hero-image,
 }
 .page-hero-inner-light { position: relative; z-index: 2; }
 .page-hero-inner-light .eyebrow { color: var(--gold-on-dark); }
+.page-hero-inner-light .page-hero-title { color: var(--white); }
+.page-hero-inner-light .page-hero-subtitle { color: rgba(255,255,255,0.78); }
 
 /* ============================================================
    CTA BAND — title/sub (used in service pages on section-surface)

@@ -1,0 +1,114 @@
+{
+  "heroes": {
+    "svc-merchandising": "images/heroes/svc-merchandising.webp",
+    "svc-field-activations": "images/heroes/svc-field-activations.webp",
+    "svc-dynamic-roadshows": "images/heroes/svc-dynamic-roadshows.webp",
+    "svc-events-management": "images/heroes/svc-events-management.webp",
+    "svc-field-automation-surveys": "images/heroes/svc-field-automation-surveys.webp",
+    "svc-retail-audit": "images/heroes/svc-retail-audit.webp",
+    "svc-distribution-sales": "images/heroes/svc-distribution-sales.webp",
+    "svc-strategy": "images/heroes/svc-strategy.webp",
+    "client-cocacola": "images/heroes/client-cocacola.webp",
+    "client-shell": "images/heroes/client-shell.webp",
+    "client-unilever": "images/heroes/client-unilever.webp",
+    "client-ubl": "images/heroes/client-ubl.webp",
+    "client-latitude": "images/heroes/client-latitude.webp"
+  },
+  "services": {
+    "field-activations": [
+      "images/work/cocacola/thumbs/cocacola-coke-studio-1.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-1.webp",
+      "images/work/ubl/thumbs/ubl-field-activations-1.webp",
+      "images/work/shell/thumbs/shell-heads-up-1.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-2.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-2.webp",
+      "images/work/ubl/thumbs/ubl-field-activations-2.webp",
+      "images/work/shell/thumbs/shell-heads-up-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-3.webp"
+    ],
+    "merchandising": [
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-1.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-1.webp",
+      "images/work/unilever/thumbs/unilever-merchandising-modern-trade-1.webp",
+      "images/work/shell/thumbs/shell-forecourt-merchandising-1.webp",
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-2.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-2.webp",
+      "images/work/unilever/thumbs/unilever-merchandising-modern-trade-2.webp",
+      "images/work/shell/thumbs/shell-forecourt-merchandising-2.webp",
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-3.webp"
+    ],
+    "dynamic-roadshows": [
+      "images/work/cocacola/thumbs/cocacola-predator-roadshows-1.webp",
+      "images/work/shell/thumbs/shell-fuel-on-the-go-1.webp",
+      "images/work/cocacola/thumbs/cocacola-predator-roadshows-2.webp",
+      "images/work/shell/thumbs/shell-fuel-on-the-go-2.webp",
+      "images/work/cocacola/thumbs/cocacola-predator-roadshows-3.webp",
+      "images/work/shell/thumbs/shell-fuel-on-the-go-3.webp",
+      "images/work/cocacola/thumbs/cocacola-predator-roadshows-4.webp",
+      "images/work/shell/thumbs/shell-fuel-on-the-go-4.webp",
+      "images/work/cocacola/thumbs/cocacola-predator-roadshows-5.webp"
+    ],
+    "events-management": [
+      "images/work/cocacola/thumbs/cocacola-coke-studio-1.webp",
+      "images/work/unilever/thumbs/unilever-hamper-promo-1.webp",
+      "images/work/shell/thumbs/shell-heads-up-1.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-2.webp",
+      "images/work/unilever/thumbs/unilever-hamper-promo-2.webp",
+      "images/work/shell/thumbs/shell-heads-up-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-3.webp",
+      "images/work/unilever/thumbs/unilever-hamper-promo-3.webp",
+      "images/work/shell/thumbs/shell-heads-up-3.webp"
+    ],
+    "distribution-sales": [
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-1.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-1.webp",
+      "images/work/unilever/thumbs/unilever-merchandising-modern-trade-1.webp",
+      "images/work/shell/thumbs/shell-forecourt-merchandising-1.webp",
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-2.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-1.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-1.webp",
+      "images/work/ubl/thumbs/ubl-field-activations-1.webp"
+    ],
+    "strategy": [
+      "images/services/strategy-1.webp",
+      "images/services/strategy-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-1.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-3.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-1.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-2.webp",
+      "images/work/shell/thumbs/shell-heads-up-1.webp",
+      "images/work/shell/thumbs/shell-heads-up-2.webp"
+    ],
+    "field-automation-surveys": [
+      "images/services/automation-1.webp",
+      "images/services/automation-2.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-1.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-1.webp",
+      "images/work/ubl/thumbs/ubl-field-activations-1.webp",
+      "images/work/shell/thumbs/shell-heads-up-1.webp",
+      "images/work/cocacola/thumbs/cocacola-coke-studio-2.webp",
+      "images/work/unilever/thumbs/unilever-back-to-school-2.webp",
+      "images/work/ubl/thumbs/ubl-field-activations-2.webp"
+    ],
+    "retail-audit": [
+      "images/services/retail-audit-1.webp",
+      "images/services/retail-audit-2.webp",
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-1.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-1.webp",
+      "images/work/unilever/thumbs/unilever-merchandising-modern-trade-1.webp",
+      "images/work/shell/thumbs/shell-forecourt-merchandising-1.webp",
+      "images/work/cocacola/thumbs/cocacola-retail-merchandising-2.webp",
+      "images/work/latitude/thumbs/latitude-retail-and-sampling-2.webp",
+      "images/work/unilever/thumbs/unilever-merchandising-modern-trade-2.webp"
+    ]
+  },
+  "cards": {
+    "cocacola": "images/heroes/thumbs/client-cocacola.webp",
+    "shell": "images/heroes/thumbs/client-shell.webp",
+    "unilever": "images/heroes/thumbs/client-unilever.webp",
+    "ubl": "images/heroes/thumbs/client-ubl.webp",
+    "latitude": "images/heroes/thumbs/client-latitude.webp"
+  }
+}

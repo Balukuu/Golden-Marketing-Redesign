@@ -14,17 +14,14 @@
 
   <!--
     IMAGE SOURCE POLICY
-    Images are stored locally in the /images folder (downloaded from Google Drive).
-    Original Drive source: https://drive.google.com/drive/folders/1xUGSd29346dPaFvZOj01dm6p89xzhhzz
-    Local path format: images/FILE_ID.jpg  (FILE_ID is the original Drive file ID)
-
-    Drive folders (brand → Drive folder ID):
-      Cocacola       → 1KNzZTQUo9gJWvCWvRC_-VD5u7wrlkP1w  [IMAGES AVAILABLE]
-      Featured Image → 1kYg0W31YfatkcUB6AAALDylUm07fQ-0f   [IMAGES AVAILABLE]
-      Latitude choc  → 1-9OavOOEO2fnDocagfhFqFNJvcsUCQsV  [PENDING - add images to Drive]
-      Unilever       → 1V_QafM7CfeJAACGfm1UqvTvDKBVMzgLl  [PENDING - add images to Drive]
-      UBL            → 1KYE9faqkoGffyCPxLqR0iO2lWq0h06wh  [PENDING - add images to Drive]
-      Shell Vivo     → 1Wk09FzVTjFarPugoy_syFIYiGOMtHnZN  [PENDING - add images to Drive]
+    Gallery images are optimized WebP, generated from the "GM images" content drop by
+    scripts/build_work_gallery.py. To rebuild after adding/replacing source photos:
+        python scripts/build_work_gallery.py
+    That script writes:
+        images/work/<brand>/<slug>.webp          (full,  max 1600px)
+        images/work/<brand>/thumbs/<slug>.webp   (thumb, max  640px)
+        js/work-gallery-data.js                  (the galleryData array consumed below)
+    Brands: cocacola · latitude · unilever · ubl · shell
   -->
 
   <!-- Fonts -->
@@ -32,13 +29,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css?v=4.0">
-  <link rel="stylesheet" href="css/animations.css?v=4.0">
-  <link rel="stylesheet" href="css/responsive.css?v=4.0">
+  <link rel="stylesheet" href="css/style.css?v=5.0">
+  <link rel="stylesheet" href="css/animations.css?v=5.0">
+  <link rel="stylesheet" href="css/responsive.css?v=5.0">
 
   <style>
     /* Gallery-specific styles not in main style.css */
     .brand-section { margin-bottom: 80px; }
+    .brand-hero {
+      height: 220px; border-radius: var(--r-md); overflow: hidden;
+      background-size: cover; background-position: center;
+      margin-bottom: 24px; position: relative; box-shadow: var(--shadow-sm);
+    }
+    .brand-hero::after { content:''; position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(12,12,12,0.35), transparent 60%); }
+    @media (max-width: 580px) { .brand-hero { height: 150px; } }
+
     .brand-section.hidden { display: none; }
 
     .brand-header {
@@ -328,7 +334,7 @@
   <main>
 
     <!-- ── PAGE HERO ── -->
-    <section class="page-hero page-hero-image" style="background-image: url('images/1FcQIa5sZQM5LVs6yAj48fwqeKuIW-f31.jpg');">
+    <section class="page-hero page-hero-image" style="background-image: url('images/work/our-work-hero.webp');">
       <div class="page-hero-overlay"></div>
       <div class="container">
         <div class="page-hero-inner page-hero-inner-light">
@@ -362,6 +368,7 @@
         <div style="width: 100%;">
           <!-- COCA-COLA -->
           <div class="brand-section reveal" data-brand="cocacola">
+            <div class="brand-hero" style="background-image:url('images/heroes/client-cocacola.webp');" aria-hidden="true"></div>
             <div class="brand-header">
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
@@ -381,6 +388,7 @@
 
           <!-- LATITUDE CHOCOLATE -->
           <div class="brand-section reveal" data-brand="latitude">
+            <div class="brand-hero" style="background-image:url('images/heroes/client-latitude.webp');" aria-hidden="true"></div>
             <div class="brand-header">
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
@@ -395,6 +403,7 @@
 
           <!-- UNILEVER -->
           <div class="brand-section reveal" data-brand="unilever">
+            <div class="brand-hero" style="background-image:url('images/heroes/client-unilever.webp');" aria-hidden="true"></div>
             <div class="brand-header">
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
@@ -414,13 +423,14 @@
 
           <!-- UBL -->
           <div class="brand-section reveal" data-brand="ubl">
+            <div class="brand-hero" style="background-image:url('images/heroes/client-ubl.webp');" aria-hidden="true"></div>
             <div class="brand-header">
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
                 <div class="brand-name">UBL</div>
                 <img loading="lazy" decoding="async" src="ubl-logo-enhanced.png" alt="UBL Logo" class="brand-logo-img">
               </div>
-              <span class="brand-meta">Merchandising</span>
+              <span class="brand-meta">Brand Activations</span>
             </div>
             <div class="gallery-grid" id="grid-ubl"></div>
             <div class="grid-actions" id="actions-ubl"></div>
@@ -428,6 +438,7 @@
 
           <!-- SHELL VIVO -->
           <div class="brand-section reveal" data-brand="shell">
+            <div class="brand-hero" style="background-image:url('images/heroes/client-shell.webp');" aria-hidden="true"></div>
             <div class="brand-header">
               <div class="brand-title-wrap">
                 <div class="brand-dot" aria-hidden="true"></div>
@@ -556,123 +567,9 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
   </a>
 
+  <script src="js/work-gallery-data.js?v=1.0"></script>
   <script>
-    // Brand Gallery Data
-    const galleryData = [
-      {
-        id: "cocacola",
-        name: "Coca-Cola",
-        meta: "Activations & Merchandising",
-        images: [
-          { name: "coca-cola-merch-1.jpg", id: "coca-cola-merch-1", type: "merchandising", title: "Rwenzori Water Shelf Merchandising" },
-          { name: "coca-cola-merch-2.jpg", id: "coca-cola-merch-2", type: "merchandising", title: "Minute Maid Juice Shelf Merchandising" },
-          { name: "coca-cola-merch-3.jpg", id: "coca-cola-merch-3", type: "merchandising", title: "Chilled Beverage Cooler Display" },
-          { name: "coca-cola-merch-4.jpg", id: "coca-cola-merch-4", type: "merchandising", title: "Rwenzori Savour Life Bay Display" },
-          { name: "coca-cola-merch-5.jpg", id: "coca-cola-merch-5", type: "merchandising", title: "Minute Maid Category Shelf Setup" },
-          { name: "coca-cola-merch-6.jpg", id: "coca-cola-merch-6", type: "merchandising", title: "Juice Aisle Merchandising" },
-          { name: "coca-cola-merch-7.jpg", id: "coca-cola-merch-7", type: "merchandising", title: "Rwenzori Bottled Water Display" },
-          { name: "ASK_7993.jpg", id: "1mAMyfYn_xL9h6Ua0oNHizFpo78wnpDPu", type: "activation", title: "Fanta Snacking Campaign" },
-          { name: "ASK_8003.jpg", id: "1j-iko37HgOKYl-4mqcBys751EIa2qy7m", type: "activation", title: "Fanta Snacking Campaign Activation" },
-          { name: "ASK_8157.jpg", id: "1PSHKXrFQqadUB9KPplE8WYo7aUF1IU9Y", type: "activation", title: "Fanta Snacking Retail Campaign" },
-          { name: "ASK_8274.jpg", id: "1Wr4lk5UBo2erCXd52E_F9nVsx5vot35U", type: "activation", title: "Fanta Roadshow Activations" },
-          { name: "GM-6.jpg", id: "1bbZW7QnTv5iwjKO5rtL8AhxYbT0D2HB1", type: "activation", title: "Coca-Cola Christmas Campaign" },
-          { name: "GM-10.jpg", id: "1l0k7hrdmazWD-GpMz7LV8rSPyT7tWa4I", type: "activation", title: "Coca-Cola Retail Experiential" },
-          { name: "GM-11.jpg", id: "10XM3tn0J6uZ7GilGEeOYyfk7213UCo2P", type: "activation", title: "Coke Studio Campus Activation" },
-          { name: "GM-14.jpg", id: "1dT-pqHszDQEC23c5vFUoACZF8fnzVTCP", type: "activation", title: "Coca-Cola Zero Sugar Launch" },
-          { name: "GM-23.jpg", id: "1FfZScRg7HBpaQkmqbJQBVoCSx_Z-_FHT", type: "activation", title: "Coca-Cola Zero Sugar Launch Activation" },
-          { name: "GM-41.jpg", id: "1VgkFMkM2ceAh-uZQYPNqIi7yNWAQXLsV", type: "activation", title: "Coca-Cola Plaza Experiential" },
-          { name: "GM-59.jpg", id: "1ccNoF2ZH-ydCyzgnX_363rFf417RUxW0", type: "activation", title: "Coca-Cola Caravan Tour" },
-          { name: "GM-64.jpg", id: "1Jjpg_WpI8UpUvp0jgN7KA02_S4zQVTph", type: "activation", title: "Coca-Cola Distribution Drive" },
-          { name: "GM-70.jpg", id: "1lDwNqoyNNHH0esW4t3W6pmu-yxuhFgG7", type: "activation", title: "Coca-Cola Caravan Roadshow" },
-          { name: "IMG_0036.JPG", id: "1xIj5WcFwf6ezzm5v8jxyqI9V6TUT4X5L", type: "activation", title: "Fanta Cheza Schools Activations" },
-          { name: "IMG_0050.JPG", id: "1gHSvLGAbWev_Zror4EaZI4QS67v7y3Xw", type: "activation", title: "Fanta Cheza School Dance Activations" },
-          { name: "IMG_0142.jpg", id: "13t5p3cTmfjIi40RGH2QnFhpwpfmP6_io", type: "activation", title: "Coca-Cola Food Festival Activation" },
-          { name: "IMG_0190.jpg", id: "17k_5q4P5kTJj6mDLQlqjMJM5ngKH2FoW", type: "activation", title: "Coca-Cola Campus Concert Activation" },
-          { name: "4.png", id: "1NaeGO0wIy-4fEv0qIStYOEWVAWp_zwv9", type: "merchandising", title: "Coca-Cola Store Planogram Compliance" },
-          { name: "IMG_8133.jpg", id: "1vjtdQAXioimw4vkg4vTrKVawzvb0YFD_", type: "merchandising", title: "Fanta Cheza Merchandising" },
-          { name: "IMG_8184.jpg", id: "1ymV8NXISZl5rsVqaHTzsA81z6fiO-C01", type: "merchandising", title: "Coca-Cola Supermarket Shelf Merchandising" },
-          { name: "IMG_8239.jpg", id: "1zHsIFqCzOeexPPLpaNdl7A80O37kX8Om", type: "merchandising", title: "Coca-Cola Retail Stand Display" }
-        ]
-      },
-      {
-        id: "latitude",
-        name: "Latitude Chocolate",
-        meta: "Merchandising & Distribution",
-        images: [
-          { name: "IMG_9100.jpg", id: "1GUdbBgsSTfGOU9RaigUSBJhP00TYgtDo", type: "activation", title: "Latitude Meals on Wheels Event" },
-          { name: "IMG_9103.jpg", id: "1CN-0UzabliTymEIp_kecIFcU9eikuqeq", type: "activation", title: "Latitude Chocolate Brand Activations" },
-          { name: "IMG_9128.jpg", id: "1k9bDTgxjaYuhBj3cpo1j0ScZhdp8knf7", type: "merchandising", title: "Latitude Chocolate Supermarket Display" },
-          { name: "IMG_9131.jpg", id: "15NTXOzbzlhVYlFKGqPmg4KDw_BkJOhol", type: "merchandising", title: "Latitude Chocolate POSM Placement" },
-          { name: "IMG_9140.jpg", id: "1Tx_XByaIcSS8ruPfiGVzt-3m4XKnzih_", type: "merchandising", title: "Latitude Chocolate Retail Shelf Setup" },
-          { name: "IMG_9153.jpg", id: "1T_iLUv_Lp7h_0KKhKp3GRsn5Hy2QJ0bU", type: "activation", title: "Latitude Chocolate Consumer Tasting" },
-          { name: "IMG_9177.jpg", id: "1KBiYc0dwdGfsNfFmGsWIso2mjS3hf_Uq", type: "activation", title: "Latitude Chocolate Pop-up Activation" },
-          { name: "IMG_9184.jpg", id: "17bncoA75hh0rXPdMhBCiTYIlWbpCTU2j", type: "activation", title: "Latitude Chocolate Meals on Wheels Setup" },
-          { name: "IMG_9187.jpg", id: "1fBsUtq_TRUZm61MyUqtDHHDbIzhSVcq2", type: "activation", title: "Latitude Meals on Wheels Roadshow" }
-        ]
-      },
-      {
-        id: "unilever",
-        name: "Unilever",
-        meta: "Merchandising MT&GT & Activations",
-        images: [
-          { name: "GM-28.jpg", id: "1QH6aIDXuwtsWpQqTk7OC2yQZBRfxaOgG", type: "activation", title: "Unilever Clean Ninja Schools Project" },
-          { name: "GM-49.jpg", id: "1q73yIbzdTZXSOF8JwiqujvF3d35sBuHC", type: "activation", title: "Unilever Omo School Washing Activations" },
-          { name: "GM-88.jpg", id: "1sD5THGA-hcg3WHW4W56SWubqaE9zYbnZ", type: "activation", title: "Unilever Geisha Schools Health Campaign" },
-          { name: "IMG_8983.jpg", id: "1duZeGkBR2v5IScfB_HbhA1QSaMkBs3Or", type: "activation", title: "Unilever Lifebuoy Hygiene Drive" },
-          { name: "IMG_8972.jpg", id: "15Wc_3UAVPQLKyKiMXqI6xjMdJzBejO3L", type: "merchandising", title: "Unilever Royco In-Store Merchandising" },
-          { name: "IMG_9003.jpg", id: "1bEdRvWtFmky3cN_dvclKjfaEXkMYBxHR", type: "merchandising", title: "Unilever Omo End-Cap Display" },
-          { name: "IMG_9012.jpg", id: "16bQ3SdA8u1Tg07tjXRAaBfOhf6GhrJL4", type: "merchandising", title: "Unilever Blue Band Shelf Display" },
-          { name: "IMG_9045.jpg", id: "1FezemIhOGOvE5uUsjTVpk7J_HpbCkcTU", type: "merchandising", title: "Unilever Sunlight Category Shelf Setup" },
-          { name: "IMG_9056.jpg", id: "1psAEag1BHsdYIrwxIy1Ww5SJ1ZTQEyKn", type: "merchandising", title: "Unilever Lifebuoy Soap Retail Counter" },
-          { name: "IMG_9066.jpg", id: "1R1W-8Lccpdq_G_4cqnXU811Njq7Qqp-k", type: "merchandising", title: "Unilever Vaseline Promotional Bay" }
-        ]
-      },
-      {
-        id: "ubl",
-        name: "UBL",
-        meta: "Merchandising",
-        images: [
-          { name: "IMG_3474.jpg", id: "12Qxm7xgTTeYRSxqA3pqWrnWNc9eOww5-", type: "activation", title: "UBL Rwenzori Marathon Activation" },
-          { name: "IMG_3486.jpg", id: "1oSaHfWGQkG73V9V-xnh3_e0qDqW1tJJh", type: "activation", title: "UBL Rwenzori Marathon Branding" },
-          { name: "IMG_3492.jpg", id: "1Ssd1N4OKqUfH8WjoNIYawVtdKhzwU0eE", type: "activation", title: "UBL Rwenzori Marathon Experience" },
-          { name: "IMG_3500.jpg", id: "1n0napyexKvPOilWTxh13AI5L0jJkZscD", type: "activation", title: "UBL Back to School Campaign" },
-          { name: "IMG_3514.jpg", id: "1tMpPKV5DiQUf7ZUITScF1pcCg9X8d-rZ", type: "activation", title: "UBL Back to School Activation Event" },
-          { name: "IMG_3522.jpg", id: "1lYwKE3s7hzUuGDyq23cMbE1DTsma4wDO", type: "activation", title: "UBL Senator Beer Market Activation" },
-          { name: "IMG_3528.jpg", id: "184iE79SA8GUgbJbhSxYldEO-IgDSsTrq", type: "activation", title: "UBL Bell Lager Concert Activation" }
-        ]
-      },
-      {
-        id: "shell",
-        name: "Shell Vivo",
-        meta: "Forecourt Activations & Merchandising",
-        images: [
-          { name: "GM-1.jpg", id: "12Jk8LpG-TQ0H7K0sy9xgttZP1AKrH52Y", type: "activation", title: "Vivo Energy Shell Forecourt Activation" },
-          { name: "GM-2.jpg", id: "1AKITaz89s1vLWcz93PZeGXSUlw3hV9EO", type: "activation", title: "Shell Helix Lubricant Promotion" },
-          { name: "GM-3.jpg", id: "1azkXTXKdrsfNMTxLhxThszgu852xyOr1", type: "activation", title: "Shell Fuel Discount Campaign" },
-          { name: "GM-4.jpg", id: "1EluGosJGRioG_g4xAYM_05i9ERCeh0WS", type: "activation", title: "Shell Fuel Save Launch" },
-          { name: "GM-5.jpg", id: "1RGykIrA5kypnirnYVsscY76A4pz2gntH", type: "activation", title: "Shell Fuel Save Customer Engagement" },
-          { name: "GM-6.jpg", id: "1EejIuqNVxL0soXrYNaX5sJfpv-jSLs-1", type: "activation", title: "Shell Club Card Registration Drive" },
-          { name: "GM-7.jpg", id: "1S_xm-x-tDjqDhWe_YnXxVgoD-yxxxpY6", type: "activation", title: "Shell Club Rewards Activation" },
-          { name: "GM-8.jpg", id: "1OiErKzp79it0VCcb9Y98qEI4qHOC4GRj", type: "activation", title: "Vivo Energy Gas Launch Promo" },
-          { name: "GM-9.jpg", id: "1gPkXfxPrBklY-L4doNcx0Bc-JJs57Aiw", type: "activation", title: "Shell Gas Cylinder Activations" },
-          { name: "GM-10.jpg", id: "1Mm7r4dMaqz-7QdxepTpzLkYaT4If0Uu_", type: "activation", title: "Shell Helix Mechanics Training Event" },
-          { name: "GM-11.jpg", id: "1WbFb5N1FWklb8UD1K6vDL7IqNpx7tvul", type: "activation", title: "Shell Helix Mechanics Workshop" },
-          { name: "GM-12.jpg", id: "1TXED50jj09q2gZ8YjnT_Zl4pY0HcWIEr", type: "activation", title: "Shell Helix Mechanics Rewards Activations" },
-          { name: "GM-13.jpg", id: "1dAZ8P3LOjGjm4giZPMaxDO8kObBCP8e1", type: "activation", title: "Shell Fuel Save Roadshow Activation" },
-          { name: "GM-14.jpg", id: "17tCDzYFsfhEufNdULo6tFJcLhTPeGKx4", type: "activation", title: "Shell Fuel Save Roadshow Concert" },
-          { name: "GM-15.jpg", id: "122ytWqfNj2vAzcR9k0QzFoFJ8hmsit8k", type: "activation", title: "Vivo Energy Shell Select Store Launch" },
-          { name: "GM-16.jpg", id: "12le0QpiUQZ1KzVIrhSnYlmNjhXfmN4-_", type: "activation", title: "Shell Select Cafe Customer Experience" },
-          { name: "GM-17.jpg", id: "1H3WGp6grVjs7ykNAVbmBRq6E4iAKzNul", type: "activation", title: "Shell Select Store Opening Event" },
-          { name: "GM-18.jpg", id: "17GJG3qhubJQ25dUxBEU61LSppGRi_TZV", type: "activation", title: "Shell Select Store In-Store Tasting" },
-          { name: "GM-19.jpg", id: "1Y3Bfi0_TLoCiZYdE8Q-XGNZ8aSikOnZs", type: "activation", title: "Shell Forecourt Fuel Promo Activations" },
-          { name: "GM-1.jpg", id: "1gYZOHoGl4l-a9X4WdKDszzkN76JWBSA7", type: "merchandising", title: "Shell Select Store Merchandising Compliance" },
-          { name: "GM-5.jpg", id: "1_AcBJKbed8lI1fkAkfbI3isSmgt8YX9j", type: "merchandising", title: "Shell Helix Lubricants Shelf Display" },
-          { name: "GM-7.jpg", id: "1TaGatT7hf2aL-l3QgCEB7yogZB-JeA8F", type: "merchandising", title: "Shell Gas Cylinder Display Stand" },
-          { name: "GM-23.jpg", id: "12pIfeyc7PuxTeBu0v4uk2NHGoszAZ694", type: "merchandising", title: "Shell Select Store Beverage Coolers Planogram" },
-          { name: "GM-25.jpg", id: "1EWpV-TvgyDiF_vA6C4phU1wLkaFrA-FJ", type: "merchandising", title: "Shell Select Store Confectionery Shelves" }
-        ]
-      }
-    ];
+    // Brand gallery data is loaded from js/work-gallery-data.js
 
     // State
     const state = {
@@ -719,7 +616,7 @@
         // Generate HTML
         let html = '';
         visibleImages.forEach((img, idx) => {
-          const thumbUrl = `images/thumbs/${img.id}.jpg`;
+          const thumbUrl = img.thumb;
           const tagLabel = img.type === 'activation' ? 'Activation' : 'Merchandising';
           
           html += `
@@ -801,7 +698,7 @@
       lightboxImg.style.opacity = '0';
       lightboxImg.style.transform = 'scale(0.96) translateY(12px)';
       
-      const highResUrl = `images/${img.id}.jpg`;
+      const highResUrl = img.src;
       
       const tempImg = new Image();
       tempImg.onload = () => {
@@ -921,6 +818,17 @@
     // Initial Setup
     window.addEventListener('DOMContentLoaded', () => {
       renderGrids();
+
+      // Deep-link: ?brand=cocacola|latitude|unilever|ubl|shell (or #brand) activates that filter
+      const params = new URLSearchParams(window.location.search);
+      const requested = (params.get('brand') || window.location.hash.replace('#', '')).toLowerCase();
+      if (requested && requested !== 'all') {
+        const target = document.querySelector(`.filter-btn[data-filter="${requested}"]`);
+        if (target) {
+          target.click();
+          document.querySelector('.filter-bar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
   </script>
   <script src="js/main.js?v=3.0"></script>

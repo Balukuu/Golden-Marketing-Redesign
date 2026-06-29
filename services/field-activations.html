@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;1,700;1,800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="../css/style.css?v=4.0">
-  <link rel="stylesheet" href="../css/animations.css?v=4.0">
-  <link rel="stylesheet" href="../css/responsive.css?v=4.0">
+  <link rel="stylesheet" href="../css/style.css?v=5.0">
+  <link rel="stylesheet" href="../css/animations.css?v=5.0">
+  <link rel="stylesheet" href="../css/responsive.css?v=5.0">
   <style>
     /* Local style overrides for field activations premium polish */
     .page-hero-image {
@@ -280,7 +280,7 @@
   <main>
 
     <!-- ── PAGE HERO ── -->
-    <section class="page-hero page-hero-image" style="background-image: url('../images/1TR5jQxzMQHQCgKY9C-eb74h-09cZw-xP.jpg');">
+    <section class="page-hero page-hero-image" style="background-image: url('../images/heroes/svc-field-activations.webp');">
       <div class="page-hero-overlay"></div>
       <div class="container">
         <div class="page-hero-inner page-hero-inner-light">
@@ -384,9 +384,10 @@
         <!-- Brand filter bar -->
         <div class="filter-bar" role="tablist" aria-label="Filter activations by brand">
           <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Campaigns</button>
-          <button class="filter-btn" data-filter="royco" role="tab" aria-selected="false">Royco</button>
-          <button class="filter-btn" data-filter="pepsodent" role="tab" aria-selected="false">Pepsodent</button>
-          <button class="filter-btn" data-filter="omo" role="tab" aria-selected="false">Omo</button>
+          <button class="filter-btn" data-filter="cocacola" role="tab" aria-selected="false">Coca-Cola</button>
+          <button class="filter-btn" data-filter="unilever" role="tab" aria-selected="false">Unilever</button>
+          <button class="filter-btn" data-filter="shell" role="tab" aria-selected="false">Shell Vivo</button>
+          <button class="filter-btn" data-filter="ubl" role="tab" aria-selected="false">UBL</button>
         </div>
 
         <div style="width: 100%;">
@@ -532,20 +533,134 @@
   <script>
     // Field Activations Gallery Data (from Drive link)
     const galleryData = [
-      { name: "_MG_0002.jpg", id: "1TR5jQxzMQHQCgKY9C-eb74h-09cZw-xP", brand: "royco", title: "Royco Taste of Beans Experiential Activation" },
-      { name: "_MG_0006.jpg", id: "1rLHidERZwfRgHSLIuRDY1UnP7yRhGaKU", brand: "royco", title: "Royco Brand Ambassador In-Store Sampling" },
-      { name: "_MG_0010.jpg", id: "1DWPkcmJSA3zrfXf1H6hEtDrLLVkOYIi0", brand: "royco", title: "Royco Consumer Product Demonstration" },
-      { name: "_MG_0013.jpg", id: "1nhv1VlbPlpxMmtU2_IKdsujHhMU0eEI0", brand: "royco", title: "Royco Brand Ambassador Team" },
-      { name: "_MG_0016.jpg", id: "1u0rOyAJMdg5Vp4-0JMhS_KScHWXF8NUW", brand: "royco", title: "Royco Experiential Truck Setup" },
-      { name: "_MG_0042.jpg", id: "1FJ4qYbRCRkBrFvQqDDneSqhAygNPk2Wk", brand: "royco", title: "Royco Mobile Demonstration Unit" },
-      { name: "_MG_0062.jpg", id: "1xMWnBHjVrTg1deD8tV4vv_KtOnYaTlof", brand: "pepsodent", title: "Pepsodent Dental Checkup Station" },
-      { name: "_MG_0066.jpg", id: "18-IFeoJoKpW8kqsfyRE-ItxDRZuYcCgV", brand: "pepsodent", title: "Pepsodent School Hygiene Campaign" },
-      { name: "_MG_0068.jpg", id: "1vM5VnG8Vf_qkSTMQgtyv1i7NQBIqw8T1", brand: "pepsodent", title: "Pepsodent Brushing Demo Station" },
-      { name: "_MG_0082.jpg", id: "1c26DQE4pcApdkA2zRFJlE3JvOI8Jl-aP", brand: "pepsodent", title: "Pepsodent Free Dental Checkup Event" },
-      { name: "_MG_0113.jpg", id: "1LdXI-jS3za4x3EtHE7LjuMKhB2Ztkj4Q", brand: "pepsodent", title: "Pepsodent School Engagement Programme" },
-      { name: "omo-1.jpg", id: "1psAEag1BHsdYIrwxIy1Ww5SJ1ZTQEyKn", brand: "omo", title: "Omo In-Store Display & Stock Build" },
-      { name: "omo-2.jpg", id: "1duZeGkBR2v5IScfB_HbhA1QSaMkBs3Or", brand: "omo", title: "Omo Brand Ambassador Activation" },
-      { name: "omo-3.jpg", id: "15Wc_3UAVPQLKyKiMXqI6xjMdJzBejO3L", brand: "omo", title: "Omo Shelf Merchandising & Availability" }
+      { src: "../images/work/cocacola/cocacola-coke-studio-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-1.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-2.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-3.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-4.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-5.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-6.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-7.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-7.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-coke-studio-8.webp", thumb: "../images/work/cocacola/thumbs/cocacola-coke-studio-8.webp", brand: "cocacola", title: "Coke Studio" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-1.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-2.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-3.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-4.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-5.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-6.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-7.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-7.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-8.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-8.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-movie-time-9.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-movie-time-9.webp", brand: "cocacola", title: "Fanta Movie Time" },
+      { src: "../images/work/cocacola/cocacola-fanta-snacking-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-snacking-1.webp", brand: "cocacola", title: "Fanta Snacking" },
+      { src: "../images/work/cocacola/cocacola-fanta-snacking-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-snacking-2.webp", brand: "cocacola", title: "Fanta Snacking" },
+      { src: "../images/work/cocacola/cocacola-fanta-snacking-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-snacking-3.webp", brand: "cocacola", title: "Fanta Snacking" },
+      { src: "../images/work/cocacola/cocacola-fanta-snacking-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-snacking-4.webp", brand: "cocacola", title: "Fanta Snacking" },
+      { src: "../images/work/cocacola/cocacola-fanta-snacking-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-fanta-snacking-5.webp", brand: "cocacola", title: "Fanta Snacking" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-1.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-2.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-3.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-4.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-5.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-predator-roadshows-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-predator-roadshows-6.webp", brand: "cocacola", title: "Predator Roadshows" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-1.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-2.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-3.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-4.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-5.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-6.webp", brand: "cocacola", title: "Rwenzori Marathon" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-1.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-2.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-3.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-4.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-5.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-6.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-rwenzori-marathon-launch-7.webp", thumb: "../images/work/cocacola/thumbs/cocacola-rwenzori-marathon-launch-7.webp", brand: "cocacola", title: "Rwenzori Marathon Launch" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-1.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-1.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-2.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-2.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-3.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-3.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-4.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-4.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-5.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-5.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-6.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-6.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-7.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-7.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-8.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-8.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-9.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-9.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/cocacola/cocacola-world-freestyle-football-10.webp", thumb: "../images/work/cocacola/thumbs/cocacola-world-freestyle-football-10.webp", brand: "cocacola", title: "World Freestyle Football" },
+      { src: "../images/work/unilever/unilever-back-to-school-1.webp", thumb: "../images/work/unilever/thumbs/unilever-back-to-school-1.webp", brand: "unilever", title: "Back to School" },
+      { src: "../images/work/unilever/unilever-back-to-school-2.webp", thumb: "../images/work/unilever/thumbs/unilever-back-to-school-2.webp", brand: "unilever", title: "Back to School" },
+      { src: "../images/work/unilever/unilever-back-to-school-3.webp", thumb: "../images/work/unilever/thumbs/unilever-back-to-school-3.webp", brand: "unilever", title: "Back to School" },
+      { src: "../images/work/unilever/unilever-back-to-school-4.webp", thumb: "../images/work/unilever/thumbs/unilever-back-to-school-4.webp", brand: "unilever", title: "Back to School" },
+      { src: "../images/work/unilever/unilever-back-to-school-5.webp", thumb: "../images/work/unilever/thumbs/unilever-back-to-school-5.webp", brand: "unilever", title: "Back to School" },
+      { src: "../images/work/unilever/unilever-dove-1.webp", thumb: "../images/work/unilever/thumbs/unilever-dove-1.webp", brand: "unilever", title: "Dove" },
+      { src: "../images/work/unilever/unilever-dove-2.webp", thumb: "../images/work/unilever/thumbs/unilever-dove-2.webp", brand: "unilever", title: "Dove" },
+      { src: "../images/work/unilever/unilever-dove-3.webp", thumb: "../images/work/unilever/thumbs/unilever-dove-3.webp", brand: "unilever", title: "Dove" },
+      { src: "../images/work/unilever/unilever-dove-4.webp", thumb: "../images/work/unilever/thumbs/unilever-dove-4.webp", brand: "unilever", title: "Dove" },
+      { src: "../images/work/unilever/unilever-hamper-promo-1.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-1.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-2.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-2.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-3.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-3.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-4.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-4.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-5.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-5.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-6.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-6.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-7.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-7.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-hamper-promo-8.webp", thumb: "../images/work/unilever/thumbs/unilever-hamper-promo-8.webp", brand: "unilever", title: "Hamper Promo" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-1.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-1.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-2.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-2.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-3.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-3.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-4.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-4.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-5.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-5.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-6.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-6.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-7.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-7.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-8.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-8.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-9.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-9.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-10.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-10.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-11.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-11.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-12.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-12.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/unilever/unilever-roast-and-rhyme-13.webp", thumb: "../images/work/unilever/thumbs/unilever-roast-and-rhyme-13.webp", brand: "unilever", title: "Roast & Rhyme" },
+      { src: "../images/work/ubl/ubl-field-activations-1.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-1.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-2.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-2.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-3.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-3.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-4.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-4.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-5.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-5.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-6.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-6.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-7.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-7.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/ubl/ubl-field-activations-8.webp", thumb: "../images/work/ubl/thumbs/ubl-field-activations-8.webp", brand: "ubl", title: "Field Activations" },
+      { src: "../images/work/shell/shell-heads-up-1.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-1.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-2.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-2.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-3.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-3.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-4.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-4.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-5.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-5.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-6.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-6.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-7.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-7.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-8.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-8.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-9.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-9.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-10.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-10.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-11.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-11.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-12.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-12.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-13.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-13.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-14.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-14.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-heads-up-15.webp", thumb: "../images/work/shell/thumbs/shell-heads-up-15.webp", brand: "shell", title: "Heads Up" },
+      { src: "../images/work/shell/shell-shell-expo-1.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-1.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-shell-expo-2.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-2.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-shell-expo-3.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-3.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-shell-expo-4.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-4.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-shell-expo-5.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-5.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-shell-expo-6.webp", thumb: "../images/work/shell/thumbs/shell-shell-expo-6.webp", brand: "shell", title: "Shell Expo" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-1.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-1.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-2.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-2.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-3.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-3.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-4.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-4.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-5.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-5.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-6.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-6.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-7.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-7.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-fuel-on-the-go-8.webp", thumb: "../images/work/shell/thumbs/shell-fuel-on-the-go-8.webp", brand: "shell", title: "Fuel On The Go" },
+      { src: "../images/work/shell/shell-rimula-oils-1.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-1.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-2.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-2.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-3.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-3.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-4.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-4.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-5.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-5.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-6.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-6.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-7.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-7.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-8.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-8.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-9.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-9.webp", brand: "shell", title: "Rimula Oils" },
+      { src: "../images/work/shell/shell-rimula-oils-10.webp", thumb: "../images/work/shell/thumbs/shell-rimula-oils-10.webp", brand: "shell", title: "Rimula Oils" }
     ];
 
     // Gallery state
@@ -574,7 +689,7 @@
       // Build HTML
       let html = '';
       visible.forEach((img, idx) => {
-        const thumbUrl = `../images/thumbs/${img.id}.jpg`;
+        const thumbUrl = img.thumb;
         html += `
           <div class="gallery-item reveal" role="button" tabindex="0" aria-label="View ${img.title}" 
                data-index="${idx}">
@@ -662,7 +777,7 @@
       lightboxImg.style.opacity = '0';
       lightboxImg.style.transform = 'scale(0.96) translateY(12px)';
       
-      const highResUrl = `../images/${img.id}.jpg`;
+      const highResUrl = img.src;
       
       const temp = new Image();
       temp.onload = () => {
