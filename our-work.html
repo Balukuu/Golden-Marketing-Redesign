@@ -379,7 +379,13 @@
             </div>
             <div class="sub-filter-bar" data-brand="cocacola">
               <button class="sub-filter-btn active" data-subfilter="all">All Campaigns</button>
-              <button class="sub-filter-btn" data-subfilter="activation">Activations</button>
+              <button class="sub-filter-btn" data-subfilter="coke-studio">Coke Studio</button>
+              <button class="sub-filter-btn" data-subfilter="fanta-movie-time">Fanta Movie Time</button>
+              <button class="sub-filter-btn" data-subfilter="fanta-snacking">Fanta Snacking</button>
+              <button class="sub-filter-btn" data-subfilter="predator-roadshows">Predator Roadshows</button>
+              <button class="sub-filter-btn" data-subfilter="rwenzori-marathon">Rwenzori Marathon</button>
+              <button class="sub-filter-btn" data-subfilter="rwenzori-marathon-launch">Rwenzori Marathon Launch</button>
+              <button class="sub-filter-btn" data-subfilter="world-freestyle-football">World Freestyle Football</button>
               <button class="sub-filter-btn" data-subfilter="merchandising">Merchandising</button>
             </div>
             <div class="gallery-grid" id="grid-cocacola"></div>
@@ -590,6 +596,15 @@
       lightboxImages: []
     };
 
+    // Turn a campaign title into a filter slug, e.g. "Coke Studio" -> "coke-studio"
+    function campaignSlug(title) {
+      return (title || '')
+        .toLowerCase()
+        .replace(/&/g, ' ')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
     // Render helper
     function getFilteredImages(brandId) {
       const brand = galleryData.find(b => b.id === brandId);
@@ -598,7 +613,9 @@
       if (subfilter === 'all') {
         return brand.images;
       }
-      return brand.images.filter(img => img.type === subfilter);
+      // Match against the campaign type (e.g. activation/merchandising) OR the
+      // per-campaign slug derived from the image title (e.g. coke-studio).
+      return brand.images.filter(img => img.type === subfilter || campaignSlug(img.title) === subfilter);
     }
 
     function renderGrids() {
@@ -609,19 +626,35 @@
 
         const allFiltered = getFilteredImages(brand.id);
         const isExpanded = state.expandedBrands[brand.id];
-        
-        // Curate list based on expansion (6 items max by default)
-        const visibleImages = isExpanded ? allFiltered : allFiltered.slice(0, 6);
+        const subfilter = state.brandSubFilters[brand.id] || 'all';
+
+        // Curate the collapsed list. For the "All Campaigns" view we show one
+        // representative image per campaign so every subfolder is visible up
+        // front; a specific campaign filter shows up to 6. Expanding reveals all.
+        let collapsedImages;
+        if (subfilter === 'all') {
+          const seen = new Set();
+          collapsedImages = [];
+          allFiltered.forEach(img => {
+            const key = campaignSlug(img.title);
+            if (!seen.has(key)) { seen.add(key); collapsedImages.push(img); }
+          });
+        } else {
+          collapsedImages = allFiltered.slice(0, 6);
+        }
+        const visibleImages = isExpanded ? allFiltered : collapsedImages;
 
         // Generate HTML
         let html = '';
-        visibleImages.forEach((img, idx) => {
+        visibleImages.forEach(img => {
           const thumbUrl = img.thumb;
-          const tagLabel = img.type === 'activation' ? 'Activation' : 'Merchandising';
-          
+          const tagLabel = img.title || (img.type === 'activation' ? 'Activation' : 'Merchandising');
+          // Index into the full filtered list so the lightbox opens the right image.
+          const fullIndex = allFiltered.indexOf(img);
+
           html += `
-            <div class="gallery-item" role="button" tabindex="0" aria-label="View ${img.title}" 
-                 data-brand-id="${brand.id}" data-image-index="${idx}">
+            <div class="gallery-item" role="button" tabindex="0" aria-label="View ${img.title}"
+                 data-brand-id="${brand.id}" data-image-index="${fullIndex}">
               <img decoding="async" src="${thumbUrl}" alt="${brand.name} — ${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
               <div class="gallery-overlay" aria-hidden="true">
                 <span class="overlay-tag">${tagLabel}</span>
@@ -637,10 +670,10 @@
         }
 
         // View More button logic
-        if (allFiltered.length > 6) {
+        if (allFiltered.length > collapsedImages.length) {
           actions.innerHTML = `
             <button class="view-more-btn">
-              <span>${isExpanded ? 'Show Less' : `+ View More (${allFiltered.length - 6} more)`}</span>
+              <span>${isExpanded ? 'Show Less' : `+ View More (${allFiltered.length - collapsedImages.length} more)`}</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform: ${isExpanded ? 'rotate(180deg)' : 'none'}; transition: transform 0.2s;"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
           `;
