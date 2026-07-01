@@ -315,67 +315,67 @@ const galleryData = [
                     "src": "images/work/cocacola/cocacola-retail-merchandising-1.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-1.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-2.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-2.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-3.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-3.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-4.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-4.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-5.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-5.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-6.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-6.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-7.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-7.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-8.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-8.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-9.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-9.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-10.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-10.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/cocacola/cocacola-retail-merchandising-11.webp",
                     "thumb": "images/work/cocacola/thumbs/cocacola-retail-merchandising-11.webp",
                     "type": "merchandising",
-                    "title": "Retail Merchandising"
+                    "title": "In-Store Merchandising"
               }
         ]
   },
@@ -388,55 +388,55 @@ const galleryData = [
                     "src": "images/work/latitude/latitude-retail-and-sampling-1.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-1.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-2.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-2.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-3.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-3.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-4.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-4.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-5.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-5.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-6.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-6.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-7.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-7.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-8.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-8.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-9.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-9.webp",
                     "type": "merchandising",
-                    "title": "Premium Instore Merchandising"
+                    "title": "In-Store Merchandising"
               }
         ]
   },

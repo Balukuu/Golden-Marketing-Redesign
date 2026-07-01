@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us — Golden Marketing Uganda</title>
-  <meta name="description" content="Golden Marketing Uganda is a field marketing and brand activation agency built on 10+ years of grassroots expertise across East and Central Africa.">
+  <meta name="description" content="Golden Marketing Uganda is a Below The Line marketing and brand activation agency built on 15+ years of grassroots expertise across East and Central Africa.">
   <meta name="keywords" content="about golden marketing uganda, field marketing agency east africa, brand activation company kampala">
   <meta property="og:title" content="About Us — Golden Marketing Uganda">
-  <meta property="og:description" content="Built on 10+ years of grassroots expertise across East and Central Africa.">
+  <meta property="og:description" content="Built on 15+ years of grassroots expertise across East and Central Africa.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://goldenmarketing.ug/about.html">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -20,6 +20,86 @@
   <link rel="stylesheet" href="css/style.css?v=5.0">
   <link rel="stylesheet" href="css/animations.css?v=5.0">
   <link rel="stylesheet" href="css/responsive.css?v=5.0">
+
+  <style>
+    /* ============================================================
+       ABOUT PAGE — premium redesign (scoped)
+       ============================================================ */
+
+    /* ── Who we are ── */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(32px, 5vw, 76px);
+      align-items: center;
+    }
+    .who-text .eyebrow { margin-bottom: 14px; }
+    .who-text .body-lg { margin-bottom: 20px; }
+    .who-text p { color: var(--text-secondary); }
+
+    .who-collage { display: flex; gap: 16px; }
+    .who-col { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .who-col-offset { margin-top: 46px; }
+
+    .who-fig {
+      margin: 0; position: relative; overflow: hidden;
+      border-radius: var(--r-lg); aspect-ratio: 4/5;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 28px 46px -30px rgba(0,0,0,0.6);
+      isolation: isolate;
+    }
+    .who-fig img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease-out); }
+    .who-fig:hover img { transform: scale(1.06); }
+    .who-fig::after { content: ''; position: absolute; inset: 0; z-index: 2; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); pointer-events: none; }
+    .who-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(12,12,20,0.74) 0%, rgba(12,12,20,0.06) 52%, transparent 72%); }
+    .who-cap {
+      position: absolute; left: 16px; bottom: 14px; z-index: 3;
+      color: #fff; font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .who-cap::before { content: ''; width: 18px; height: 2px; border-radius: 2px; background: var(--gold-light); }
+
+    /* ── Milestones timeline (2012 → 2026) ── */
+    .milestones { position: relative; max-width: 880px; margin: 60px auto 0; }
+    .milestones::before {
+      content: ''; position: absolute; top: 8px; bottom: 10px; left: 26px; width: 2px;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 55%, rgba(212,175,106,0.12) 100%);
+    }
+    .ms-item { position: relative; padding: 0 0 34px 78px; }
+    .ms-item:last-child { padding-bottom: 0; }
+    .ms-node {
+      position: absolute; left: 5px; top: 2px;
+      width: 44px; height: 44px; border-radius: 50%; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(145deg, var(--gold-light), #9A7822);
+      color: #fff;
+      box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px rgba(184,146,42,0.18), 0 10px 22px -8px rgba(184,146,42,0.6);
+    }
+    .ms-node svg { width: 20px; height: 20px; }
+    .ms-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 22px 26px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 22px 40px -30px rgba(0,0,0,0.45);
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+    }
+    .ms-card:hover { transform: translateY(-4px); border-color: var(--border-strong); box-shadow: 0 26px 46px -26px rgba(0,0,0,0.5); }
+    .ms-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+    .ms-year { font-family: var(--font-display); font-size: 1.55rem; font-weight: 800; color: var(--gold); letter-spacing: -0.02em; line-height: 1; }
+    .ms-title { font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; color: var(--ink); margin: 0; }
+    .ms-card p { margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+    .ms-item.is-current .ms-card { border-color: rgba(184,146,42,0.4); background: linear-gradient(180deg, var(--gold-subtle), var(--white) 70%); }
+
+    @media (max-width: 900px) {
+      .who-grid { grid-template-columns: 1fr; gap: 40px; }
+      .who-collage { max-width: 520px; margin: 0 auto; width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .who-col-offset { margin-top: 0; }
+      .ms-item { padding-left: 66px; }
+      .ms-node { width: 40px; height: 40px; }
+      .milestones::before { left: 24px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -70,25 +150,25 @@
       <div class="container">
         <div class="page-hero-inner" style="max-width: 800px;">
           <p class="eyebrow reveal" style="color: var(--gold-on-dark);">Our Story</p>
-          <h1 class="page-hero-title reveal delay-100" style="color: var(--white);">Twelve years of <em>showing up</em><br>where it counts.</h1>
-          <p class="page-hero-subtitle reveal delay-200" style="color: rgba(255, 255, 255, 0.9);">We built Golden Marketing to solve a problem we saw everywhere: brands investing heavily in media but losing ground at the shelf, on the street, and in the market. Field marketing done right changes that.</p>
+          <h1 class="page-hero-title reveal delay-100" style="color: var(--white);">15 years of <em>showing up</em><br>where it counts.</h1>
+          <p class="page-hero-subtitle reveal delay-200" style="color: rgba(255, 255, 255, 0.9);">Golden Marketing is here to address a critical gap in the marketing landscape: brands investing significantly in campaigns, yet failing to convert that investment into meaningful visibility, engagement, and sales where it matters most, at the shelf, on the street, and in the marketplace. We believe that when executed strategically, field marketing bridges this gap, transforming brand awareness into measurable business results.</p>
         </div>
       </div>
     </section>
 
-    <!-- ── COMPANY INTRO ── -->
+    <!-- ── COMPANY INTRO / WHO WE ARE ── -->
     <section class="section">
       <div class="container">
-        <div class="about-intro-grid">
-          <div class="about-intro-text reveal">
-            <h2 class="section-title">Who we are</h2>
-            <p class="body-lg">Golden Marketing Uganda is a full-service field marketing and brand activation agency headquartered in Kampala, with active operations across Uganda, Kenya, Tanzania, Rwanda, and the Democratic Republic of Congo.</p>
-            <p>We exist to bridge the gap between brand strategy and real-world execution. While agencies craft compelling campaigns, we ensure those campaigns land — at the right shelf, with the right consumer, in the right moment. Our people are trained brand ambassadors, logistics specialists, and field analysts who work together to deliver measurable impact.</p>
-            <p>Over 12 years, we have partnered with multinationals, regional players, and high-growth startups alike. The common thread: brands that need more than creative — they need results at ground level.</p>
-            
+        <div class="who-grid">
+          <div class="who-text reveal">
+            <p class="eyebrow">Who we are</p>
+            <h2 class="section-title">Field marketing that moves the market</h2>
+            <p class="body-lg">Golden Marketing Uganda is a Below The Line marketing and brand activation agency headquartered in Kampala, delivering integrated marketing solutions across Uganda, Kenya, Tanzania, Rwanda, and the Democratic Republic of Congo.</p>
+            <p>We partner with ambitious brands to drive market penetration, enhance consumer engagement, and deliver measurable commercial impact through strategic, data-driven field execution. Our people are trained brand ambassadors, logistics specialists, and field analysts who turn campaign strategy into results at ground level.</p>
+
             <div class="impact-stats" style="margin-top: 44px;">
               <div class="impact-stat">
-                <span class="counter-value stat-number" data-target="12" data-suffix="+">12+</span>
+                <span class="counter-value stat-number" data-target="15" data-suffix="+">15+</span>
                 <span class="stat-label">Years in business</span>
               </div>
               <div class="impact-stat">
@@ -105,47 +185,105 @@
               </div>
             </div>
           </div>
-          <div class="about-intro-image reveal delay-200">
-            <div class="image-stack" style="position: relative;">
-              <img loading="lazy" decoding="async" src="images/1Jjpg_WpI8UpUvp0jgN7KA02_S4zQVTph.jpg" alt="Field marketing distribution team" style="border-radius: var(--r-xl); box-shadow: var(--shadow-lg);">
-              <img loading="lazy" decoding="async" src="images/1VgkFMkM2ceAh-uZQYPNqIi7yNWAQXLsV.jpg" alt="Consumer engagement" style="position: absolute; bottom: -40px; left: -40px; width: 60%; border-radius: var(--r-lg); border: 8px solid var(--white); box-shadow: var(--shadow-md);">
+
+          <div class="who-collage reveal delay-200">
+            <div class="who-col">
+              <figure class="who-fig">
+                <img loading="lazy" decoding="async" src="images/heroes/svc-merchandising.webp" alt="In-store merchandising at the shelf">
+                <span class="who-scrim" aria-hidden="true"></span>
+                <figcaption class="who-cap">At the shelf</figcaption>
+              </figure>
+              <figure class="who-fig">
+                <img loading="lazy" decoding="async" src="images/heroes/svc-dynamic-roadshows.webp" alt="Street-level consumer engagement">
+                <span class="who-scrim" aria-hidden="true"></span>
+                <figcaption class="who-cap">On the street</figcaption>
+              </figure>
+            </div>
+            <div class="who-col who-col-offset">
+              <figure class="who-fig">
+                <img loading="lazy" decoding="async" src="images/heroes/svc-field-activations.webp" alt="Brand ambassadors activating in market">
+                <span class="who-scrim" aria-hidden="true"></span>
+                <figcaption class="who-cap">In the marketplace</figcaption>
+              </figure>
+              <figure class="who-fig">
+                <img loading="lazy" decoding="async" src="images/heroes/svc-events-management.webp" alt="Live brand experience event">
+                <span class="who-scrim" aria-hidden="true"></span>
+                <figcaption class="who-cap">Live events</figcaption>
+              </figure>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── TIMELINE ── -->
+    <!-- ── TIMELINE / MILESTONES ── -->
     <section class="section section-surface">
       <div class="container">
         <div class="section-header reveal">
           <p class="eyebrow">Our journey</p>
           <h2 class="section-title">Built milestone by milestone</h2>
+          <p class="section-subtitle">From a five-person team in Kampala to a six-country field force — how the last decade and a half took shape.</p>
         </div>
-        <div class="timeline-grid">
-          <div class="timeline-card reveal">
-            <img loading="lazy" decoding="async" src="images/1bEdRvWtFmky3cN_dvclKjfaEXkMYBxHR.jpg" alt="2012 Foundation" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-md); margin-bottom: 24px;">
-            <span class="timeline-year">2012</span>
-            <h3 class="timeline-heading">Founded in Kampala</h3>
-            <p>Started with a single client and a five-person team focused on FMCG merchandising across Kampala's central markets.</p>
+
+        <div class="milestones">
+          <div class="ms-item reveal">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 3.5L16 11H5"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2012</span><h3 class="ms-title">Founded in Kampala</h3></div>
+              <p>Started with a single client and a five-person team focused on FMCG merchandising across Kampala's central markets.</p>
+            </div>
           </div>
-          <div class="timeline-card reveal delay-100">
-            <img loading="lazy" decoding="async" src="images/1lDwNqoyNNHH0esW4t3W6pmu-yxuhFgG7.jpg" alt="East Africa expansion" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-md); margin-bottom: 24px;">
-            <span class="timeline-year">2015</span>
-            <h3 class="timeline-heading">East Africa expansion</h3>
-            <p>Extended operations into Kenya and Tanzania, tripling headcount and adding large-format roadshow capabilities.</p>
+
+          <div class="ms-item reveal delay-100">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.8 5.7 3.8 9S14.5 18.5 12 21c-2.5-2.5-3.8-5.7-3.8-9S9.5 5.5 12 3z"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2015</span><h3 class="ms-title">East Africa expansion</h3></div>
+              <p>Extended operations into Kenya and Tanzania, tripling headcount and adding large-format roadshow capabilities.</p>
+            </div>
           </div>
-          <div class="timeline-card reveal delay-200">
-            <img loading="lazy" decoding="async" src="images/15NTXOzbzlhVYlFKGqPmg4KDw_BkJOhol.jpg" alt="Technology integration" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-md); margin-bottom: 24px;">
-            <span class="timeline-year">2019</span>
-            <h3 class="timeline-heading">Technology integration</h3>
-            <p>Launched our proprietary field automation and real-time reporting platform, giving clients live visibility into every activation.</p>
+
+          <div class="ms-item reveal delay-200">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h4l2.5 6 5-14L17 13h4"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2019</span><h3 class="ms-title">Technology integration</h3></div>
+              <p>Launched our proprietary field automation and real-time reporting platform, giving clients live visibility into every activation.</p>
+            </div>
           </div>
-          <div class="timeline-card reveal delay-300">
-            <img loading="lazy" decoding="async" src="images/184iE79SA8GUgbJbhSxYldEO-IgDSsTrq.jpg" alt="Central Africa presence" style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-md); margin-bottom: 24px;">
-            <span class="timeline-year">2024</span>
-            <h3 class="timeline-heading">Central Africa presence</h3>
-            <p>Added Rwanda and DRC to our active markets, completing a six-country footprint across East and Central Africa.</p>
+
+          <div class="ms-item reveal">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 20c0-2.6 1.4-4.9 3.5-6"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2022</span><h3 class="ms-title">Field force at scale</h3></div>
+              <p>Grew to 2,000+ trained brand ambassadors and field agents, powering nationwide modern- and general-trade coverage for our clients.</p>
+            </div>
+          </div>
+
+          <div class="ms-item reveal delay-100">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2024</span><h3 class="ms-title">Central Africa footprint</h3></div>
+              <p>Added Rwanda and the DRC to our active markets, completing a six-country footprint across East and Central Africa.</p>
+            </div>
+          </div>
+
+          <div class="ms-item is-current reveal delay-200">
+            <span class="ms-node" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8-4.3-4.1 5.9-.9L12 3z"/></svg>
+            </span>
+            <div class="ms-card">
+              <div class="ms-head"><span class="ms-year">2026</span><h3 class="ms-title">Fifteen years strong</h3></div>
+              <p>Today, 2,000+ field agents activate 50+ brands across six markets — every deployment backed by real-time reporting and measurable commercial results.</p>
+            </div>
           </div>
         </div>
       </div>

@@ -34,10 +34,10 @@ BRANDS = [
         ("Cocacola/Cocacola Activations/Rwenzori Marathon", "Rwenzori Marathon", "activation"),
         ("Cocacola/Cocacola Activations/Rwenzori Marathon Launch", "Rwenzori Marathon Launch", "activation"),
         ("Cocacola/Cocacola Activations/World Free Style Football Event", "World Freestyle Football", "activation"),
-        ("Cocacola/Merchandising - Cocacola", "Retail Merchandising", "merchandising"),
+        ("Cocacola/Merchandising - Cocacola", "In-Store Merchandising", "merchandising"),
     ]),
     ("latitude", "Latitude Chocolate", "Merchandising & Distribution", [
-        ("Latitude chocolate", "Premium Instore Merchandising", "merchandising"),
+        ("Latitude chocolate", "In-Store Merchandising", "merchandising"),
     ]),
     ("unilever", "Unilever", "Merchandising MT&GT & Activations", [
         ("Unilever/Unilever Activations/Back to School", "Back to School", "activation"),

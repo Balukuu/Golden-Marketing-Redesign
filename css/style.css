@@ -38,7 +38,7 @@
   --green:       #1A7A4A;
   --green-light: #E8F5EE;
 
-  --max-w:           1200px;
+  --max-w:           1440px;
   --pad-section:     clamp(72px, 10vw, 130px);
   --pad-section-sm:  clamp(48px, 7vw, 80px);
   --pad-x:           clamp(20px, 4vw, 40px);
@@ -452,7 +452,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
   pointer-events: none;
   z-index: 0;
   }
-.hero .container { position: relative; z-index: 1; max-width: 1440px; }
+.hero .container { position: relative; z-index: 1; max-width: var(--max-w); }
 
 .hero-layout {
   display: grid;
@@ -542,7 +542,9 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
 .hero-visual { min-width: 0; }
 
 @media (min-width: 1751px) {
-  .hero .container { max-width: 1520px; }
+  /* Grow the whole page frame together on ultra-wide screens so the nav,
+     hero, and every section keep the same edges and fill the space premium-ly. */
+  :root { --max-w: 1520px; }
   .hero-visual { height: min(780px, calc(100vh - 140px)); }
 }
 
