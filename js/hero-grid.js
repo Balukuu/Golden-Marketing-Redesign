@@ -11,9 +11,13 @@
   const GRID_EL = document.querySelector('.hero-animated-grid');
   if (!GRID_EL) return;
 
-  // On mobile/tablet (≤1024px) the grid is only a faint background texture.
-  // Skip loading the full image set + rotation to save bandwidth/CPU.
-  if (window.matchMedia('(max-width: 1024px)').matches) return;
+  // On phones (≤768px) the CSS turns the collage into a faint background
+  // texture, so skip loading the full image set + rotation to save
+  // bandwidth/CPU. Above 768px the CSS keeps the full two-column hero with a
+  // real side-by-side collage, so the grid MUST be built there (tablets and
+  // small laptops in the 769–1024px range included) — otherwise the reserved
+  // right-hand column renders blank.
+  if (window.matchMedia('(max-width: 768px)').matches) return;
 
   // Opening frame: office strategy shot + a strong cross-brand spread.
   const NEW = [
