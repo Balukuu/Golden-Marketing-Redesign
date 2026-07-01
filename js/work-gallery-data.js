@@ -708,55 +708,55 @@ const galleryData = [
   {
         "id": "ubl",
         "name": "UBL",
-        "meta": "Brand Activations & Merchandising",
+        "meta": "Merchandising",
         "images": [
               {
                     "src": "images/work/ubl/ubl-field-activations-1.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-1.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-2.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-2.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-3.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-3.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-4.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-4.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-5.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-5.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-6.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-6.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-7.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-7.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               },
               {
                     "src": "images/work/ubl/ubl-field-activations-8.webp",
                     "thumb": "images/work/ubl/thumbs/ubl-field-activations-8.webp",
                     "type": "activation",
-                    "title": "Field Activations"
+                    "title": "In-Store Merchandising"
               }
         ]
   },

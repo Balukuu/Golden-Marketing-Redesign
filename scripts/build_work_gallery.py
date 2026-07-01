@@ -47,8 +47,8 @@ BRANDS = [
         ("Unilever/Merchandising - Unilever/MT", "Merchandising — Modern Trade", "merchandising"),
         ("Unilever/Merchandising - Unilever/GT", "Merchandising — General Trade", "merchandising"),
     ]),
-    ("ubl", "UBL", "Brand Activations & Merchandising", [
-        ("UBL", "Field Activations", "activation"),
+    ("ubl", "UBL", "Merchandising", [
+        ("UBL", "In-Store Merchandising", "activation"),
     ]),
     ("shell", "Shell Vivo", "Forecourt Activations & Merchandising", [
         ("Shell Vivo/Shell Vivo Activations/Heads Up", "Heads Up", "activation"),
