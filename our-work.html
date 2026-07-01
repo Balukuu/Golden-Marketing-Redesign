@@ -686,11 +686,14 @@
         let collapsedImages;
         if (subfilter === 'all') {
           const seen = new Set();
-          collapsedImages = [];
+          const reps = [];
           allFiltered.forEach(img => {
             const key = campaignSlug(img.title);
-            if (!seen.has(key)) { seen.add(key); collapsedImages.push(img); }
+            if (!seen.has(key)) { seen.add(key); reps.push(img); }
           });
+          // A single-campaign brand (e.g. Latitude) would collapse to just one
+          // representative, which looks too sparse — show a fuller preview instead.
+          collapsedImages = reps.length > 1 ? reps : allFiltered.slice(0, 6);
         } else {
           collapsedImages = allFiltered.slice(0, 6);
         }
