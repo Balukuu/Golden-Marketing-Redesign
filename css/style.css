@@ -69,12 +69,12 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.15) transparent;
+  /* Hide the scrollbar while keeping scroll functionality (Firefox / legacy Edge) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
+/* Hide the scrollbar in WebKit/Blink browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
 body {
   font-family: var(--font-ui);
@@ -545,7 +545,19 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--font-ui); font-weight: 700; line-height: 
   /* Grow the whole page frame together on ultra-wide screens so the nav,
      hero, and every section keep the same edges and fill the space premium-ly. */
   :root { --max-w: 1520px; }
-  .hero-visual { height: min(780px, calc(100vh - 140px)); }
+
+  /* Past 1750px the zoom-scaling stops, so the un-zoomed mosaic and rotating
+     headline balloon and the title overflows into the grid. Cap the mosaic and
+     ease the headline so the hero keeps the same balanced proportions it has
+     on a laptop. */
+  .hero-layout { grid-template-columns: 1.05fr 1fr; }
+  .hero-title { font-size: clamp(3.2rem, 5.4vw, 6rem); }
+  .hero-visual {
+    height: min(640px, calc(100vh - 190px));
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
 
 .hero-grid-cell {
