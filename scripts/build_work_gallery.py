@@ -37,7 +37,7 @@ BRANDS = [
         ("Cocacola/Merchandising - Cocacola", "Retail Merchandising", "merchandising"),
     ]),
     ("latitude", "Latitude Chocolate", "Merchandising & Distribution", [
-        ("Latitude chocolate", "Retail & Sampling", "merchandising"),
+        ("Latitude chocolate", "Premium Instore Merchandising", "merchandising"),
     ]),
     ("unilever", "Unilever", "Merchandising MT&GT & Activations", [
         ("Unilever/Unilever Activations/Back to School", "Back to School", "activation"),

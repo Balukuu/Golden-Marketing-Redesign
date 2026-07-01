@@ -388,55 +388,55 @@ const galleryData = [
                     "src": "images/work/latitude/latitude-retail-and-sampling-1.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-1.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-2.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-2.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-3.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-3.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-4.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-4.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-5.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-5.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-6.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-6.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-7.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-7.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-8.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-8.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               },
               {
                     "src": "images/work/latitude/latitude-retail-and-sampling-9.webp",
                     "thumb": "images/work/latitude/thumbs/latitude-retail-and-sampling-9.webp",
                     "type": "merchandising",
-                    "title": "Retail & Sampling"
+                    "title": "Premium Instore Merchandising"
               }
         ]
   },
