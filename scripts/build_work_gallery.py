@@ -44,6 +44,7 @@ BRANDS = [
         ("Unilever/Unilever Activations/Dove", "Dove", "activation"),
         ("Unilever/Unilever Activations/Hamper Promo", "Hamper Promo", "activation"),
         ("Unilever/Unilever Activations/Roast & Rhyme", "Roast & Rhyme", "activation"),
+        ("Unilever/Unilever Activations/Vim Launch", "Vim Launch", "activation"),
         ("Unilever/Merchandising - Unilever/MT", "Merchandising — Modern Trade", "merchandising"),
         ("Unilever/Merchandising - Unilever/GT", "Merchandising — General Trade", "merchandising"),
     ]),
@@ -56,6 +57,9 @@ BRANDS = [
         ("Shell Vivo/Shell Vivo Activations/Shell Fuel On the Go", "Fuel On The Go", "activation"),
         ("Shell Vivo/Shell Vivo Activations/Shell Rimula Oils", "Rimula Oils", "activation"),
         ("Shell Vivo/Merchandising - Shell Vivo", "Forecourt Merchandising", "merchandising"),
+    ]),
+    ("22bet", "22Bet", "Brand Activation", [
+        ("Activations/22 Bet Promo", "Promo", "activation"),
     ]),
 ]
 
