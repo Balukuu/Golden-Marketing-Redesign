@@ -72,51 +72,86 @@
       overflow: hidden;
       position: relative;
       cursor: pointer;
-      border: 1px solid var(--border);
       background: var(--surface-2);
       transition: transform var(--duration-med) var(--ease-out), box-shadow var(--duration-med) var(--ease-out);
       aspect-ratio: 4/3;
+      isolation: isolate;
     }
-    .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    /* Crisp inner hairline ring for a premium, defined edge */
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0; z-index: 4; border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 40px 60px -28px rgba(0,0,0,0.5);
+    }
+    .gallery-item:active { transform: translateY(-2px) scale(0.99); }
+    .gallery-item:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform var(--duration-slow) var(--ease-out);
+      display: block;
+      transition: transform 0.8s var(--ease-out);
     }
-    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item:hover img { transform: scale(1.07); }
 
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity var(--duration-med) var(--ease-out);
+    /* Always-on scrim keeps the campaign tag readable over any image */
+    .gallery-scrim {
+      position: absolute; inset: 0; z-index: 1; border-radius: inherit;
+      background: linear-gradient(to top,
+        rgba(14,14,22,0.86) 0%,
+        rgba(14,14,22,0.45) 26%,
+        rgba(14,14,22,0.12) 48%,
+        rgba(14,14,22,0) 70%);
+      opacity: 0.92;
+      transition: opacity 0.45s var(--ease-out);
     }
-    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-item:hover .gallery-scrim { opacity: 1; }
 
+    /* Bottom info stack — campaign tag permanently visible */
+    .gallery-info {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+      padding: 18px 18px 20px;
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
     .overlay-tag {
-      display: inline-block;
-      padding: 3px 10px;
-      background: var(--gold);
-      color: var(--white);
-      border-radius: var(--r-pill);
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-      align-self: flex-start;
+      display: inline-flex; align-items: center;
+      padding: 7px 14px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--white); border-radius: var(--r-pill);
+      font-size: 0.66rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.09em;
+      box-shadow: 0 6px 16px rgba(184,146,42,0.4), inset 0 1px 0 rgba(255,255,255,0.28);
     }
-    .overlay-label {
-      color: var(--white);
-      font-weight: 600;
-      font-size: var(--text-sm);
-      line-height: 1.3;
+    .overlay-view {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--white); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.01em;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    }
+    .overlay-view svg { transition: transform 0.3s var(--ease-out); }
+    .gallery-item:hover .overlay-view { opacity: 0.95; transform: translateY(0); }
+    .gallery-item:hover .overlay-view svg { transform: translateX(3px); }
+
+    /* Expand affordance, top-right, on hover */
+    .gallery-zoom {
+      position: absolute; top: 14px; right: 14px; z-index: 3;
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(14,14,22,0.45); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.28); color: var(--white);
+      opacity: 0; transform: scale(0.82);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), background 0.25s var(--ease-out);
+    }
+    .gallery-item:hover .gallery-zoom { opacity: 1; transform: scale(1); }
+
+    @media (hover: none) {
+      /* Touch devices can't hover — surface the view affordance permanently */
+      .overlay-view { opacity: 0.9; transform: none; }
     }
 
     /* Shimmer */
@@ -163,6 +198,7 @@
       position: fixed; inset: 0;
       background: rgba(12,12,20,0.98); backdrop-filter: blur(20px);
       z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 56px 0 24px;
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -170,7 +206,7 @@
 
     .lightbox-container {
       position: relative; display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 75vh; max-width: 1200px; padding: 0 64px;
+      width: 100%; flex: 1 1 auto; min-height: 0; max-height: 75vh; max-width: 1200px; padding: 0 64px;
     }
     .lightbox-img-wrap {
       max-width: 100%; max-height: 100%; border-radius: var(--r-lg);
@@ -179,7 +215,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .lightbox img {
-      max-width: 100%; max-height: 75vh; object-fit: contain;
+      max-width: 100%; max-height: 100%; object-fit: contain;
       opacity: 0; transform: scale(0.96) translateY(12px);
       transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
     }
@@ -208,9 +244,15 @@
     }
     .lightbox-close:hover { background: #dc2626; border-color: #dc2626; color: var(--white); transform: rotate(90deg); }
 
-    .lightbox-footer { margin-top: 24px; text-align: center; color: var(--white); z-index: 10010; }
+    .lightbox-footer { margin-top: 24px; flex-shrink: 0; text-align: center; color: var(--white); z-index: 10010; }
     .lightbox-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
     .lightbox-counter { font-size: 0.75rem; color: var(--text-muted-dark); letter-spacing: 0.05em; text-transform: uppercase; }
+    .lightbox-caption {
+      margin: 12px auto 0; max-width: 680px; padding: 0 24px;
+      font-size: 0.84rem; line-height: 1.6; color: rgba(255,255,255,0.72);
+      max-height: 22vh; overflow-y: auto;
+    }
+    .lightbox-caption:empty { display: none; }
   </style>
 </head>
 <body>
@@ -510,10 +552,12 @@
     <div class="lightbox-footer">
       <div class="lightbox-title" id="lightboxTitle"></div>
       <div class="lightbox-counter" id="lightboxCounter"></div>
+      <p class="lightbox-caption" id="lightboxCaption"></p>
     </div>
   </div>
 
   <script src="../js/main.js?v=3.0"></script>
+  <script src="../js/campaign-captions.js?v=1.0"></script>
 
   <script>
     // Merchandising Gallery Data
@@ -587,9 +631,15 @@
           <div class="gallery-item reveal" role="button" tabindex="0" aria-label="View ${img.title}"
                data-index="${idx}">
             <img decoding="async" src="${img.thumb}" alt="${img.title}" loading="lazy" class="skeleton" onload="this.classList.remove('skeleton')">
-            <div class="gallery-overlay" aria-hidden="true">
-              <span class="overlay-tag">Merchandising</span>
-              <div class="overlay-label">${img.title}</div>
+            <div class="gallery-scrim" aria-hidden="true"></div>
+            <div class="gallery-zoom" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+            </div>
+            <div class="gallery-info">
+              <span class="overlay-tag">${img.title}</span>
+              <span class="overlay-view" aria-hidden="true">View campaign
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
             </div>
           </div>
         `;
@@ -630,6 +680,7 @@
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxNext = document.getElementById('lightboxNext');
     const lightboxPrev = document.getElementById('lightboxPrev');
 
@@ -661,6 +712,7 @@
       temp.src = img.src;
       lightboxTitle.textContent = img.title;
       lightboxCounter.textContent = `Image ${state.lightboxIndex + 1} of ${state.lightboxImages.length}`;
+      lightboxCaption.textContent = campaignCaptions[campaignSlug(img.title)] || '';
     }
     function nextSlide() {
       if (state.lightboxImages.length === 0) return;

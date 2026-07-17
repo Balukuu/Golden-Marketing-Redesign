@@ -151,7 +151,48 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Hero Typing Animation ──
   initHeroTyping();
 
+  // ── Rotating phrase in static page heroes (e.g. contact page) ──
+  document.querySelectorAll('em[data-rotate-phrases]').forEach(startPhraseRotation);
+
 });
+
+/* Phrases that replace the hero <em> — keep each under ~15 chars so the line never wraps */
+const HERO_PHRASES = [
+  'in the room.',
+  'on the shelf.',
+  'face to face.',
+  'across Africa.',
+  'in their hands.',
+  'on the road.',
+  'in the market.',
+  'centre stage.',
+  'top of mind.',
+  'on the map.',
+  'in the lead.',
+];
+const PHRASE_ROTATE_INTERVAL = 7000;
+
+function startPhraseRotation(em) {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let phraseIdx = 0;
+
+  setInterval(function () {
+    phraseIdx = (phraseIdx + 1) % HERO_PHRASES.length;
+
+    if (reduced) {
+      em.textContent = HERO_PHRASES[phraseIdx];
+      return;
+    }
+
+    em.classList.add('phrase-out');
+    setTimeout(function () {
+      em.textContent = HERO_PHRASES[phraseIdx];
+      em.classList.remove('phrase-out');
+      em.classList.add('phrase-in');
+      setTimeout(function () { em.classList.remove('phrase-in'); }, 450);
+    }, 300);
+  }, PHRASE_ROTATE_INTERVAL);
+}
 
 function initHeroTyping() {
   const heroTitle = document.querySelector('.hero-title');
@@ -160,17 +201,6 @@ function initHeroTyping() {
   const LINE1     = 'We put your brand';
   const LINE2     = 'in the room.';
   const SPEED_H1  = 38;
-
-  /* Phrases that replace the <em> every 20 s — max ~14 chars */
-  const PHRASES   = [
-    'in the room.',
-    'on the shelf.',
-    'face to face.',
-    'across Africa.',
-    'in their hands.',
-  ];
-  let phraseIdx = 0;
-  const ROTATE_INTERVAL = 20000;
 
   heroTitle.innerHTML = '';
 
@@ -211,27 +241,6 @@ function initHeroTyping() {
         startPhraseRotation(em);
       }, 420);
     }
-  }
-
-  function startPhraseRotation(em) {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    setInterval(function () {
-      phraseIdx = (phraseIdx + 1) % PHRASES.length;
-
-      if (reduced) {
-        em.textContent = PHRASES[phraseIdx];
-        return;
-      }
-
-      em.classList.add('phrase-out');
-      setTimeout(function () {
-        em.textContent = PHRASES[phraseIdx];
-        em.classList.remove('phrase-out');
-        em.classList.add('phrase-in');
-        setTimeout(function () { em.classList.remove('phrase-in'); }, 450);
-      }, 300);
-    }, ROTATE_INTERVAL);
   }
 
   /* No label stagger delay needed anymore — start sooner */

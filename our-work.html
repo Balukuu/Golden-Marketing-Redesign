@@ -213,6 +213,7 @@
       position: fixed; inset: 0;
       background: rgba(12,12,20,0.98); backdrop-filter: blur(20px);
       z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 56px 0 24px;
       opacity: 0; pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -220,7 +221,7 @@
     
     .lightbox-container {
       position: relative; display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 75vh; max-width: 1200px; padding: 0 64px;
+      width: 100%; flex: 1 1 auto; min-height: 0; max-height: 75vh; max-width: 1200px; padding: 0 64px;
     }
     .lightbox-img-wrap {
       max-width: 100%; max-height: 100%; border-radius: var(--r-md);
@@ -229,7 +230,7 @@
       display: flex; align-items: center; justify-content: center;
     }
     .lightbox img {
-      max-width: 100%; max-height: 75vh; object-fit: contain;
+      max-width: 100%; max-height: 100%; object-fit: contain;
       opacity: 0; transform: scale(0.96) translateY(12px);
       transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
     }
@@ -258,9 +259,15 @@
     }
     .lightbox-close:hover { background: #dc2626; border-color: #dc2626; color: var(--white); transform: rotate(90deg); }
     
-    .lightbox-footer { margin-top: 24px; text-align: center; color: var(--white); z-index: 10010; }
+    .lightbox-footer { margin-top: 24px; flex-shrink: 0; text-align: center; color: var(--white); z-index: 10010; }
     .lightbox-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
     .lightbox-counter { font-size: 0.75rem; color: var(--text-muted-dark); letter-spacing: 0.05em; text-transform: uppercase; }
+    .lightbox-caption {
+      margin: 12px auto 0; max-width: 680px; padding: 0 24px;
+      font-size: 0.84rem; line-height: 1.6; color: rgba(255,255,255,0.72);
+      max-height: 22vh; overflow-y: auto;
+    }
+    .lightbox-caption:empty { display: none; }
 
     /* Custom Glassmorphism Filter Bar */
     .filter-bar {
@@ -636,6 +643,7 @@
     <div class="lightbox-footer">
       <div class="lightbox-title" id="lightboxTitle"></div>
       <div class="lightbox-counter" id="lightboxCounter"></div>
+      <p class="lightbox-caption" id="lightboxCaption"></p>
     </div>
   </div>
 
@@ -645,6 +653,7 @@
   </a>
 
   <script src="js/work-gallery-data.js?v=1.0"></script>
+  <script src="js/campaign-captions.js?v=1.0"></script>
   <script>
     // Brand gallery data is loaded from js/work-gallery-data.js
 
@@ -667,14 +676,8 @@
       lightboxImages: []
     };
 
-    // Turn a campaign title into a filter slug, e.g. "Coke Studio" -> "coke-studio"
-    function campaignSlug(title) {
-      return (title || '')
-        .toLowerCase()
-        .replace(/&/g, ' ')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-    }
+    // campaignSlug() and campaignCaptions come from js/campaign-captions.js,
+    // which is shared with the service-page galleries.
 
     // Render helper
     function getFilteredImages(brandId) {
@@ -792,6 +795,7 @@
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxNextBtn = document.getElementById('lightboxNext');
     const lightboxPrevBtn = document.getElementById('lightboxPrev');
 
@@ -825,6 +829,7 @@
 
       lightboxTitle.textContent = img.title;
       lightboxCounter.textContent = `Campaign Image ${state.lightboxActiveIndex + 1} of ${state.lightboxImages.length}`;
+      lightboxCaption.textContent = campaignCaptions[campaignSlug(img.title)] || '';
     }
 
     function slideshowNext() {
