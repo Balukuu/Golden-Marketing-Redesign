@@ -1312,35 +1312,8 @@ blockquote {
 /* ============================================================
    SERVICE PAGE TEMPLATE
    ============================================================ */
-.service-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-
-.service-includes ul { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 28px; padding: 0; }
-.service-includes li {
-  display: flex; align-items: flex-start; gap: 16px;
-  font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65;
-}
-.service-includes li svg {
-  flex-shrink: 0; margin-top: 4px; color: var(--gold);
-  width: 20px; height: 20px;
-}
-.service-includes li span { flex: 1; }
-
-/* Service Sidebar & CTA Card */
-.service-sidebar { position: sticky; top: 120px; }
-.service-cta-card {
-  background: var(--ink);
-  border-radius: var(--r-lg);
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-}
-.service-cta-card h3 { color: var(--white); font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
-.service-cta-card p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; margin: 0 0 8px 0; }
-.service-cta-card .btn { width: 100%; justify-content: center; padding: 14px 24px; }
-.service-cta-card .btn-ghost { border-color: rgba(255,255,255,0.15); color: var(--white); }
-.service-cta-card .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); color: var(--white); }
+.service-page-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: start; }
+.service-includes .eyebrow { margin-bottom: 0; }
 /* ============================================================
    OUR WORK PAGE
    ============================================================ */
@@ -1609,52 +1582,83 @@ section.page-hero-image,
    SERVICE PAGE — INCLUDES + SIDEBAR
    ============================================================ */
 .service-includes-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 28px;
+  margin-top: 24px;
+  padding: 0;
 }
 .service-includes-list li {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  font-size: var(--text-sm);
+  gap: 16px;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  transition: padding-left var(--duration-fast) var(--ease-out);
 }
+.service-includes-list li:first-child { border-top: 1px solid var(--border); }
+.service-includes-list li:hover { padding-left: 8px; }
 .service-includes-list li svg {
   flex-shrink: 0;
-  margin-top: 2px;
+  width: 14px;
+  height: 14px;
+  padding: 9px;
+  box-sizing: content-box;
+  border-radius: 50%;
+  background: var(--gold-subtle);
   color: var(--gold);
+  transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
 }
-.service-includes-list li span { flex: 1; }
+.service-includes-list li:hover svg { background: var(--gold); color: var(--white); }
+.service-includes-list li span { flex: 1; padding-top: 6px; }
 
 .service-sidebar { display: flex; flex-direction: column; gap: 24px; }
 .service-cta-card {
+  position: sticky;
+  top: 100px;
   background: var(--ink);
   border-radius: var(--r-lg);
-  padding: 32px;
+  padding: 36px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  position: sticky;
-  top: 88px;
+  gap: 14px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.service-cta-card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,146,42,0.25) 0%, transparent 70%);
+  pointer-events: none;
 }
 .service-cta-card h3 {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   color: var(--white);
   line-height: 1.25;
+  letter-spacing: -0.01em;
+  position: relative;
 }
 .service-cta-card p {
-  font-size: var(--text-sm);
-  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.62);
   line-height: 1.65;
+  margin-bottom: 6px;
+  position: relative;
 }
-.service-cta-card .btn { width: 100%; justify-content: center; text-align: center; }
+.service-cta-card .btn { width: 100%; justify-content: center; text-align: center; position: relative; }
 .service-cta-card .btn-primary { background: var(--gold); border-color: var(--gold); }
-.service-cta-card .btn-ghost { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.65); }
-.service-cta-card .btn-ghost:hover { border-color: var(--white); color: var(--white); background: transparent; }
+.service-cta-card .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+.service-cta-card .btn-ghost { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.75); }
+.service-cta-card .btn-ghost:hover { border-color: var(--white); color: var(--white); background: rgba(255,255,255,0.06); }
 
 /* ============================================================
    SERVICE PAGE — PROCESS STEPS

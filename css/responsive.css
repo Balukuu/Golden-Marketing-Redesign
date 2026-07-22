@@ -37,7 +37,7 @@
   .contact-info-col { position: static; }
   .service-page-grid { grid-template-columns: 1fr; gap: 48px; }
   .service-sidebar { position: static; }
-  .service-cta-card { position: static; }
+  .service-cta-card { position: relative; top: auto; }
   .related-services  { grid-template-columns: 1fr 1fr; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
