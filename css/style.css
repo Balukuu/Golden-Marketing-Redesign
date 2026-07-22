@@ -7,7 +7,7 @@
   --font-display: 'Montserrat', system-ui, sans-serif;
   --font-ui:      'Poppins', system-ui, sans-serif;
 
-  --text-hero: clamp(3.2rem, 7vw, 7rem);
+  --text-hero: clamp(2.6rem, 5vw, 5.6rem);
   --text-h2:   clamp(2rem, 4vw, 3.5rem);
   --text-h3:   clamp(1.25rem, 2vw, 1.6rem);
   --text-body: 1rem;
