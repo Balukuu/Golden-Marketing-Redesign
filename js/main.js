@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!href || href === '#') return;
     try {
       const lp = new URL(link.href, window.location.origin).pathname;
-      if (path === lp || (path.endsWith('/') && lp.endsWith('index.html'))) {
+      if (path === lp) {
         link.classList.add('active');
         const dd = link.closest('.nav-dropdown');
         if (dd) dd.querySelector('.nav-dropdown-trigger, .nav-link')?.classList.add('active');

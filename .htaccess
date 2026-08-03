@@ -1,0 +1,69 @@
+# ─── Golden Marketing Uganda — Apache config ───
+
+# Force HTTPS (requires an active SSL cert on the domain — cPanel AutoSSL/Let's Encrypt)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Normalize to non-www (matches canonical URLs used across the site)
+  RewriteCond %{HTTP_HOST} ^www\.goldenmarketing\.co\.ug$ [NC]
+  RewriteRule ^ https://goldenmarketing.co.ug%{REQUEST_URI} [L,R=301]
+
+  # ── Clean URLs ──
+  # /about.html or /services/foo/index.html -> strip to the directory root
+  RewriteCond %{THE_REQUEST} \s/+(.*)index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Any other /page.html -> /page (301, preserves query string)
+  RewriteCond %{THE_REQUEST} \s/+(.+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Internally serve the matching .html file for a clean URL, without changing
+  # what's shown in the address bar
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# Custom error page (clean path — internal rewrite above resolves it to 404.html
+# without triggering the redirect rules and looping)
+ErrorDocument 404 /404
+
+# Never list directory contents
+Options -Indexes
+
+# Block access to dotfiles (.git, .htaccess itself, .claude, etc.)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # Enable only once HTTPS is confirmed working site-wide:
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
